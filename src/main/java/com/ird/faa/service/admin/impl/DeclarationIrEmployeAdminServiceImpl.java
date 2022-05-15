@@ -108,7 +108,6 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         BigDecimal sbi = sbg.subtract(declarationIrEmploye.getIndemnite());
         declarationIrEmploye.setSalaireBrutImposable(sbi);
         BigDecimal sni = CalculSalaireNetImposable(declarationIrEmploye);
-//nothing
 
     }
 
