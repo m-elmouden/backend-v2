@@ -171,6 +171,22 @@ public class DeclarationIrEmploye {
         this.cotisation = cotisation;
     }
 
+    public BigDecimal getIndemniteJustifie() {
+        return indemniteJustifie;
+    }
+
+    public void setIndemniteJustifie(BigDecimal indemniteJustifie) {
+        this.indemniteJustifie = indemniteJustifie;
+    }
+
+    public BigDecimal getHeuresSupplementaires() {
+        return heuresSupplementaires;
+    }
+
+    public void setHeuresSupplementaires(BigDecimal heuresSupplementaires) {
+        this.heuresSupplementaires = heuresSupplementaires;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
