@@ -126,7 +126,7 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
        for(PrelevementSocialEmploye prelevementSocialEmploye:prelevementSocialEmployeAdminService.findByEmployeCin(declarationIrEmploye.getEmploye().getCin())){
 
        }
-
+return null;
     }
 
     private BigDecimal CalculSalaireBrutGlobale(DeclarationIrEmploye declarationIrEmploye) {

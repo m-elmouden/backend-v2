@@ -28,7 +28,7 @@ public class DeclarationIrEmploye {
     private BigDecimal pourcentageAnciennete;
     private BigDecimal cotisation;
     private BigDecimal avantage;
-    private BigDecimal horairesSuplaimentaires;
+    private BigDecimal heuresSupplementaires;
 
     public BigDecimal getIndemnite() {
         return indemnite;
@@ -46,12 +46,12 @@ public class DeclarationIrEmploye {
         this.avantage = avantage;
     }
 
-    public BigDecimal getHorairesSuplaimentaires() {
-        return horairesSuplaimentaires;
+    public BigDecimal getheuresSupplementaires() {
+        return heuresSupplementaires;
     }
 
-    public void setHorairesSuplaimentaires(BigDecimal horairesSuplaimentaires) {
-        this.horairesSuplaimentaires = horairesSuplaimentaires;
+    public void setheuresSupplementaires(BigDecimal heuresSupplementaires) {
+        this.heuresSupplementaires = heuresSupplementaires;
     }
 
     @ManyToOne
