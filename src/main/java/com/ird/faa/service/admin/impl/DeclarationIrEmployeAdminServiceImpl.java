@@ -6,15 +6,21 @@ import java.util.Date;
 
 import java.util.ArrayList;
 
-import com.ird.faa.bean.*;
-import com.ird.faa.service.admin.facade.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 
+import com.ird.faa.bean.DeclarationIrEmploye;
+import com.ird.faa.bean.DeclarationIr;
+import com.ird.faa.bean.Employe;
+import com.ird.faa.bean.TauxIr;
 import com.ird.faa.dao.DeclarationIrEmployeDao;
+import com.ird.faa.service.admin.facade.DeclarationIrEmployeAdminService;
+import com.ird.faa.service.admin.facade.TauxIrAdminService;
+import com.ird.faa.service.admin.facade.DeclarationIrAdminService;
+import com.ird.faa.service.admin.facade.EmployeAdminService;
 
 import com.ird.faa.ws.rest.provided.vo.DeclarationIrEmployeVo;
 import com.ird.faa.service.util.*;
@@ -33,8 +39,8 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
     private DeclarationIrAdminService declarationIrService;
     @Autowired
     private EmployeAdminService employeService;
-    @Autowired
-    private PrelevementSocialEmployeAdminService prelevementSocialEmployeAdminService;
+
+
     @Autowired
     private EntityManager entityManager;
 
@@ -102,38 +108,9 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
 
     @Override
     public void CalculIr(DeclarationIrEmploye declarationIrEmploye) {
-        prepare(declarationIrEmploye);
-        BigDecimal sbg = CalculSalaireBrutGlobale(declarationIrEmploye);
-        declarationIrEmploye.setSalaireBrut(sbg);
-        BigDecimal sbi = sbg.subtract(declarationIrEmploye.getIndemnite());
-        declarationIrEmploye.setSalaireBrutImposable(sbi);
-        BigDecimal sni = CalculSalaireNetImposable(declarationIrEmploye);
 
     }
 
-    private void prepare(DeclarationIrEmploye declarationIrEmploye) {
-        declarationIrEmploye.setEmploye(employeService.findByCin(declarationIrEmploye.getEmploye().getCin()));
-        declarationIrEmploye.setDeclarationIr(declarationIrService.findByRefrerence(declarationIrEmploye.getDeclarationIr().getRefrerence()));
-        for (TauxIr tau : tauxIrService.findAll()) {
-            if (tau.getSalaireImpoMin().compareTo(declarationIrEmploye.getSalaireNetImposable()) >= 0 && tau.getSalaireImpoMax().compareTo(declarationIrEmploye.getSalaireNetImposable()) <= 0) {
-                declarationIrEmploye.setTauxIr(tau);
-                break;
-            }
-        }
-    }
-
-    private BigDecimal CalculSalaireNetImposable(DeclarationIrEmploye declarationIrEmploye) {
-       for(PrelevementSocialEmploye prelevementSocialEmploye:prelevementSocialEmployeAdminService.findByEmployeCin(declarationIrEmploye.getEmploye().getCin())){
-
-       }
-return null;
-    }
-
-    private BigDecimal CalculSalaireBrutGlobale(DeclarationIrEmploye declarationIrEmploye) {
-        BigDecimal salaireBrutGlobale;
-        salaireBrutGlobale = declarationIrEmploye.getSalaireBase().add(declarationIrEmploye.getSalaireBase().multiply(declarationIrEmploye.getPourcentageAnciennete()).add(declarationIrEmploye.getPrimes()).add(declarationIrEmploye.getAvantage()));//+plus horaire suplaimentaire
-        return salaireBrutGlobale;
-    }
 
     @Override
     public DeclarationIrEmploye findById(Long id) {
@@ -157,12 +134,25 @@ return null;
         return res;
     }
 
+    private BigDecimal CalculSalaireBrutGlobale(DeclarationIrEmploye declarationIrEmploye) {
+        BigDecimal salaireBrutGlobale;
+        salaireBrutGlobale = declarationIrEmploye.getSalaireBase().add(declarationIrEmploye.getSalaireBase().multiply((declarationIrEmploye.getPourcentageAnciennete()).divide(BigDecimal.valueOf(100))).add(declarationIrEmploye.getPrimes()).add(declarationIrEmploye.getHeuresSupplementaires()).add(declarationIrEmploye.getAvantage()));//.add(declarationIrEmploye.getAvantage()));//+plus horaire suplaimentaire
+        return salaireBrutGlobale;
+    }
+
+    private BigDecimal CalculSalaireBrutImposable(DeclarationIrEmploye declarationIrEmploye) {
+        BigDecimal salaireBrutImposable;
+        salaireBrutImposable = CalculSalaireBrutGlobale(declarationIrEmploye).subtract(declarationIrEmploye.getIndemniteJustifie());
+        return salaireBrutImposable;
+    }
+
 
     @Override
     public DeclarationIrEmploye update(DeclarationIrEmploye declarationIrEmploye) {
         DeclarationIrEmploye foundedDeclarationIrEmploye = findById(declarationIrEmploye.getId());
         if (foundedDeclarationIrEmploye == null) return null;
         else {
+            declarationIrEmploye.setSalaireBrut(CalculSalaireBrutGlobale(declarationIrEmploye));
             return declarationIrEmployeDao.save(declarationIrEmploye);
         }
     }
@@ -174,7 +164,9 @@ return null;
         findDeclarationIr(declarationIrEmploye);
         findEmploye(declarationIrEmploye);
         findTauxIr(declarationIrEmploye);
-
+        declarationIrEmploye.setSalaireBrut(CalculSalaireBrutGlobale(declarationIrEmploye));
+        declarationIrEmploye.setSalaireBrutImposable(CalculSalaireBrutImposable(declarationIrEmploye));
+        declarationIrEmployeDao.save(declarationIrEmploye);
         return declarationIrEmployeDao.save(declarationIrEmploye);
 
 
