@@ -134,9 +134,16 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         return res;
     }
 
+
+    private BigDecimal HoraireSuplamentaire(DeclarationIrEmploye declarationIrEmploye) {
+        BigDecimal SalaireduHeure;
+        SalaireduHeure = (declarationIrEmploye.getSalaireBase().divide(BigDecimal.valueOf(4))).divide(BigDecimal.valueOf(24));
+        return SalaireduHeure;
+    }
+
     private BigDecimal CalculSalaireBrutGlobale(DeclarationIrEmploye declarationIrEmploye) {
         BigDecimal salaireBrutGlobale;
-        salaireBrutGlobale = declarationIrEmploye.getSalaireBase().add(declarationIrEmploye.getSalaireBase().multiply((declarationIrEmploye.getPourcentageAnciennete()).divide(BigDecimal.valueOf(100))).add(declarationIrEmploye.getPrimes()).add(declarationIrEmploye.getHeuresSupplementaires()).add(declarationIrEmploye.getAvantage()));//.add(declarationIrEmploye.getAvantage()));//+plus horaire suplaimentaire
+        salaireBrutGlobale = declarationIrEmploye.getSalaireBase().add(declarationIrEmploye.getSalaireBase().multiply((declarationIrEmploye.getPourcentageAnciennete()).divide(BigDecimal.valueOf(100)))).add(declarationIrEmploye.getPrimes()).add(HoraireSuplamentaire(declarationIrEmploye).multiply(declarationIrEmploye.getHeuresSupplementaires()));//.add(declarationIrEmploye.getAvantage());
         return salaireBrutGlobale;
     }
 
@@ -153,6 +160,7 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         if (foundedDeclarationIrEmploye == null) return null;
         else {
             declarationIrEmploye.setSalaireBrut(CalculSalaireBrutGlobale(declarationIrEmploye));
+            declarationIrEmploye.setSalaireBrutImposable(CalculSalaireBrutImposable(declarationIrEmploye));
             return declarationIrEmployeDao.save(declarationIrEmploye);
         }
     }
@@ -171,6 +179,7 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
 
 
     }
+
 
     @Override
     public List<DeclarationIrEmploye> save(List<DeclarationIrEmploye> declarationIrEmployes) {

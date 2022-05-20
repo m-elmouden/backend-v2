@@ -12,8 +12,7 @@ import javax.persistence.*;
 public class DeclarationIrEmploye {
 
     @Id
-    @SequenceGenerator(name = "declaration_ir_employe_seq", sequenceName = "declaration_ir_employe_seq",
-            allocationSize = 1, initialValue = 10000)
+    @SequenceGenerator(name = "declaration_ir_employe_seq", sequenceName = "declaration_ir_employe_seq", allocationSize = 1, initialValue = 10000)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "declaration_ir_employe_seq")
     private Long id;
 
@@ -30,30 +29,6 @@ public class DeclarationIrEmploye {
     private BigDecimal avantage;
     private BigDecimal heuresSupplementaires;
 
-    public BigDecimal getIndemnite() {
-        return indemnite;
-    }
-
-    public void setIndemnite(BigDecimal indemnite) {
-        this.indemnite = indemnite;
-    }
-
-    public BigDecimal getAvantage() {
-        return avantage;
-    }
-
-    public void setAvantage(BigDecimal avantage) {
-        this.avantage = avantage;
-    }
-
-    public BigDecimal getheuresSupplementaires() {
-        return heuresSupplementaires;
-    }
-
-    public void setheuresSupplementaires(BigDecimal heuresSupplementaires) {
-        this.heuresSupplementaires = heuresSupplementaires;
-    }
-
     @ManyToOne
     private DeclarationIr declarationIr;
     @ManyToOne
@@ -66,33 +41,16 @@ public class DeclarationIrEmploye {
         super();
     }
 
-
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public DeclarationIr getDeclarationIr() {
-        return this.declarationIr;
-    }
-
-    public void setDeclarationIr(DeclarationIr declarationIr) {
-        this.declarationIr = declarationIr;
-    }
-
-    public Employe getEmploye() {
-        return this.employe;
-    }
-
-    public void setEmploye(Employe employe) {
-        this.employe = employe;
-    }
-
     public BigDecimal getSalaireNet() {
-        return this.salaireNet;
+        return salaireNet;
     }
 
     public void setSalaireNet(BigDecimal salaireNet) {
@@ -100,7 +58,7 @@ public class DeclarationIrEmploye {
     }
 
     public BigDecimal getSalaireBrut() {
-        return this.salaireBrut;
+        return salaireBrut;
     }
 
     public void setSalaireBrut(BigDecimal salaireBrut) {
@@ -108,7 +66,7 @@ public class DeclarationIrEmploye {
     }
 
     public BigDecimal getSalaireNetImposable() {
-        return this.salaireNetImposable;
+        return salaireNetImposable;
     }
 
     public void setSalaireNetImposable(BigDecimal salaireNetImposable) {
@@ -116,7 +74,7 @@ public class DeclarationIrEmploye {
     }
 
     public BigDecimal getSalaireBrutImposable() {
-        return this.salaireBrutImposable;
+        return salaireBrutImposable;
     }
 
     public void setSalaireBrutImposable(BigDecimal salaireBrutImposable) {
@@ -124,51 +82,11 @@ public class DeclarationIrEmploye {
     }
 
     public BigDecimal getSalaireBase() {
-        return this.salaireBase;
+        return salaireBase;
     }
 
     public void setSalaireBase(BigDecimal salaireBase) {
         this.salaireBase = salaireBase;
-    }
-
-    public BigDecimal getindemniteJustifie() {
-        return this.indemniteJustifie;
-    }
-
-    public void setindemniteJustifie(BigDecimal indemniteJustifie) {
-        this.indemniteJustifie = indemniteJustifie;
-    }
-
-    public BigDecimal getPrimes() {
-        return this.primes;
-    }
-
-    public void setPrimes(BigDecimal primes) {
-        this.primes = primes;
-    }
-
-    public BigDecimal getPourcentageAnciennete() {
-        return this.pourcentageAnciennete;
-    }
-
-    public void setPourcentageAnciennete(BigDecimal pourcentageAnciennete) {
-        this.pourcentageAnciennete = pourcentageAnciennete;
-    }
-
-    public TauxIr getTauxIr() {
-        return this.tauxIr;
-    }
-
-    public void setTauxIr(TauxIr tauxIr) {
-        this.tauxIr = tauxIr;
-    }
-
-    public BigDecimal getCotisation() {
-        return this.cotisation;
-    }
-
-    public void setCotisation(BigDecimal cotisation) {
-        this.cotisation = cotisation;
     }
 
     public BigDecimal getIndemniteJustifie() {
@@ -179,12 +97,76 @@ public class DeclarationIrEmploye {
         this.indemniteJustifie = indemniteJustifie;
     }
 
+    public BigDecimal getIndemnite() {
+        return indemnite;
+    }
+
+    public void setIndemnite(BigDecimal indemnite) {
+        this.indemnite = indemnite;
+    }
+
+    public BigDecimal getPrimes() {
+        return primes;
+    }
+
+    public void setPrimes(BigDecimal primes) {
+        this.primes = primes;
+    }
+
+    public BigDecimal getPourcentageAnciennete() {
+        return pourcentageAnciennete;
+    }
+
+    public void setPourcentageAnciennete(BigDecimal pourcentageAnciennete) {
+        this.pourcentageAnciennete = pourcentageAnciennete;
+    }
+
+    public BigDecimal getCotisation() {
+        return cotisation;
+    }
+
+    public void setCotisation(BigDecimal cotisation) {
+        this.cotisation = cotisation;
+    }
+
+    public BigDecimal getAvantage() {
+        return avantage;
+    }
+
+    public void setAvantage(BigDecimal avantage) {
+        this.avantage = avantage;
+    }
+
     public BigDecimal getHeuresSupplementaires() {
         return heuresSupplementaires;
     }
 
     public void setHeuresSupplementaires(BigDecimal heuresSupplementaires) {
         this.heuresSupplementaires = heuresSupplementaires;
+    }
+
+    public DeclarationIr getDeclarationIr() {
+        return declarationIr;
+    }
+
+    public void setDeclarationIr(DeclarationIr declarationIr) {
+        this.declarationIr = declarationIr;
+    }
+
+    public Employe getEmploye() {
+        return employe;
+    }
+
+    public void setEmploye(Employe employe) {
+        this.employe = employe;
+    }
+
+    public TauxIr getTauxIr() {
+        return tauxIr;
+    }
+
+    public void setTauxIr(TauxIr tauxIr) {
+        this.tauxIr = tauxIr;
     }
 
     @Override
