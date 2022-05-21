@@ -137,13 +137,13 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
 
     private BigDecimal HoraireSuplamentaire(DeclarationIrEmploye declarationIrEmploye) {
         BigDecimal SalaireduHeure;
-        SalaireduHeure = (declarationIrEmploye.getSalaireBase().divide(BigDecimal.valueOf(4))).divide(BigDecimal.valueOf(24));
+        SalaireduHeure = declarationIrEmploye.getSalaireBase().divide(BigDecimal.valueOf(4)).divide(BigDecimal.valueOf(24));
         return SalaireduHeure;
     }
 
     private BigDecimal CalculSalaireBrutGlobale(DeclarationIrEmploye declarationIrEmploye) {
         BigDecimal salaireBrutGlobale;
-        salaireBrutGlobale = declarationIrEmploye.getSalaireBase().add(declarationIrEmploye.getSalaireBase().multiply((declarationIrEmploye.getPourcentageAnciennete()).divide(BigDecimal.valueOf(100)))).add(declarationIrEmploye.getPrimes()).add(HoraireSuplamentaire(declarationIrEmploye).multiply(declarationIrEmploye.getHeuresSupplementaires()));//.add(declarationIrEmploye.getAvantage());
+        salaireBrutGlobale = declarationIrEmploye.getSalaireBase().add(declarationIrEmploye.getSalaireBase().multiply(declarationIrEmploye.getPourcentageAnciennete().divide(BigDecimal.valueOf(100)))).add(declarationIrEmploye.getPrimes()).add((HoraireSuplamentaire(declarationIrEmploye)).multiply(declarationIrEmploye.getHeuresSupplementaires())).add(declarationIrEmploye.getAvantage());
         return salaireBrutGlobale;
     }
 

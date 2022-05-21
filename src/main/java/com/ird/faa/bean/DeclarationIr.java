@@ -24,13 +24,13 @@ public class DeclarationIr implements Archivable {
 
     @Column(length = 500)
     private String refrerence;
-    private BigDecimal annee;
-    private BigDecimal mois;
-    private BigDecimal montantIrCalcule;
-    private BigDecimal montantIrAPaye;
-    private BigDecimal totalAPaye;
-    private BigDecimal totalSalaireNet;
-    private BigDecimal totalSalaireBrut;
+    private BigDecimal annee=BigDecimal.ZERO;
+    private BigDecimal mois=BigDecimal.ZERO;
+    private BigDecimal montantIrCalcule=BigDecimal.ZERO;
+    private BigDecimal montantIrAPaye=BigDecimal.ZERO;
+    private BigDecimal totalAPaye=BigDecimal.ZERO;
+    private BigDecimal totalSalaireNet=BigDecimal.ZERO;
+    private BigDecimal totalSalaireBrut=BigDecimal.ZERO;
     @Column(columnDefinition = "boolean default false")
     private Boolean archive = false;
     @JsonFormat(pattern = "yyyy-MM-dd")
