@@ -16,18 +16,18 @@ public class DeclarationIrEmploye {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "declaration_ir_employe_seq")
     private Long id;
 
-    private BigDecimal salaireNet;
-    private BigDecimal salaireBrut;
-    private BigDecimal salaireNetImposable;
-    private BigDecimal salaireBrutImposable;
-    private BigDecimal salaireBase;
-    private BigDecimal indemniteJustifie;
-    private BigDecimal indemnite;
-    private BigDecimal primes;
-    private BigDecimal pourcentageAnciennete;
-    private BigDecimal cotisation;
-    private BigDecimal avantage;
-    private BigDecimal heuresSupplementaires;
+    private BigDecimal salaireNet=BigDecimal.ZERO;
+    private BigDecimal salaireBrut=BigDecimal.ZERO;
+    private BigDecimal salaireNetImposable=BigDecimal.ZERO;
+    private BigDecimal salaireBrutImposable=BigDecimal.ZERO;
+    private BigDecimal salaireBase=BigDecimal.ZERO;
+    private BigDecimal indemniteJustifie=BigDecimal.ZERO;
+    private BigDecimal indemnite=BigDecimal.ZERO;
+    private BigDecimal primes=BigDecimal.ZERO;
+    private BigDecimal pourcentageAnciennete=BigDecimal.ZERO;
+    private BigDecimal cotisation=BigDecimal.ZERO;
+    private BigDecimal avantage=BigDecimal.ZERO;
+    private BigDecimal heuresSupplementaires=BigDecimal.ZERO;
 
     @ManyToOne
     private DeclarationIr declarationIr;
