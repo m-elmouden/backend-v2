@@ -2,7 +2,6 @@ package com.ird.faa.service.admin.impl;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Date;
 
 import java.util.ArrayList;
 
@@ -143,7 +142,8 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
 
     private BigDecimal CalculSalaireBrutGlobale(DeclarationIrEmploye declarationIrEmploye) {
         BigDecimal salaireBrutGlobale;
-        salaireBrutGlobale = declarationIrEmploye.getSalaireBase().add(declarationIrEmploye.getSalaireBase().multiply((declarationIrEmploye.getPourcentageAnciennete()).divide(BigDecimal.valueOf(100)))).add(declarationIrEmploye.getPrimes()).add(HoraireSuplamentaire(declarationIrEmploye).multiply(declarationIrEmploye.getHeuresSupplementaires()));//.add(declarationIrEmploye.getAvantage());
+        BigDecimal HS = HoraireSuplamentaire(declarationIrEmploye);
+        salaireBrutGlobale = declarationIrEmploye.getSalaireBase().add(declarationIrEmploye.getSalaireBase().multiply((declarationIrEmploye.getPourcentageAnciennete()).divide(BigDecimal.valueOf(100)))).add(declarationIrEmploye.getPrimes()).add(HS.multiply(declarationIrEmploye.getHeuresSupplementaires()));//.add(declarationIrEmploye.getAvantage());
         return salaireBrutGlobale;
     }
 
