@@ -24,7 +24,6 @@ public class PrelevementSocialAdminServiceImpl extends AbstractServiceImpl<Prele
 private PrelevementSocialDao prelevementSocialDao;
 
 
-
 @Autowired
 private EntityManager entityManager;
 
