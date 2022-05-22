@@ -140,7 +140,7 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         return SalaireduHeure;
     }
 
-    private BigDecimal calculSalaireBrutGlobale(DeclarationIrEmploye declarationIrEmploye) {
+    private BigDecimal CalculSalaireBrutGlobale(DeclarationIrEmploye declarationIrEmploye) {
         BigDecimal salaireBrutGlobale;
         BigDecimal HS = HoraireSuplamentaire(declarationIrEmploye);
         salaireBrutGlobale = declarationIrEmploye.getSalaireBase().add(declarationIrEmploye.getSalaireBase().multiply((declarationIrEmploye.getPourcentageAnciennete()).divide(BigDecimal.valueOf(100)))).add(declarationIrEmploye.getPrimes()).add(HS.multiply(declarationIrEmploye.getHeuresSupplementaires()));//.add(declarationIrEmploye.getAvantage());
@@ -157,8 +157,7 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
     @Override
     public DeclarationIrEmploye update(DeclarationIrEmploye declarationIrEmploye) {
         DeclarationIrEmploye foundedDeclarationIrEmploye = findById(declarationIrEmploye.getId());
-        if (foundedDeclarationIrEmploye == null) 
-            return null;
+        if (foundedDeclarationIrEmploye == null) return null;
         else {
             declarationIrEmploye.setSalaireBrut(CalculSalaireBrutGlobale(declarationIrEmploye));
             declarationIrEmploye.setSalaireBrutImposable(CalculSalaireBrutImposable(declarationIrEmploye));
@@ -175,7 +174,7 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         findTauxIr(declarationIrEmploye);
         declarationIrEmploye.setSalaireBrut(CalculSalaireBrutGlobale(declarationIrEmploye));
         declarationIrEmploye.setSalaireBrutImposable(CalculSalaireBrutImposable(declarationIrEmploye));
-        //declarationIrEmployeDao.save(declarationIrEmploye);
+        declarationIrEmployeDao.save(declarationIrEmploye);
         return declarationIrEmployeDao.save(declarationIrEmploye);
 
 
