@@ -111,14 +111,17 @@ public class PrelevementSocialEmployeAdminServiceImpl extends AbstractServiceImp
 
     @Override
     public BigDecimal caculDeduction(PrelevementSocialEmploye prelevementSocialEmploye) {
-
-        if (prelevementSocialEmploye.getPrelevementSocial().getLibelle().equals("cnss")) {
-            if (prelevementSocialEmploye.getSalaireBrutImposable().compareTo(BigDecimal.valueOf(6000)) > 0) {
-                BigDecimal valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().multiply(BigDecimal.valueOf(6000));
+        prelevementSocialService.
+        for(PrelevementSocialEmploye prelevementSocialEmployes :prelevementSocialEmployeDao.findByEmployeCin(prelevementSocialEmploye.getEmploye().getCin()))  {
+            if (prelevementSocialEmployes.getPrelevementSocial().getLibelle().equals("cnss")) {
+            if (prelevementSocialEmployes.getSalaireBrutImposable().compareTo(BigDecimal.valueOf(6000)) > 0) {
+                BigDecimal valeur = prelevementSocialEmployes.getPrelevementSocial().getPourcentage().multiply(BigDecimal.valueOf(6000));
             } else {
                 BigDecimal valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().multiply(prelevementSocialEmploye.getSalaireBrutImposable());
 
             }
+
+          }
 
         }
         return null;

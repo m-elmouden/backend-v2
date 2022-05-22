@@ -16,6 +16,8 @@ public interface PrelevementSocialAdminService extends AbstractService<Preleveme
     *
     */
     int deleteById(Long id);
+    PrelevementSocial findByLibelle(String libelle);
+
 
 
 
