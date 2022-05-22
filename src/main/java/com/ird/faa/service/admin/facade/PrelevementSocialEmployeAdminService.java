@@ -38,7 +38,7 @@ public interface PrelevementSocialEmployeAdminService extends AbstractService<Pr
 
     int deleteByDeclarationIrId(Long id);
 
-    BigDecimal caculDeduction(PrelevementSocialEmploye prelevementSocialEmploye);
+    BigDecimal calculDeduction(PrelevementSocialEmploye prelevementSocialEmploye);
 
 
 

@@ -57,8 +57,13 @@ res = 1;
 return res;
 }
 
+    @Override
+    public PrelevementSocial findByLibelle(String libelle) {
+        return prelevementSocialDao.findByLibelle(libelle);
+    }
 
-@Override
+
+    @Override
 public PrelevementSocial update(PrelevementSocial prelevementSocial){
 PrelevementSocial foundedPrelevementSocial = findById(prelevementSocial.getId());
 if(foundedPrelevementSocial==null) return null;

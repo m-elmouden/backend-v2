@@ -1,6 +1,7 @@
 package com.ird.faa.service.admin.impl;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import java.util.ArrayList;
@@ -134,22 +135,22 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
     }
 
 
-    private BigDecimal HoraireSuplamentaire(DeclarationIrEmploye declarationIrEmploye) {
-        BigDecimal SalaireduHeure;
-        SalaireduHeure = (declarationIrEmploye.getSalaireBase().divide(BigDecimal.valueOf(4))).divide(BigDecimal.valueOf(24));
-        return SalaireduHeure;
+    private BigDecimal calculHoraireSuplamentaire(DeclarationIrEmploye declarationIrEmploye) {
+        if (declarationIrEmploye.getSalaireBase() != null)
+            return declarationIrEmploye.getSalaireBase().divide(BigDecimal.valueOf(176), 2, RoundingMode.HALF_UP);
+        return BigDecimal.ZERO;
     }
 
-    private BigDecimal CalculSalaireBrutGlobale(DeclarationIrEmploye declarationIrEmploye) {
+    private BigDecimal calculSalaireBrutGlobale(DeclarationIrEmploye declarationIrEmploye) {
         BigDecimal salaireBrutGlobale;
-        BigDecimal HS = HoraireSuplamentaire(declarationIrEmploye);
+        BigDecimal HS = calculHoraireSuplamentaire(declarationIrEmploye);
         salaireBrutGlobale = declarationIrEmploye.getSalaireBase().add(declarationIrEmploye.getSalaireBase().multiply((declarationIrEmploye.getPourcentageAnciennete()).divide(BigDecimal.valueOf(100)))).add(declarationIrEmploye.getPrimes()).add(HS.multiply(declarationIrEmploye.getHeuresSupplementaires()));//.add(declarationIrEmploye.getAvantage());
         return salaireBrutGlobale;
     }
 
-    private BigDecimal CalculSalaireBrutImposable(DeclarationIrEmploye declarationIrEmploye) {
+    private BigDecimal calculSalaireBrutImposable(DeclarationIrEmploye declarationIrEmploye) {
         BigDecimal salaireBrutImposable;
-        salaireBrutImposable = CalculSalaireBrutGlobale(declarationIrEmploye).subtract(declarationIrEmploye.getIndemniteJustifie());
+        salaireBrutImposable = calculSalaireBrutGlobale(declarationIrEmploye).subtract(declarationIrEmploye.getIndemniteJustifie());
         return salaireBrutImposable;
     }
 
@@ -159,8 +160,8 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         DeclarationIrEmploye foundedDeclarationIrEmploye = findById(declarationIrEmploye.getId());
         if (foundedDeclarationIrEmploye == null) return null;
         else {
-            declarationIrEmploye.setSalaireBrut(CalculSalaireBrutGlobale(declarationIrEmploye));
-            declarationIrEmploye.setSalaireBrutImposable(CalculSalaireBrutImposable(declarationIrEmploye));
+            declarationIrEmploye.setSalaireBrut(calculSalaireBrutGlobale(declarationIrEmploye));
+            declarationIrEmploye.setSalaireBrutImposable(calculSalaireBrutImposable(declarationIrEmploye));
             return declarationIrEmployeDao.save(declarationIrEmploye);
         }
     }
@@ -172,8 +173,8 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         findDeclarationIr(declarationIrEmploye);
         findEmploye(declarationIrEmploye);
         findTauxIr(declarationIrEmploye);
-        declarationIrEmploye.setSalaireBrut(CalculSalaireBrutGlobale(declarationIrEmploye));
-        declarationIrEmploye.setSalaireBrutImposable(CalculSalaireBrutImposable(declarationIrEmploye));
+        declarationIrEmploye.setSalaireBrut(calculSalaireBrutGlobale(declarationIrEmploye));
+        declarationIrEmploye.setSalaireBrutImposable(calculSalaireBrutImposable(declarationIrEmploye));
         declarationIrEmployeDao.save(declarationIrEmploye);
         return declarationIrEmployeDao.save(declarationIrEmploye);
 

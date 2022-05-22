@@ -110,8 +110,8 @@ public class PrelevementSocialEmployeAdminServiceImpl extends AbstractServiceImp
 
 
     @Override
-    public BigDecimal caculDeduction(PrelevementSocialEmploye prelevementSocialEmploye) {
-        prelevementSocialService.
+    public BigDecimal calculDeduction(PrelevementSocialEmploye prelevementSocialEmploye) {
+        prelevementSocialEmploye.setPrelevementSocial(prelevementSocialService.findByLibelle(prelevementSocialEmploye.getPrelevementSocial().getLibelle()));
         for(PrelevementSocialEmploye prelevementSocialEmployes :prelevementSocialEmployeDao.findByEmployeCin(prelevementSocialEmploye.getEmploye().getCin()))  {
             if (prelevementSocialEmployes.getPrelevementSocial().getLibelle().equals("cnss")) {
             if (prelevementSocialEmployes.getSalaireBrutImposable().compareTo(BigDecimal.valueOf(6000)) > 0) {
