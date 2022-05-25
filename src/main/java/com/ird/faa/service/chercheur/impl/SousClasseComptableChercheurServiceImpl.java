@@ -17,8 +17,6 @@ import com.ird.faa.service.chercheur.facade.SousClasseComptableChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.SousClasseComptableVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.CompteComptable;
-        import com.ird.faa.service.chercheur.facade.CompteComptableChercheurService;
 
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 

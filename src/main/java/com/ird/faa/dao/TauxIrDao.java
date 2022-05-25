@@ -13,10 +13,11 @@ public interface TauxIrDao extends JpaRepository<TauxIr,Long> {
 
 
 
-    @Query("SELECT item FROM TauxIr item ORDER BY item.dateMin ASC")
+    @Query("SELECT item FROM TauxIr item where item.salaireImpoMax<15000 ORDER BY item.dateMin ASC")
     List<TauxIr> findAll();
 
-
+@Query("select item from TauxIr item where item.salaireImpoMax>15000")
+    TauxIr findDernierTaux();
 
 
 }

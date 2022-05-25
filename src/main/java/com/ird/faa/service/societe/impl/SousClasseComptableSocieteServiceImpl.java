@@ -1,7 +1,6 @@
 package com.ird.faa.service.societe.impl;
 
 import java.util.List;
-    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,6 @@ import com.ird.faa.service.societe.facade.SousClasseComptableSocieteService;
 
 import com.ird.faa.ws.rest.provided.vo.SousClasseComptableVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.CompteComptable;
-        import com.ird.faa.service.societe.facade.CompteComptableSocieteService;
 
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 

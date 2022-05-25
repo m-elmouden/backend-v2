@@ -16,10 +16,8 @@ import com.ird.faa.service.admin.facade.CpcAdminService;
 
 import com.ird.faa.ws.rest.provided.vo.CpcVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.CpcFacture;
-        import com.ird.faa.service.admin.facade.CpcFactureAdminService;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
+import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service

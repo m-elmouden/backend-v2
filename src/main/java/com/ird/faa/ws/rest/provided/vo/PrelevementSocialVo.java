@@ -1,4 +1,4 @@
-package  com.ird.faa.ws.rest.provided.vo;
+package com.ird.faa.ws.rest.provided.vo;
 
     import java.util.Date;
     import javax.persistence.Temporal;
@@ -13,7 +13,7 @@ public class PrelevementSocialVo {
     private String pourcentage ;
     private String dateMax ;
     private String dateMin ;
-
+    private String reference;
 
             private String pourcentageMax ;
             private String pourcentageMin ;
@@ -22,7 +22,13 @@ public class PrelevementSocialVo {
             private String dateMinMax ;
             private String dateMinMin ;
 
+    public String getReference() {
+        return reference;
+    }
 
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 
     public PrelevementSocialVo(){
     super();

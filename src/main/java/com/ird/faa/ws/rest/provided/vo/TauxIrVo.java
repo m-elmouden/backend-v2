@@ -1,4 +1,4 @@
-package  com.ird.faa.ws.rest.provided.vo;
+package com.ird.faa.ws.rest.provided.vo;
 
     import java.util.Date;
     import javax.persistence.Temporal;

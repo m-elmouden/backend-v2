@@ -24,12 +24,8 @@ import com.ird.faa.service.comptable.facade.DeclarationIrComptableService;
 
 import com.ird.faa.ws.rest.provided.vo.DeclarationIrVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.DeclarationIrEmploye;
-        import com.ird.faa.service.comptable.facade.DeclarationIrEmployeComptableService;
-        import com.ird.faa.bean.PrelevementSocialEmploye;
-        import com.ird.faa.service.comptable.facade.PrelevementSocialEmployeComptableService;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
+import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service

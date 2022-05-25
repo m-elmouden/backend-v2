@@ -1,6 +1,5 @@
 package com.ird.faa.service.chercheur.facade;
 
-import java.util.List;
 import com.ird.faa.bean.EtatPaiement;
 import com.ird.faa.ws.rest.provided.vo.EtatPaiementVo;
 import com.ird.faa.service.core.facade.AbstractService;

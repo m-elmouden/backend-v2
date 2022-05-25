@@ -23,10 +23,8 @@ import com.ird.faa.service.chercheur.facade.DeclarationCnssChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.DeclarationCnssVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.DeclarationCnssDetail;
-        import com.ird.faa.service.chercheur.facade.DeclarationCnssDetailChercheurService;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
+import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service

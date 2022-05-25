@@ -1,7 +1,6 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +57,13 @@ res = 1;
 return res;
 }
 
+    @Override
+    public TauxIr findDernierTaux() {
+        return tauxIrDao.findDernierTaux();
+    }
 
-@Override
+
+    @Override
 public TauxIr update(TauxIr tauxIr){
 TauxIr foundedTauxIr = findById(tauxIr.getId());
 if(foundedTauxIr==null) return null;

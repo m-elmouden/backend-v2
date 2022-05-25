@@ -1,7 +1,6 @@
-package  com.ird.faa.ws.rest.provided.vo;
+package com.ird.faa.ws.rest.provided.vo;
 
     import java.util.List;
-    import java.math.BigDecimal;
 
 public class SousClasseComptableVo {
 

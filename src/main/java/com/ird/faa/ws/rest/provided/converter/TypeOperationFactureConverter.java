@@ -1,6 +1,5 @@
 package  com.ird.faa.ws.rest.provided.converter;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.ird.faa.service.util.*;
 

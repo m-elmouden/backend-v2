@@ -1,11 +1,6 @@
-package  com.ird.faa.ws.rest.provided.vo;
+package com.ird.faa.ws.rest.provided.vo;
 
     import java.util.List;
-    import java.util.Date;
-    import javax.persistence.Temporal;
-    import javax.persistence.TemporalType;
-    import com.fasterxml.jackson.annotation.JsonFormat;
-    import java.math.BigDecimal;
 
 public class SocieteVo {
 

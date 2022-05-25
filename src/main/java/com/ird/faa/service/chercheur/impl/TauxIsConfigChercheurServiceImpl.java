@@ -15,8 +15,6 @@ import com.ird.faa.service.chercheur.facade.TauxIsConfigChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.TauxIsConfigVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.TauxIs;
-        import com.ird.faa.service.chercheur.facade.TauxIsChercheurService;
 
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 

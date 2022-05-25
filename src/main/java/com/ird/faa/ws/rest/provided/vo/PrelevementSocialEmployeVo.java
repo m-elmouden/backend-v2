@@ -1,6 +1,4 @@
-package  com.ird.faa.ws.rest.provided.vo;
-
-    import java.math.BigDecimal;
+package com.ird.faa.ws.rest.provided.vo;
 
 public class PrelevementSocialEmployeVo {
 

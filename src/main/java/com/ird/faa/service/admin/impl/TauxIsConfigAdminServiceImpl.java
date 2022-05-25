@@ -1,7 +1,6 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +15,6 @@ import com.ird.faa.service.admin.facade.TauxIsConfigAdminService;
 
 import com.ird.faa.ws.rest.provided.vo.TauxIsConfigVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.TauxIs;
-        import com.ird.faa.service.admin.facade.TauxIsAdminService;
 
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 

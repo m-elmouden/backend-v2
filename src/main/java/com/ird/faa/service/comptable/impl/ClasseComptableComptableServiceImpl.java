@@ -16,10 +16,8 @@ import com.ird.faa.service.comptable.facade.ClasseComptableComptableService;
 
 import com.ird.faa.ws.rest.provided.vo.ClasseComptableVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.SousClasseComptable;
-        import com.ird.faa.service.comptable.facade.SousClasseComptableComptableService;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
+import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service

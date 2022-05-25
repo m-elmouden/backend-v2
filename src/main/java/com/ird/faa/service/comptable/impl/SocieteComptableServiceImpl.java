@@ -1,7 +1,6 @@
 package com.ird.faa.service.comptable.impl;
 
 import java.util.List;
-    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,22 +35,6 @@ import com.ird.faa.service.comptable.facade.SocieteComptableService;
 
 import com.ird.faa.ws.rest.provided.vo.SocieteVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.Demande;
-        import com.ird.faa.service.comptable.facade.DemandeComptableService;
-        import com.ird.faa.bean.DeclarationIr;
-        import com.ird.faa.service.comptable.facade.DeclarationIrComptableService;
-        import com.ird.faa.bean.DeclarationIs;
-        import com.ird.faa.service.comptable.facade.DeclarationIsComptableService;
-        import com.ird.faa.bean.DeclarationTva;
-        import com.ird.faa.service.comptable.facade.DeclarationTvaComptableService;
-        import com.ird.faa.bean.DeclarationCnss;
-        import com.ird.faa.service.comptable.facade.DeclarationCnssComptableService;
-        import com.ird.faa.bean.Acompte;
-        import com.ird.faa.service.comptable.facade.AcompteComptableService;
-        import com.ird.faa.bean.Employe;
-        import com.ird.faa.service.comptable.facade.EmployeComptableService;
-        import com.ird.faa.bean.Facture;
-        import com.ird.faa.service.comptable.facade.FactureComptableService;
 
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 

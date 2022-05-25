@@ -26,14 +26,8 @@ import com.ird.faa.service.societe.facade.DemandeSocieteService;
 
 import com.ird.faa.ws.rest.provided.vo.DemandeVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.Facture;
-        import com.ird.faa.service.societe.facade.FactureSocieteService;
-        import com.ird.faa.bean.DemandePieceJointe;
-        import com.ird.faa.service.societe.facade.DemandePieceJointeSocieteService;
-        import com.ird.faa.bean.Commentaire;
-        import com.ird.faa.service.societe.facade.CommentaireSocieteService;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
+import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service

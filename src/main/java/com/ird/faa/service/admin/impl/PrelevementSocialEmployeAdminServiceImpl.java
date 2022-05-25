@@ -2,9 +2,9 @@ package com.ird.faa.service.admin.impl;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Date;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -111,20 +111,27 @@ public class PrelevementSocialEmployeAdminServiceImpl extends AbstractServiceImp
 
     @Override
     public BigDecimal calculDeduction(PrelevementSocialEmploye prelevementSocialEmploye) {
-        prelevementSocialEmploye.setPrelevementSocial(prelevementSocialService.findByLibelle(prelevementSocialEmploye.getPrelevementSocial().getLibelle()));
-        for(PrelevementSocialEmploye prelevementSocialEmployes :prelevementSocialEmployeDao.findByEmployeCin(prelevementSocialEmploye.getEmploye().getCin()))  {
-            if (prelevementSocialEmployes.getPrelevementSocial().getLibelle().equals("cnss")) {
-            if (prelevementSocialEmployes.getSalaireBrutImposable().compareTo(BigDecimal.valueOf(6000)) > 0) {
-                BigDecimal valeur = prelevementSocialEmployes.getPrelevementSocial().getPourcentage().multiply(BigDecimal.valueOf(6000));
-            } else {
-                BigDecimal valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().multiply(prelevementSocialEmploye.getSalaireBrutImposable());
+        BigDecimal valeur=BigDecimal.ZERO;
+        prelevementSocialEmploye.setPrelevementSocial(prelevementSocialService.findByReference(prelevementSocialEmploye.getPrelevementSocial().getReference()));
+
+            if (prelevementSocialEmploye.getPrelevementSocial().getLibelle().equalsIgnoreCase("cnss")) {
+            if (prelevementSocialEmploye.getSalaireBrutImposable().compareTo(BigDecimal.valueOf(6000)) > 0) {
+                 valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().multiply(BigDecimal.valueOf(6000));
 
             }
+            else {
+                valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().multiply(prelevementSocialEmploye.getSalaireBrutImposable());
 
-          }
+            }
+            }
+            else {
+                 valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().multiply(prelevementSocialEmploye.getSalaireBrutImposable());
+            }
 
-        }
-        return null;
+
+
+
+        return valeur;
 
     }
 
@@ -157,6 +164,7 @@ public class PrelevementSocialEmployeAdminServiceImpl extends AbstractServiceImp
         PrelevementSocialEmploye foundedPrelevementSocialEmploye = findById(prelevementSocialEmploye.getId());
         if (foundedPrelevementSocialEmploye == null) return null;
         else {
+            prelevementSocialEmploye.setMontantCalculer(calculDeduction(prelevementSocialEmploye));
             return prelevementSocialEmployeDao.save(prelevementSocialEmploye);
         }
     }
@@ -168,7 +176,7 @@ public class PrelevementSocialEmployeAdminServiceImpl extends AbstractServiceImp
         findPrelevementSocial(prelevementSocialEmploye);
         findEmploye(prelevementSocialEmploye);
         findDeclarationIr(prelevementSocialEmploye);
-
+        prelevementSocialEmploye.setMontantCalculer(calculDeduction(prelevementSocialEmploye));
         return prelevementSocialEmployeDao.save(prelevementSocialEmploye);
 
 

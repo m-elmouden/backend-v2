@@ -1,6 +1,5 @@
 package com.ird.faa.service.admin.facade;
 
-import java.util.List;
 import com.ird.faa.bean.TypeTauxCnss;
 import com.ird.faa.ws.rest.provided.vo.TypeTauxCnssVo;
 import com.ird.faa.service.core.facade.AbstractService;

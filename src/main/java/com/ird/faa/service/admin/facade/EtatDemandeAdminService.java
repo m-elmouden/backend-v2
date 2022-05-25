@@ -1,6 +1,5 @@
 package com.ird.faa.service.admin.facade;
 
-import java.util.List;
 import com.ird.faa.bean.EtatDemande;
 import com.ird.faa.ws.rest.provided.vo.EtatDemandeVo;
 import com.ird.faa.service.core.facade.AbstractService;

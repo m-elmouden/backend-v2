@@ -20,10 +20,8 @@ import com.ird.faa.service.admin.facade.DeclarationCnssAdminService;
 
 import com.ird.faa.ws.rest.provided.vo.DeclarationCnssVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.DeclarationCnssDetail;
-        import com.ird.faa.service.admin.facade.DeclarationCnssDetailAdminService;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
+import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service

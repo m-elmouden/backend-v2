@@ -1,6 +1,5 @@
 package com.ird.faa.service.admin.facade;
 
-import java.util.List;
 import com.ird.faa.bean.PrelevementSocial;
 import com.ird.faa.ws.rest.provided.vo.PrelevementSocialVo;
 import com.ird.faa.service.core.facade.AbstractService;
@@ -17,7 +16,7 @@ public interface PrelevementSocialAdminService extends AbstractService<Preleveme
     */
     int deleteById(Long id);
     PrelevementSocial findByLibelle(String libelle);
-
+PrelevementSocial findByReference(String reference);
 
 
 

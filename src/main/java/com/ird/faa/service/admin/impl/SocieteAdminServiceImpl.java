@@ -1,7 +1,6 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,22 +35,6 @@ import com.ird.faa.service.admin.facade.SocieteAdminService;
 
 import com.ird.faa.ws.rest.provided.vo.SocieteVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.Demande;
-        import com.ird.faa.service.admin.facade.DemandeAdminService;
-        import com.ird.faa.bean.DeclarationIr;
-        import com.ird.faa.service.admin.facade.DeclarationIrAdminService;
-        import com.ird.faa.bean.DeclarationIs;
-        import com.ird.faa.service.admin.facade.DeclarationIsAdminService;
-        import com.ird.faa.bean.DeclarationTva;
-        import com.ird.faa.service.admin.facade.DeclarationTvaAdminService;
-        import com.ird.faa.bean.DeclarationCnss;
-        import com.ird.faa.service.admin.facade.DeclarationCnssAdminService;
-        import com.ird.faa.bean.Acompte;
-        import com.ird.faa.service.admin.facade.AcompteAdminService;
-        import com.ird.faa.bean.Employe;
-        import com.ird.faa.service.admin.facade.EmployeAdminService;
-        import com.ird.faa.bean.Facture;
-        import com.ird.faa.service.admin.facade.FactureAdminService;
 
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 

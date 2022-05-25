@@ -1,6 +1,5 @@
 package com.ird.faa.service.comptable.facade;
 
-import java.util.List;
 import com.ird.faa.bean.Tva;
 import com.ird.faa.ws.rest.provided.vo.TvaVo;
 import com.ird.faa.service.core.facade.AbstractService;

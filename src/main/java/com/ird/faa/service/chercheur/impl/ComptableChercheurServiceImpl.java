@@ -19,10 +19,6 @@ import com.ird.faa.service.chercheur.facade.ComptableChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.ComptableVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.Societe;
-        import com.ird.faa.service.chercheur.facade.SocieteChercheurService;
-        import com.ird.faa.bean.Demande;
-        import com.ird.faa.service.chercheur.facade.DemandeChercheurService;
 
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 

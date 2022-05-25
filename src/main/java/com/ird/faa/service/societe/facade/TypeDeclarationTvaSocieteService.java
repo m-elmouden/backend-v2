@@ -1,6 +1,5 @@
 package com.ird.faa.service.societe.facade;
 
-import java.util.List;
 import com.ird.faa.bean.TypeDeclarationTva;
 import com.ird.faa.ws.rest.provided.vo.TypeDeclarationTvaVo;
 import com.ird.faa.service.core.facade.AbstractService;

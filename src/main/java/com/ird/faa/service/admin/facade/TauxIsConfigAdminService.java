@@ -1,6 +1,5 @@
 package com.ird.faa.service.admin.facade;
 
-import java.util.List;
 import com.ird.faa.bean.TauxIsConfig;
 import com.ird.faa.ws.rest.provided.vo.TauxIsConfigVo;
 import com.ird.faa.service.core.facade.AbstractService;

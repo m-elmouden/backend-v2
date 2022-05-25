@@ -35,22 +35,6 @@ import com.ird.faa.service.chercheur.facade.SocieteChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.SocieteVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.Demande;
-        import com.ird.faa.service.chercheur.facade.DemandeChercheurService;
-        import com.ird.faa.bean.DeclarationIr;
-        import com.ird.faa.service.chercheur.facade.DeclarationIrChercheurService;
-        import com.ird.faa.bean.DeclarationIs;
-        import com.ird.faa.service.chercheur.facade.DeclarationIsChercheurService;
-        import com.ird.faa.bean.DeclarationTva;
-        import com.ird.faa.service.chercheur.facade.DeclarationTvaChercheurService;
-        import com.ird.faa.bean.DeclarationCnss;
-        import com.ird.faa.service.chercheur.facade.DeclarationCnssChercheurService;
-        import com.ird.faa.bean.Acompte;
-        import com.ird.faa.service.chercheur.facade.AcompteChercheurService;
-        import com.ird.faa.bean.Employe;
-        import com.ird.faa.service.chercheur.facade.EmployeChercheurService;
-        import com.ird.faa.bean.Facture;
-        import com.ird.faa.service.chercheur.facade.FactureChercheurService;
 
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 

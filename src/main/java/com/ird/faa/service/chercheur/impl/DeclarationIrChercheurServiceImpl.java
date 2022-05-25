@@ -27,12 +27,8 @@ import com.ird.faa.service.chercheur.facade.DeclarationIrChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.DeclarationIrVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.DeclarationIrEmploye;
-        import com.ird.faa.service.chercheur.facade.DeclarationIrEmployeChercheurService;
-        import com.ird.faa.bean.PrelevementSocialEmploye;
-        import com.ird.faa.service.chercheur.facade.PrelevementSocialEmployeChercheurService;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
+import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service

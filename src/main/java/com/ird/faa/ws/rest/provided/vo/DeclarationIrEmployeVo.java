@@ -1,7 +1,5 @@
 package com.ird.faa.ws.rest.provided.vo;
 
-import java.math.BigDecimal;
-
 public class DeclarationIrEmployeVo {
 
     private String id;

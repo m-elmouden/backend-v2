@@ -24,12 +24,8 @@ import com.ird.faa.service.societe.facade.DeclarationIrSocieteService;
 
 import com.ird.faa.ws.rest.provided.vo.DeclarationIrVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.DeclarationIrEmploye;
-        import com.ird.faa.service.societe.facade.DeclarationIrEmployeSocieteService;
-        import com.ird.faa.bean.PrelevementSocialEmploye;
-        import com.ird.faa.service.societe.facade.PrelevementSocialEmployeSocieteService;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
+import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service

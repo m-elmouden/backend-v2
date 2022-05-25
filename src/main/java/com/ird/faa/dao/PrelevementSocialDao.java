@@ -16,7 +16,7 @@ public interface PrelevementSocialDao extends JpaRepository<PrelevementSocial,Lo
     @Query("SELECT item FROM PrelevementSocial item ORDER BY item.dateMin ASC")
     List<PrelevementSocial> findAll();
     PrelevementSocial findByLibelle(String libelle);
-
+PrelevementSocial findByReference(String reference);
 
 
 

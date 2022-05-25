@@ -26,14 +26,8 @@ import com.ird.faa.service.comptable.facade.DemandeComptableService;
 
 import com.ird.faa.ws.rest.provided.vo.DemandeVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.Facture;
-        import com.ird.faa.service.comptable.facade.FactureComptableService;
-        import com.ird.faa.bean.DemandePieceJointe;
-        import com.ird.faa.service.comptable.facade.DemandePieceJointeComptableService;
-        import com.ird.faa.bean.Commentaire;
-        import com.ird.faa.service.comptable.facade.CommentaireComptableService;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
+import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service

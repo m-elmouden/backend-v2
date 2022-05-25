@@ -1,6 +1,5 @@
 package com.ird.faa.service.admin.facade;
 
-import java.util.List;
 import com.ird.faa.bean.EtatDeclarationTva;
 import com.ird.faa.ws.rest.provided.vo.EtatDeclarationTvaVo;
 import com.ird.faa.service.core.facade.AbstractService;

@@ -29,14 +29,8 @@ import com.ird.faa.service.chercheur.facade.DemandeChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.DemandeVo;
 import com.ird.faa.service.util.*;
-        import com.ird.faa.bean.Facture;
-        import com.ird.faa.service.chercheur.facade.FactureChercheurService;
-        import com.ird.faa.bean.DemandePieceJointe;
-        import com.ird.faa.service.chercheur.facade.DemandePieceJointeChercheurService;
-        import com.ird.faa.bean.Commentaire;
-        import com.ird.faa.service.chercheur.facade.CommentaireChercheurService;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
+import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
