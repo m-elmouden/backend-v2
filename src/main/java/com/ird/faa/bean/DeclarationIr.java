@@ -24,8 +24,8 @@ public class DeclarationIr implements Archivable {
 
     @Column(length = 500)
     private String refrerence;
-    private BigDecimal annee=BigDecimal.ZERO;
-    private BigDecimal mois=BigDecimal.ZERO;
+    private String annee;
+    private String mois;
     private BigDecimal montantIrCalcule=BigDecimal.ZERO;
     private BigDecimal montantIrAPaye=BigDecimal.ZERO;
     private BigDecimal totalAPaye=BigDecimal.ZERO;
@@ -79,6 +79,22 @@ public class DeclarationIr implements Archivable {
         this.refrerence = refrerence;
     }
 
+    public String getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(String annee) {
+        this.annee = annee;
+    }
+
+    public String getMois() {
+        return mois;
+    }
+
+    public void setMois(String mois) {
+        this.mois = mois;
+    }
+
     public Societe getSociete() {
         return this.societe;
     }
@@ -87,21 +103,6 @@ public class DeclarationIr implements Archivable {
         this.societe = societe;
     }
 
-    public BigDecimal getAnnee() {
-        return this.annee;
-    }
-
-    public void setAnnee(BigDecimal annee) {
-        this.annee = annee;
-    }
-
-    public BigDecimal getMois() {
-        return this.mois;
-    }
-
-    public void setMois(BigDecimal mois) {
-        this.mois = mois;
-    }
 
     public BigDecimal getMontantIrCalcule() {
         return this.montantIrCalcule;

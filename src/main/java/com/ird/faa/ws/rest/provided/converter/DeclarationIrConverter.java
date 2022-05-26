@@ -42,9 +42,9 @@ DeclarationIr item = new DeclarationIr();
         if(StringUtil.isNotEmpty(vo.getRefrerence()))
         item.setRefrerence(vo.getRefrerence());
         if(StringUtil.isNotEmpty(vo.getAnnee()))
-        item.setAnnee(NumberUtil.toBigDecimal(vo.getAnnee()));
+        item.setAnnee(vo.getAnnee());
         if(StringUtil.isNotEmpty(vo.getMois()))
-        item.setMois(NumberUtil.toBigDecimal(vo.getMois()));
+        item.setMois(vo.getMois());
         if(StringUtil.isNotEmpty(vo.getMontantIrCalcule()))
         item.setMontantIrCalcule(NumberUtil.toBigDecimal(vo.getMontantIrCalcule()));
         if(StringUtil.isNotEmpty(vo.getMontantIrAPaye()))
@@ -96,10 +96,10 @@ DeclarationIrVo vo = new DeclarationIrVo();
         vo.setRefrerence(item.getRefrerence());
 
         if(item.getAnnee()!=null)
-        vo.setAnnee(NumberUtil.toString(item.getAnnee()));
+        vo.setAnnee(item.getAnnee());
 
         if(item.getMois()!=null)
-        vo.setMois(NumberUtil.toString(item.getMois()));
+        vo.setMois(item.getMois());
 
         if(item.getMontantIrCalcule()!=null)
         vo.setMontantIrCalcule(NumberUtil.toString(item.getMontantIrCalcule()));
