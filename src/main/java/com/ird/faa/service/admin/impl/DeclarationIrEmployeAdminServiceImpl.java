@@ -169,8 +169,7 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         BigDecimal nombreConsidere = BigDecimal.ZERO;
         BigDecimal valeurADeduire = BigDecimal.ZERO;
         BigDecimal valeurIrNet = BigDecimal.ZERO;
-        TauxIrConvenable(declarationIrEmploye);
-        valeurADeduire = (declarationIrEmploye.getSalaireNetImposable().multiply(BigDecimal.valueOf(1).subtract(declarationIrEmploye.getTauxIr().getPourcentage()))).subtract(declarationIrEmploye.getTauxIr().getForfaitDeduit());
+        valeurADeduire = (declarationIrEmploye.getSalaireNetImposable().multiply(BigDecimal.valueOf(1).subtract( TauxIrConvenable(declarationIrEmploye).getPourcentage()))).subtract( TauxIrConvenable(declarationIrEmploye).getForfaitDeduit());
         nombreConsidere = declarationIrEmploye.getEmploye().getNombreFamille();
         if (nombreConsidere.compareTo(BigDecimal.valueOf(6)) > 0)
             nombreConsidere = BigDecimal.valueOf(6);
@@ -179,18 +178,22 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
 
     }
 
-    private void TauxIrConvenable(DeclarationIrEmploye declarationIrEmploye) {
-        if(declarationIrEmploye.getSalaireNetImposable()!= null){
-        if (declarationIrEmploye.getSalaireNetImposable().compareTo(BigDecimal.valueOf(15000)) < 0)
-            for (TauxIr taux : tauxIrService.findAll()) {
-                if (declarationIrEmploye.getSalaireNetImposable().compareTo(taux.getSalaireImpoMin()) >= 0 && declarationIrEmploye.getSalaireNetImposable().compareTo(taux.getSalaireImpoMax()) <= 0)
-                    declarationIrEmploye.setTauxIr(taux);
+    private TauxIr TauxIrConvenable(DeclarationIrEmploye declarationIrEmploye) {
+        TauxIr t1=new TauxIr();
+        if (declarationIrEmploye.getSalaireNetImposable() != null) {
+            if (declarationIrEmploye.getSalaireNetImposable().compareTo(BigDecimal.valueOf(15000)) <= 0) {
+                for (TauxIr tauxIr : tauxIrService.findAll()) {
+                        if (declarationIrEmploye.getSalaireNetImposable().compareTo(tauxIr.getSalaireImpoMin()) >= 0 && declarationIrEmploye.getSalaireNetImposable().compareTo(tauxIr.getSalaireImpoMax()) <= 0)
+                            t1=tauxIr;
+
+                    }
+                }
+            else
+                t1= tauxIrService.findDernierTaux();
             }
-        else
-            declarationIrEmploye.setTauxIr(tauxIrService.findDernierTaux());}
+        return t1;
+        }
 
-
-    }
 
 
     @Override
@@ -216,6 +219,7 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         declarationIrEmploye.setSalaireBrut(calculSalaireBrutGlobale(declarationIrEmploye));
         declarationIrEmploye.setSalaireBrutImposable(calculSalaireBrutImposable(declarationIrEmploye));
         declarationIrEmploye.setSalaireNetImposable(calculSalaireNetImposable(declarationIrEmploye));
+        declarationIrEmploye.setTauxIr(TauxIrConvenable(declarationIrEmploye));
         declarationIrEmploye.setCotisation(calculIrNet(declarationIrEmploye));
         return declarationIrEmployeDao.save(declarationIrEmploye);
 

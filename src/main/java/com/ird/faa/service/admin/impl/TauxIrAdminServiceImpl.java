@@ -35,7 +35,12 @@ public List<TauxIr> findAll(){
         return entityManager.createQuery(query).getResultList();
 }
 
-@Override
+    @Override
+    public List<TauxIr> findAllNta3i() {
+        return tauxIrDao.findAllNta3i();
+    }
+
+    @Override
 public TauxIr findById(Long id){
 if(id==null) return null;
 return tauxIrDao.getOne(id);
