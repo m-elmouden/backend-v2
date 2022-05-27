@@ -4,6 +4,7 @@ import com.ird.faa.bean.TauxIr;
 import com.ird.faa.ws.rest.provided.vo.TauxIrVo;
 import com.ird.faa.service.core.facade.AbstractService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface TauxIrAdminService extends AbstractService<TauxIr,Long,TauxIrVo>{
@@ -19,7 +20,7 @@ public interface TauxIrAdminService extends AbstractService<TauxIr,Long,TauxIrVo
     int deleteById(Long id);
     TauxIr findDernierTaux();
     List<TauxIr> findAll();
-    List<TauxIr> findAllNta3i();
+     TauxIr findTauxIrConvenable(BigDecimal salaire);
 
 
 

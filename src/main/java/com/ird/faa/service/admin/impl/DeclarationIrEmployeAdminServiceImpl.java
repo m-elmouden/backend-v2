@@ -35,7 +35,6 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
     private EmployeAdminService employeService;
     @Autowired
     private PrelevementSocialEmployeAdminService prelevementSocialEmployeAdminService;
-
     @Autowired
     private EntityManager entityManager;
 
@@ -178,21 +177,11 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
 
     }
 
-    private TauxIr TauxIrConvenable(DeclarationIrEmploye declarationIrEmploye) {
-        TauxIr t1=new TauxIr();
-        if (declarationIrEmploye.getSalaireNetImposable() != null) {
-            if (declarationIrEmploye.getSalaireNetImposable().compareTo(BigDecimal.valueOf(15000)) <= 0) {
-                for (TauxIr tauxIr : tauxIrService.findAll()) {
-                        if (declarationIrEmploye.getSalaireNetImposable().compareTo(tauxIr.getSalaireImpoMin()) >= 0 && declarationIrEmploye.getSalaireNetImposable().compareTo(tauxIr.getSalaireImpoMax()) <= 0)
-                            t1=tauxIr;
 
-                    }
-                }
-            else
-                t1= tauxIrService.findDernierTaux();
-            }
-        return t1;
-        }
+    private TauxIr TauxIrConvenable(DeclarationIrEmploye declarationIrEmploye) {
+        return tauxIrService.findTauxIrConvenable(declarationIrEmploye.getSalaireNetImposable());
+
+    }
 
 
 
