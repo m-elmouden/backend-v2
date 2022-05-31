@@ -67,5 +67,6 @@ public interface DeclarationIrAdminService extends AbstractService<DeclarationIr
 
     DeclarationIr archiver(DeclarationIr declarationIr) ;
     DeclarationIr desarchiver(DeclarationIr declarationIr);
+    void setTotalPaye(DeclarationIr declarationIr);
 
 }

@@ -37,9 +37,6 @@ public interface DeclarationIrEmployeAdminService extends AbstractService<Declar
 
     int deleteByTauxIrId(Long id);
 
-    void CalculIr(DeclarationIrEmploye declarationIrEmploye);
-
-
 
 
 

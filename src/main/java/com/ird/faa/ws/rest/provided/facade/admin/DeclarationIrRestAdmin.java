@@ -68,7 +68,9 @@ private DeclarationIrConverter declarationIrConverter;
             public DeclarationIrVo save(@RequestBody DeclarationIrVo declarationIrVo){
             DeclarationIr declarationIr = declarationIrConverter.toItem(declarationIrVo);
             declarationIr = declarationIrService.save(declarationIr);
+
             return declarationIrConverter.toVo(declarationIr);
+
             }
 
             @ApiOperation("Delete the specified declarationIr")

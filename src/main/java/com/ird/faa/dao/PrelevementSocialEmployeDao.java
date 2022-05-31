@@ -17,6 +17,8 @@ public interface PrelevementSocialEmployeDao extends JpaRepository<PrelevementSo
 
     List<PrelevementSocialEmploye> findByPrelevementSocialId(Long id);
 
+
+
     int deleteByPrelevementSocialId(Long id);
     List<PrelevementSocialEmploye> findByEmployeCin(String cin);
     int deleteByEmployeCin(String cin);

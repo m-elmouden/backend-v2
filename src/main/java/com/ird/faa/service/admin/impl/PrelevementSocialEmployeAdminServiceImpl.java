@@ -1,6 +1,7 @@
 package com.ird.faa.service.admin.impl;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import java.util.ArrayList;
@@ -79,6 +80,11 @@ public class PrelevementSocialEmployeAdminServiceImpl extends AbstractServiceImp
     }
 
     @Override
+    public List<PrelevementSocialEmploye> findByEmployeCin(BigDecimal cin) {
+        return null;
+    }
+
+    @Override
     @Transactional
     public int deleteByEmployeId(Long id) {
         return prelevementSocialEmployeDao.deleteByEmployeId(id);
@@ -116,23 +122,17 @@ public class PrelevementSocialEmployeAdminServiceImpl extends AbstractServiceImp
 
             if (prelevementSocialEmploye.getPrelevementSocial().getLibelle().equalsIgnoreCase("cnss")) {
             if (prelevementSocialEmploye.getSalaireBrutImposable().compareTo(BigDecimal.valueOf(6000)) > 0) {
-                 valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().multiply(BigDecimal.valueOf(6000));
+                 valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4, RoundingMode.DOWN).multiply(BigDecimal.valueOf(6000));
 
             }
             else {
-                valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().multiply(prelevementSocialEmploye.getSalaireBrutImposable());
-
+                valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4,  RoundingMode.DOWN).multiply(prelevementSocialEmploye.getSalaireBrutImposable());
             }
             }
             else {
-                 valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().multiply(prelevementSocialEmploye.getSalaireBrutImposable());
+                 valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4, RoundingMode.DOWN).multiply(prelevementSocialEmploye.getSalaireBrutImposable());
             }
-
-
-
-
         return valeur;
-
     }
 
 

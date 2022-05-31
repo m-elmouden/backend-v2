@@ -1,5 +1,6 @@
 package com.ird.faa.service.admin.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
     import java.util.Date;
 
@@ -294,6 +295,23 @@ public int delete(DeclarationIr declarationIr){
     if(foundedDeclarationIr==null) return -1;
 declarationIrDao.delete(foundedDeclarationIr);
 return 1;
+}
+
+    public void setTotalPaye (DeclarationIr declarationIr){
+    BigDecimal valeur1=BigDecimal.ZERO;
+    BigDecimal valeur2=BigDecimal.ZERO;
+    BigDecimal valeur3=BigDecimal.ZERO;
+        List<DeclarationIrEmploye> declarationIrEmployes = declarationIr.getDeclarationIrEmployes();
+        for(DeclarationIrEmploye declarationIrEmploye:declarationIrEmployes){
+            valeur1=valeur1.add(declarationIrEmploye.getSalaireBase());
+            valeur2=valeur2.add(declarationIrEmploye.getCotisation());
+            valeur3=valeur3.add(declarationIrEmploye.getSalaireNet());
+
+        }
+        declarationIr.setTotalSalaireBrut(valeur1);
+        declarationIr.setMontantIrAPaye(valeur2);
+        declarationIr.setTotalSalaireNet(valeur3);
+
 }
 
 

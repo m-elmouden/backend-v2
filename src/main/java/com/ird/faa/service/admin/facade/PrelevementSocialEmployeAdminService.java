@@ -29,6 +29,8 @@ public interface PrelevementSocialEmployeAdminService extends AbstractService<Pr
 
     List<PrelevementSocialEmploye> findByEmployeId(Long id);
 
+    List<PrelevementSocialEmploye> findByEmployeCin(BigDecimal cin);
+
     int deleteByEmployeId(Long id);
     List<PrelevementSocialEmploye> findByDeclarationIrRefrerence(String refrerence);
 

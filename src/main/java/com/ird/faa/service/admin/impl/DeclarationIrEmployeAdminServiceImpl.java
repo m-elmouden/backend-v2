@@ -101,12 +101,6 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
     }
 
     @Override
-    public void CalculIr(DeclarationIrEmploye declarationIrEmploye) {
-
-    }
-
-
-    @Override
     public DeclarationIrEmploye findById(Long id) {
         if (id == null) return null;
         return declarationIrEmployeDao.getOne(id);
@@ -152,9 +146,9 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         BigDecimal valeurDeduction = BigDecimal.ZERO;
         BigDecimal forfaitProfessionel = BigDecimal.ZERO;
         BigDecimal valeurSalaire = BigDecimal.ZERO;
-        for (PrelevementSocialEmploye prelevementSocialEmploye : declarationIrEmploye.getDeclarationIr().getPrelevementSocialEmployes()) {
-            valeurDeduction = valeurDeduction.add(prelevementSocialEmployeAdminService.calculDeduction(prelevementSocialEmploye));
-        }
+
+       valeurDeduction=deduction(declarationIrEmploye.getEmploye().getCin());
+
         forfaitProfessionel = (calculSalaireBrutImposable(declarationIrEmploye).subtract(declarationIrEmploye.getAvantage())).multiply(BigDecimal.valueOf(0.2));
         if (forfaitProfessionel.compareTo(BigDecimal.valueOf(2500)) > 0) {
             forfaitProfessionel = BigDecimal.valueOf(2500);
@@ -164,24 +158,41 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
 
     }
 
-    private BigDecimal calculIrNet(DeclarationIrEmploye declarationIrEmploye) {
+    private BigDecimal deduction(String cin) {
+        BigDecimal calcule = BigDecimal.ZERO;
+        BigDecimal calculeDeduction = BigDecimal.ZERO;
+
+        for (PrelevementSocialEmploye prelevementSocialEmploye : prelevementSocialEmployeAdminService.findByEmployeCin(cin)) {
+            calcule = prelevementSocialEmployeAdminService.calculDeduction(prelevementSocialEmploye);
+            calculeDeduction = calculeDeduction.add(calcule);
+
+        }
+        return calculeDeduction;
+    }
+
+    private BigDecimal calculSalaireNet(DeclarationIrEmploye declarationIrEmploye) {
         BigDecimal nombreConsidere = BigDecimal.ZERO;
-        BigDecimal valeurADeduire = BigDecimal.ZERO;
-        BigDecimal valeurIrNet = BigDecimal.ZERO;
-        valeurADeduire = (declarationIrEmploye.getSalaireNetImposable().multiply(BigDecimal.valueOf(1).subtract( TauxIrConvenable(declarationIrEmploye).getPourcentage()))).subtract( TauxIrConvenable(declarationIrEmploye).getForfaitDeduit());
-        nombreConsidere = declarationIrEmploye.getEmploye().getNombreFamille();
-        if (nombreConsidere.compareTo(BigDecimal.valueOf(6)) > 0)
+        BigDecimal valeurSalaireNet = BigDecimal.ZERO;
+        BigDecimal cotisation = BigDecimal.ZERO;
+        BigDecimal cotisationFinale = BigDecimal.ZERO;
+        cotisation = (declarationIrEmploye.getSalaireNetImposable().multiply(findTauxIrConvenable(declarationIrEmploye).getPourcentage())).subtract(findTauxIrConvenable(declarationIrEmploye).getForfaitDeduit());
+        if (declarationIrEmploye.getEmploye().getNombreFamille().compareTo(BigDecimal.valueOf(6)) > 0)
             nombreConsidere = BigDecimal.valueOf(6);
-        valeurIrNet = valeurADeduire.subtract(nombreConsidere.multiply(BigDecimal.valueOf(30)));
-        return valeurIrNet;
-
+        else
+            nombreConsidere = declarationIrEmploye.getEmploye().getNombreFamille();
+        cotisationFinale=cotisation.subtract(nombreConsidere.multiply(BigDecimal.valueOf(30)));
+        if(cotisationFinale.compareTo(BigDecimal.ZERO)<0)
+            cotisationFinale=BigDecimal.ZERO;
+        declarationIrEmploye.setCotisation(cotisationFinale);
+        valeurSalaireNet = declarationIrEmploye.getSalaireBrut().subtract(cotisationFinale).subtract(deduction(declarationIrEmploye.getEmploye().getCin()));
+        return valeurSalaireNet;
     }
 
 
-    private TauxIr TauxIrConvenable(DeclarationIrEmploye declarationIrEmploye) {
+    private TauxIr findTauxIrConvenable(DeclarationIrEmploye declarationIrEmploye) {
         return tauxIrService.findTauxIrConvenable(declarationIrEmploye.getSalaireNetImposable());
-
     }
+
 
 
 
@@ -193,7 +204,7 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
             declarationIrEmploye.setSalaireBrut(calculSalaireBrutGlobale(declarationIrEmploye));
             declarationIrEmploye.setSalaireBrutImposable(calculSalaireBrutImposable(declarationIrEmploye));
             declarationIrEmploye.setSalaireNetImposable(calculSalaireNetImposable(declarationIrEmploye));
-            declarationIrEmploye.setCotisation(calculIrNet(declarationIrEmploye));
+            declarationIrEmploye.setCotisation(calculSalaireNet(declarationIrEmploye));
             return declarationIrEmployeDao.save(declarationIrEmploye);
         }
     }
@@ -208,10 +219,10 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         declarationIrEmploye.setSalaireBrut(calculSalaireBrutGlobale(declarationIrEmploye));
         declarationIrEmploye.setSalaireBrutImposable(calculSalaireBrutImposable(declarationIrEmploye));
         declarationIrEmploye.setSalaireNetImposable(calculSalaireNetImposable(declarationIrEmploye));
-        declarationIrEmploye.setTauxIr(TauxIrConvenable(declarationIrEmploye));
-        declarationIrEmploye.setCotisation(calculIrNet(declarationIrEmploye));
+        declarationIrEmploye.setTauxIr(findTauxIrConvenable(declarationIrEmploye));
+        declarationIrEmploye.setSalaireNet(calculSalaireNet(declarationIrEmploye));
+        declarationIrService.setTotalPaye(declarationIrEmploye.getDeclarationIr());
         return declarationIrEmployeDao.save(declarationIrEmploye);
-
 
     }
 
@@ -221,7 +232,9 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         List<DeclarationIrEmploye> list = new ArrayList<>();
         for (DeclarationIrEmploye declarationIrEmploye : declarationIrEmployes) {
             list.add(save(declarationIrEmploye));
+
         }
+
         return list;
     }
 
