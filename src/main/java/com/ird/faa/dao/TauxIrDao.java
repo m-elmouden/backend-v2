@@ -20,9 +20,10 @@ public interface TauxIrDao extends JpaRepository<TauxIr, Long> {
     @Query("SELECT item FROM TauxIr item WHERE item.salaireImpoMin <= ?1 and item.salaireImpoMax >= ?1")
     TauxIr findTauxBysalaire(BigDecimal salaire);
 
-
     @Query("select item from TauxIr item where item.salaireImpoMax>15000")
     TauxIr findDernierTaux();
+
+    TauxIr findByIntervalle(String intervalle);
 
 
 }

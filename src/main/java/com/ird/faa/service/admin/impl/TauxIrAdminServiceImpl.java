@@ -110,6 +110,11 @@ public class TauxIrAdminServiceImpl extends AbstractServiceImpl<TauxIr> implemen
         return tauxIrDao.findTauxBysalaire(salaire);
     }
 
+    @Override
+    public TauxIr findByIntervalle(String intervalle) {
+        return tauxIrDao.findByIntervalle(intervalle);
+    }
+
 
     public List<TauxIr> findByCriteria(TauxIrVo tauxIrVo) {
 

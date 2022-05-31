@@ -21,6 +21,7 @@ public interface TauxIrAdminService extends AbstractService<TauxIr,Long,TauxIrVo
     TauxIr findDernierTaux();
     List<TauxIr> findAll();
      TauxIr findTauxIrConvenable(BigDecimal salaire);
+     TauxIr findByIntervalle(String intervalle);
 
 
 
