@@ -1,5 +1,6 @@
 package com.ird.faa.service.admin.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
     import java.util.Date;
 
@@ -167,6 +168,9 @@ public int delete(EtatDeclarationIr etatDeclarationIr){
 etatDeclarationIrDao.delete(foundedEtatDeclarationIr);
 return 1;
 }
+//*********Methodes******************************************************
+
+
 
 
 public List<EtatDeclarationIr> findByCriteria(EtatDeclarationIrVo etatDeclarationIrVo){
