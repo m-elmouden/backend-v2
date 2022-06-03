@@ -15,7 +15,7 @@ public interface PrelevementSocialSocieteService extends AbstractService<Preleve
     *
     */
     int deleteById(Long id);
-
+    PrelevementSocial findByReference(String reference);
 
 
 

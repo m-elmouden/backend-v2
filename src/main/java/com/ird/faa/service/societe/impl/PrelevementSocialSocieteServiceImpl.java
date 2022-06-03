@@ -57,8 +57,12 @@ res = 1;
 return res;
 }
 
+    @Override
+    public PrelevementSocial findByReference(String reference) {
+        return prelevementSocialDao.findByReference(reference);
+    }
 
-@Override
+    @Override
 public PrelevementSocial update(PrelevementSocial prelevementSocial){
 PrelevementSocial foundedPrelevementSocial = findById(prelevementSocial.getId());
 if(foundedPrelevementSocial==null) return null;

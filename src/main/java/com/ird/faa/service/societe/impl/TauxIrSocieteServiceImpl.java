@@ -1,5 +1,6 @@
 package com.ird.faa.service.societe.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import java.util.ArrayList;
@@ -77,6 +78,9 @@ public TauxIr save (TauxIr tauxIr){
 
 
 }
+    public TauxIr findTauxIrConvenable(BigDecimal salaire) {
+        return tauxIrDao.findTauxBysalaire(salaire);
+    }
 
 @Override
 public List<TauxIr> save(List<TauxIr> tauxIrs){
