@@ -26,7 +26,7 @@ public class ExcelHelperEmploye {
     @Autowired
     private SocieteAdminService societeAdminService;
     public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    static String[] HEADERs = {"id", "cin", "nom", "prenom", "nombreFamille", "typeEmploye", "societe", "declarationCnss"};
+    static String[] HEADERs = {"id", "cin", "nom", "prenom", "nombreFamille", "typeEmploye", "societe"};
     static String SHEET = "Employe";
 
     public static boolean hasExcelFormat(MultipartFile file) {

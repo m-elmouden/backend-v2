@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ExcelControllerDeclarationIr {
     @Autowired
     com.ird.faa.upload.declarationIr.service.ExcelServiceDeclarationIr fileService;
-    @PostMapping("/upload-declaration-ir")
+    @PostMapping("/upload-declaration-irs")
     public ResponseEntity<com.ird.faa.upload.declarationIr.message.ResponseMessageDeclarationIr> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
         if (com.ird.faa.upload.declarationIr.helper.ExcelHelperDeclarationIr.hasExcelFormat(file)) {
@@ -31,7 +31,7 @@ public class ExcelControllerDeclarationIr {
         message = "Please upload an excel file!";
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new com.ird.faa.upload.declarationIr.message.ResponseMessageDeclarationIr(message));
     }
-    @GetMapping("/declaration-ir")
+    @GetMapping("/list-declaration-irs")
     public ResponseEntity<List<DeclarationIr>> getAllDeclarationIrs() {
         try {
             List<DeclarationIr> declarationIrs = fileService.getAllDeclarationIrs();

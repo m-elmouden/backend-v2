@@ -134,8 +134,8 @@ public class ExcelHelperDeclarationIr {
                             break;
                         case 19:
                             DataFormatter formatter5 = new DataFormatter();
-                            String ref4 = formatter5.formatCellValue(currentCell);
-                            PrelevementSocialEmploye prelevementSocialEmploye = (PrelevementSocialEmploye) prelevementSocialEmployeAdminService.findByPrelevementSocialId(Long.valueOf(ref4));
+                            String cin = formatter5.formatCellValue(currentCell);
+                            PrelevementSocialEmploye prelevementSocialEmploye = (PrelevementSocialEmploye) prelevementSocialEmployeAdminService.findByEmployeCin(cin);
                             declarationIr.setPrelevementSocialEmployes((List<PrelevementSocialEmploye>) prelevementSocialEmploye);
                             break;
                         default:

@@ -31,8 +31,8 @@ public class ExcelControllerEmploye {
         message = "Please upload an excel file!";
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new com.ird.faa.upload.employe.message.ResponseMessageEmploye(message));
     }
-    @GetMapping("/employes")
-    public ResponseEntity<List<Employe>> getAllEmployes() {
+    @GetMapping("/list-employes")
+    public ResponseEntity<List<Employe>> getAllListEmploye() {
         try {
             List<Employe> employes = fileService.getAllEmployes();
             if (employes.isEmpty()) {

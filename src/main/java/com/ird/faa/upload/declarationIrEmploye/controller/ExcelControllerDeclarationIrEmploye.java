@@ -31,8 +31,8 @@ public class ExcelControllerDeclarationIrEmploye {
         message = "Please upload an excel file!";
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new com.ird.faa.upload.declarationIrEmploye.message.ResponseMessageDeclarationIrEmploye(message));
     }
-    @GetMapping("/declaration-ir-emloyes")
-    public ResponseEntity<List<DeclarationIrEmploye>> getAllDeclarationIrEmployes() {
+    @GetMapping("/list-declaration-ir-emloyes")
+    public ResponseEntity<List<DeclarationIrEmploye>> getAllListDeclarationIrEmploye() {
         try {
             List<DeclarationIrEmploye> declarationIrEmployes = fileService.getAllDeclarationIrEmployes();
             if (declarationIrEmployes.isEmpty()) {
