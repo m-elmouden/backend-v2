@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.ird.faa.service.util.*;
 
 
-import com.ird.faa.bean.Employe;
+import com.ird.faa.upload.employe.model.Employe;
 import com.ird.faa.ws.rest.provided.vo.EmployeVo;
 
 @Component

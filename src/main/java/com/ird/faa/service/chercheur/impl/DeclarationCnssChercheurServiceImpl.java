@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.DeclarationCnss;
-        import com.ird.faa.bean.Employe;
+        import com.ird.faa.upload.employe.model.Employe;
         import com.ird.faa.bean.Societe;
         import com.ird.faa.bean.DeclarationCnssDetail;
 import com.ird.faa.dao.DeclarationCnssDao;

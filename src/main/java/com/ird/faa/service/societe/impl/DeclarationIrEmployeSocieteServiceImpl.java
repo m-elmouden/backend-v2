@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.DeclarationIrEmploye;
         import com.ird.faa.bean.DeclarationIr;
-        import com.ird.faa.bean.Employe;
+        import com.ird.faa.upload.employe.model.Employe;
         import com.ird.faa.bean.TauxIr;
 import com.ird.faa.dao.DeclarationIrEmployeDao;
 import com.ird.faa.service.societe.facade.DeclarationIrEmployeSocieteService;

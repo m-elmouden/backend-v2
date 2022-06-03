@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.ird.faa.bean.DeclarationIr;
 import com.ird.faa.bean.DeclarationIrEmploye;
-import com.ird.faa.bean.Employe;
+import com.ird.faa.upload.employe.model.Employe;
 import com.ird.faa.bean.TauxIr;
 import com.ird.faa.service.admin.facade.DeclarationIrAdminService;
 import com.ird.faa.service.admin.facade.EmployeAdminService;

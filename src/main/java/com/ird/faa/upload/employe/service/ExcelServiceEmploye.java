@@ -3,7 +3,7 @@ package com.ird.faa.upload.employe.service;
 import java.io.IOException;
 import java.util.List;
 
-import com.ird.faa.bean.Employe;
+import com.ird.faa.upload.employe.model.Employe;
 import com.ird.faa.dao.EmployeDao;
 import com.ird.faa.upload.employe.helper.ExcelHelperEmploye;
 import org.springframework.beans.factory.annotation.Autowired;

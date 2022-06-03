@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.PrelevementSocialEmploye;
         import com.ird.faa.bean.PrelevementSocial;
-        import com.ird.faa.bean.Employe;
+        import com.ird.faa.upload.employe.model.Employe;
         import com.ird.faa.bean.DeclarationIr;
 import com.ird.faa.dao.PrelevementSocialEmployeDao;
 import com.ird.faa.service.comptable.facade.PrelevementSocialEmployeComptableService;

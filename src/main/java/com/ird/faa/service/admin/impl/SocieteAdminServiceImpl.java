@@ -17,7 +17,7 @@ import com.ird.faa.bean.Societe;
         import com.ird.faa.bean.DeclarationTva;
         import com.ird.faa.bean.DeclarationCnss;
         import com.ird.faa.bean.Acompte;
-        import com.ird.faa.bean.Employe;
+        import com.ird.faa.upload.employe.model.Employe;
         import com.ird.faa.bean.Facture;
 import com.ird.faa.dao.SocieteDao;
 import com.ird.faa.service.admin.facade.SocieteAdminService;

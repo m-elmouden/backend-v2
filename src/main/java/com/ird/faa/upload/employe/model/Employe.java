@@ -1,10 +1,12 @@
-package com.ird.faa.bean;
+package com.ird.faa.upload.employe.model;
 
-import java.util.Objects;
+import com.ird.faa.bean.DeclarationCnss;
+import com.ird.faa.bean.Societe;
+import com.ird.faa.bean.TypeEmploye;
 
-
-import java.math.BigDecimal;
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 
 @Entity
@@ -15,19 +17,23 @@ public class Employe {
     @SequenceGenerator(name = "employe_seq", sequenceName = "employe_seq",
             allocationSize = 1, initialValue = 10000)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employe_seq")
+    @Column(name="id")
     private Long id;
 
-    @Column(length = 500)
+    @Column(length = 500,name="cin")
     private String cin;
-    @Column(length = 500)
+    @Column(length = 500,name="nom")
     private String nom;
-    @Column(length = 500)
+    @Column(length = 500,name="prenom")
     private String prenom;
     private BigDecimal totalSalaireNet;
+    @Column(name="nombreFamille")
     private BigDecimal nombreFamille;
 
+    @JoinColumn(name = "typeEmploye")
     @ManyToOne
     private TypeEmploye typeEmploye;
+    @JoinColumn(name = "societe")
     @ManyToOne
     private Societe societe;
     @ManyToOne
@@ -122,6 +128,10 @@ public class Employe {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+    @Override
+    public String toString(){
+        return "Employe [id=" + id +",nom=" + nom +",prenom=" + prenom +",nombreFamille=" + nombreFamille +",typeEmploye=" + typeEmploye +",societe=" + societe +"]";
     }
 
 }

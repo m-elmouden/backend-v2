@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.ird.faa.bean.Employe;
-import com.ird.faa.bean.PaiementDeclarationIr;
+import com.ird.faa.upload.employe.model.Employe;
 import com.ird.faa.bean.Societe;
 import com.ird.faa.bean.TypeEmploye;
 import com.ird.faa.service.admin.facade.SocieteAdminService;
 import com.ird.faa.service.admin.facade.TypeEmployeAdminService;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -27,8 +27,7 @@ public class ExcelHelperEmploye {
     private SocieteAdminService societeAdminService;
     public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
     static String[] HEADERs = {"id", "cin", "nom", "prenom", "nombreFamille", "typeEmploye", "societe"};
-    static String SHEET = "Employe";
-
+    static String SHEET="Employe";
     public static boolean hasExcelFormat(MultipartFile file) {
         if (!TYPE.equals(file.getContentType())) {
             return false;
@@ -38,10 +37,11 @@ public class ExcelHelperEmploye {
 
     public  List<Employe> excelToEmployes(InputStream is) {
         try {
-            Workbook workbook = new XSSFWorkbook(is);
-            Sheet sheet = workbook.getSheet(SHEET);
+
+            Workbook workbook = WorkbookFactory.create(is);
+            Sheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rows = sheet.iterator();
-            List<Employe> employes = new ArrayList<Employe>();
+            List<Employe> employes = new ArrayList<>();
             int rowNumber = 0;
             while (rows.hasNext()) {
                 Row currentRow = rows.next();
@@ -83,7 +83,7 @@ public class ExcelHelperEmploye {
                         case 7:
                             DataFormatter formatter2 = new DataFormatter();
                             String username = formatter2.formatCellValue(currentCell);
-                            Societe societe = societeAdminService.findByUsername(username);
+                            Societe societe = societeAdminService.findById((long) currentCell.getNumericCellValue());
                             employe.setSociete(societe);
                             break;
                         default:
