@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 
 import com.ird.faa.security.bean.User;
+import com.ird.faa.upload.employe.model.Employe;
 
 
 @Entity

@@ -1,5 +1,7 @@
 package com.ird.faa.bean;
 
+import com.ird.faa.upload.employe.model.Employe;
+
 import java.util.Objects;
 
 

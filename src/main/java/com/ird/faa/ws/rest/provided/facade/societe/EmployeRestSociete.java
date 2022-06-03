@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import com.ird.faa.bean.Employe;
+import com.ird.faa.upload.employe.model.Employe;
 import com.ird.faa.ws.rest.provided.converter.EmployeConverter;
 import com.ird.faa.ws.rest.provided.vo.EmployeVo;
 

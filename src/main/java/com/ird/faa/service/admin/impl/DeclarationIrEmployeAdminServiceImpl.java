@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.ird.faa.bean.*;
 import com.ird.faa.service.admin.facade.*;
+import com.ird.faa.upload.employe.model.Employe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
