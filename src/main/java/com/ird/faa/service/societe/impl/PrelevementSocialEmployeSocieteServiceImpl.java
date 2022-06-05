@@ -1,5 +1,7 @@
 package com.ird.faa.service.societe.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class PrelevementSocialEmployeSocieteServiceImpl extends AbstractServiceI
 private PrelevementSocialEmployeDao prelevementSocialEmployeDao;
 
         @Autowired
-        private PrelevementSocialSocieteService prelevementSocialService ;
+        private PrelevementSocialSocieteService prelevementSocialSocieteService ;
         @Autowired
         private EmployeSocieteService employeService ;
         @Autowired
@@ -125,6 +127,27 @@ return res;
 }
 
 
+
+
+    public BigDecimal calculDeduction(PrelevementSocialEmploye prelevementSocialEmploye) {
+        BigDecimal valeur=BigDecimal.ZERO;
+        prelevementSocialEmploye.setPrelevementSocial(prelevementSocialSocieteService.findByReference(prelevementSocialEmploye.getPrelevementSocial().getReference()));
+
+        if (prelevementSocialEmploye.getPrelevementSocial().getLibelle().equalsIgnoreCase("cnss")) {
+            if (prelevementSocialEmploye.getSalaireBrutImposable().compareTo(BigDecimal.valueOf(6000)) > 0) {
+                valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4, RoundingMode.DOWN).multiply(BigDecimal.valueOf(6000));
+
+            }
+            else {
+                valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4,  RoundingMode.DOWN).multiply(prelevementSocialEmploye.getSalaireBrutImposable());
+            }
+        }
+        else {
+            valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4, RoundingMode.DOWN).multiply(prelevementSocialEmploye.getSalaireBrutImposable());
+        }
+        return valeur;
+    }
+
 @Override
 public PrelevementSocialEmploye update(PrelevementSocialEmploye prelevementSocialEmploye){
 PrelevementSocialEmploye foundedPrelevementSocialEmploye = findById(prelevementSocialEmploye.getId());
@@ -199,7 +222,7 @@ return entityManager.createQuery(query).getResultList();
     private void findPrelevementSocial(PrelevementSocialEmploye prelevementSocialEmploye){
         PrelevementSocial loadedPrelevementSocial = null;
         if(prelevementSocialEmploye.getPrelevementSocial() != null && prelevementSocialEmploye.getPrelevementSocial().getId() !=null)
-        loadedPrelevementSocial =prelevementSocialService.findById(prelevementSocialEmploye.getPrelevementSocial().getId());
+        loadedPrelevementSocial =prelevementSocialSocieteService.findById(prelevementSocialEmploye.getPrelevementSocial().getId());
 
     if(loadedPrelevementSocial==null ) {
     return;

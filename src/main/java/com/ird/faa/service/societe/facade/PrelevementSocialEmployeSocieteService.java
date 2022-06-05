@@ -1,5 +1,6 @@
 package com.ird.faa.service.societe.facade;
 
+import java.math.BigDecimal;
 import java.util.List;
 import com.ird.faa.bean.PrelevementSocialEmploye;
 import com.ird.faa.ws.rest.provided.vo.PrelevementSocialEmployeVo;
@@ -38,7 +39,7 @@ public interface PrelevementSocialEmployeSocieteService extends AbstractService<
     int deleteByDeclarationIrId(Long id);
 
 
-
+    BigDecimal calculDeduction(PrelevementSocialEmploye prelevementSocialEmploye);
 
 
 

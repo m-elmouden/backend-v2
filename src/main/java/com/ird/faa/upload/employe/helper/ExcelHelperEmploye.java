@@ -38,8 +38,9 @@ public class ExcelHelperEmploye {
     public  List<Employe> excelToEmployes(InputStream is) {
         try {
 
-            Workbook workbook = WorkbookFactory.create(is);
-            Sheet sheet = workbook.getSheetAt(0);
+            Workbook workbook = new XSSFWorkbook(is);
+
+            Sheet sheet = workbook.getSheet(SHEET);
             Iterator<Row> rows = sheet.iterator();
             List<Employe> employes = new ArrayList<>();
             int rowNumber = 0;
