@@ -43,6 +43,24 @@ public class DeclarationIrVo {
     private SocieteVo societeVo;
     private EtatDeclarationIrVo etatDeclarationIrVo;
     private PaiementDeclarationIrVo paiementDeclarationIrVo;
+    private ComptableVo comptableTraiteurVo ;
+    private ComptableVo comptableValidateurVo ;
+
+    public ComptableVo getComptableTraiteurVo() {
+        return comptableTraiteurVo;
+    }
+
+    public void setComptableTraiteurVo(ComptableVo comptableTraiteurVo) {
+        this.comptableTraiteurVo = comptableTraiteurVo;
+    }
+
+    public ComptableVo getComptableValidateurVo() {
+        return comptableValidateurVo;
+    }
+
+    public void setComptableValidateurVo(ComptableVo comptableValidateurVo) {
+        this.comptableValidateurVo = comptableValidateurVo;
+    }
 
     private List<DeclarationIrEmployeVo> declarationIrEmployesVo;
     private List<PrelevementSocialEmployeVo> prelevementSocialEmployesVo;
