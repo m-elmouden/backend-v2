@@ -36,6 +36,8 @@ public class Employe {
     @JoinColumn(name = "societe")
     @ManyToOne
     private Societe societe;
+    @JoinColumn(name = "declarationCnss")
+
     @ManyToOne
     private DeclarationCnss declarationCnss;
 

@@ -2,9 +2,9 @@ package com.ird.faa.upload.employe.controller;
 
 import java.util.List;
 
-import com.ird.faa.upload.employe.model.Employe;
 import com.ird.faa.upload.employe.helper.ExcelHelperEmploye;
 import com.ird.faa.upload.employe.message.ResponseMessageEmploye;
+import com.ird.faa.upload.employe.model.Employe;
 import com.ird.faa.upload.employe.service.ExcelServiceEmploye;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,27 +18,26 @@ import org.springframework.web.multipart.MultipartFile;
 public class ExcelControllerEmploye {
     @Autowired
     ExcelServiceEmploye fileService;
-    @PostMapping("/upload-employes")
+    @PostMapping("/upload")
     public ResponseEntity<ResponseMessageEmploye> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
         if (ExcelHelperEmploye.hasExcelFormat(file)) {
             try {
                 fileService.save(file);
                 message = "Uploaded the file successfully: " + file.getOriginalFilename();
-                return ResponseEntity.status(HttpStatus.OK).body(new com.ird.faa.upload.employe.message.ResponseMessageEmploye(message));
+                return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessageEmploye(message));
             } catch (Exception e) {
                 message = "Could not upload the file: " + file.getOriginalFilename() + "!";
-                return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new com.ird.faa.upload.employe.message.ResponseMessageEmploye(e.getMessage()));
-
+                return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessageEmploye(message));
             }
         }
         message = "Please upload an excel file!";
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new com.ird.faa.upload.employe.message.ResponseMessageEmploye(message));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessageEmploye(message));
     }
-    @GetMapping("/list-employes")
-    public ResponseEntity<List<Employe>> getAllListEmploye() {
+    @GetMapping("/tutorials")
+    public ResponseEntity<List<Employe>> getAllTutorials() {
         try {
-            List<Employe> employes = fileService.getAllEmployes();
+            List<Employe> employes = fileService.getAllEmploye();
             if (employes.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }

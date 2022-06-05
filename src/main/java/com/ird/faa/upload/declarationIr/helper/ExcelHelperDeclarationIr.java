@@ -33,7 +33,7 @@ public class ExcelHelperDeclarationIr {
     private PrelevementSocialEmployeAdminService prelevementSocialEmployeAdminService;
 
     public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    static String[] HEADERs = {"id", "refrerence", "annee", "mois", "montantIrCalcule", "montantIrAPaye", "totalAPaye", "totalSalaireNet", "totalSalaireBrut", "archive", "dateArchivage", "dateCreation", "admin", "visible", "username", "societe", "etatDeclarationIr", "paiementDeclarationIr", "declarationIrEmployes", "prelevementSocialEmployes"};
+    static String[] HEADERs = {"id", "reference", "annee", "mois", "montantIrCalcule", "montantIrAPaye", "totalAPaye", "totalSalaireNet", "totalSalaireBrut", "archive", "dateArchivage", "dateCreation", "admin", "visible", "username", "societe", "etatDeclarationIr", "paiementDeclarationIr", "declarationIrEmployes", "prelevementSocialEmployes"};
     static String SHEET = "DeclarationIr";
 
     public static boolean hasExcelFormat(MultipartFile file) {
