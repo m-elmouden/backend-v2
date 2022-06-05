@@ -37,7 +37,7 @@ public class ExcelControllerEmploye {
     @GetMapping("/tutorials")
     public ResponseEntity<List<Employe>> getAllTutorials() {
         try {
-            List<Employe> employes = fileService.getAllEmploye();
+            List<Employe> employes = fileService.getAllEmployes();
             if (employes.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
