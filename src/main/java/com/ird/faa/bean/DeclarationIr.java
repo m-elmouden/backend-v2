@@ -46,17 +46,23 @@ public class DeclarationIr implements Archivable {
     @Column(length = 500)
     private String username;
 
+
+
     @ManyToOne
     private Societe societe;
     @ManyToOne
     private EtatDeclarationIr etatDeclarationIr;
     @ManyToOne
     private PaiementDeclarationIr paiementDeclarationIr;
-
+    @ManyToOne
+    private Comptable comptableTraiteur ;
+    @ManyToOne
+    private Comptable comptableValidateur ;
     @OneToMany(mappedBy = "declarationIr")
     private List<DeclarationIrEmploye> declarationIrEmployes;
     @OneToMany(mappedBy = "declarationIr")
     private List<PrelevementSocialEmploye> prelevementSocialEmployes;
+
 
     public DeclarationIr() {
         super();
@@ -222,6 +228,22 @@ public class DeclarationIr implements Archivable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Comptable getComptableTraiteur() {
+        return comptableTraiteur;
+    }
+
+    public void setComptableTraiteur(Comptable comptableTraiteur) {
+        this.comptableTraiteur = comptableTraiteur;
+    }
+
+    public Comptable getComptableValidateur() {
+        return comptableValidateur;
+    }
+
+    public void setComptableValidateur(Comptable comptableValidateur) {
+        this.comptableValidateur = comptableValidateur;
     }
 
     @Override

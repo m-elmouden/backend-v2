@@ -21,11 +21,15 @@ public class DeclarationIrConverter extends AbstractConverter<DeclarationIr,Decl
         private DeclarationIrEmployeConverter declarationIrEmployeConverter ;
         @Autowired
         private PrelevementSocialEmployeConverter prelevementSocialEmployeConverter ;
+        @Autowired
+        private ComptableConverter comptableConverter;
     private Boolean societe;
     private Boolean etatDeclarationIr;
     private Boolean paiementDeclarationIr;
         private Boolean declarationIrEmployes;
         private Boolean prelevementSocialEmployes;
+        private Boolean comptableTraiteur;
+        private Boolean comptableValidateur;
 
 public  DeclarationIrConverter(){
 init(true);
@@ -73,6 +77,11 @@ DeclarationIr item = new DeclarationIr();
         item.setEtatDeclarationIr(etatDeclarationIrConverter.toItem(vo.getEtatDeclarationIrVo())) ;
     if(vo.getPaiementDeclarationIrVo()!=null && this.paiementDeclarationIr)
         item.setPaiementDeclarationIr(paiementDeclarationIrConverter.toItem(vo.getPaiementDeclarationIrVo())) ;
+
+    if (vo.getComptableTraiteurVo() != null && this.comptableTraiteur)
+        item.setComptableTraiteur(comptableConverter.toItem(vo.getComptableTraiteurVo()));
+    if (vo.getComptableValidateurVo() != null && this.comptableValidateur)
+        item.setComptableValidateur(comptableConverter.toItem(vo.getComptableValidateurVo()));
 
     if(ListUtil.isNotEmpty(vo.getDeclarationIrEmployesVo()) && this.declarationIrEmployes)
         item.setDeclarationIrEmployes(declarationIrEmployeConverter.toItem(vo.getDeclarationIrEmployesVo()));
@@ -128,6 +137,11 @@ DeclarationIrVo vo = new DeclarationIrVo();
         vo.setVisible(item.getVisible());
         if(StringUtil.isNotEmpty(item.getUsername()))
         vo.setUsername(item.getUsername());
+
+    if (item.getComptableTraiteur() != null && this.comptableTraiteur) {
+        vo.setComptableTraiteurVo(comptableConverter.toVo(item.getComptableTraiteur()));}
+    if (item.getComptableValidateur() != null && this.comptableValidateur) {
+        vo.setComptableValidateurVo(comptableConverter.toVo(item.getComptableValidateur()));}
 
     if(item.getSociete()!=null && this.societe) {
         vo.setSocieteVo(societeConverter.toVo(item.getSociete())) ;
