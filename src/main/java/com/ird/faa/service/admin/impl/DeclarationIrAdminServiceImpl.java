@@ -454,7 +454,7 @@ public class DeclarationIrAdminServiceImpl extends AbstractServiceImpl<Declarati
             JAXBContext jaxbContext = JAXBContext.newInstance(DeclarationIrXml.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            File fileDecIs = new File("C:\\Users\\admin\\Desktop\\DecIR_XML\\DecIR-" + declarationIr.getAnnee() +declarationIr.getMois()+ declarationIr.getRefrerence() + ".xml");
+            File fileDecIs = new File("C:\\Users\\DecIR_XML\\DecIR-" + declarationIr.getAnnee() +declarationIr.getMois()+ declarationIr.getRefrerence() + ".xml");
             marshaller.marshal(decXml, fileDecIs);
 //            marshaller.marshal(decXml, System.out);
 
