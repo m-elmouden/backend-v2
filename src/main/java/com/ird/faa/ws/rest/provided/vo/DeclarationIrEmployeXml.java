@@ -1,68 +1,30 @@
-package com.ird.faa.bean;
+package com.ird.faa.ws.rest.provided.vo;
 
+import com.ird.faa.bean.DeclarationIr;
+import com.ird.faa.bean.DeclarationIrEmploye;
+import com.ird.faa.bean.TauxIr;
 import com.ird.faa.upload.employe.model.Employe;
-import com.ird.faa.ws.rest.provided.vo.DeclarationIrXml;
 
-import java.util.Objects;
-
-
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-
-@Entity
-@Table(name = "declaration_ir_employe")
-@XmlRootElement
-//@XmlAccessorType(XmlAccessType.FIELD)
-@XmlAccessorType(XmlAccessType.NONE)
-public class DeclarationIrEmploye {
-
-    @Id
-    @SequenceGenerator(name = "declaration_ir_employe_seq", sequenceName = "declaration_ir_employe_seq", allocationSize = 1, initialValue = 10000)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "declaration_ir_employe_seq")
+public class DeclarationIrEmployeXml {
     private Long id;
-    @XmlElement(name = "salaireNet")
-    private BigDecimal salaireNet=BigDecimal.ZERO;
-    @XmlElement(name = "salaireBrut")
-    private BigDecimal salaireBrut=BigDecimal.ZERO;
-    @XmlElement(name = "salaireNetImposable")
-    private BigDecimal salaireNetImposable=BigDecimal.ZERO;
-    @XmlElement(name = "salaireBrutImposable")
-    private BigDecimal salaireBrutImposable=BigDecimal.ZERO;
-    @XmlElement(name = "salaireBase")
-    private BigDecimal salaireBase=BigDecimal.ZERO;
-    @XmlElement(name = "indemniteJustifie")
-    private BigDecimal indemniteJustifie=BigDecimal.ZERO;
-    @XmlElement(name = "indemnite")
-    private BigDecimal indemnite=BigDecimal.ZERO;
-    @XmlElement(name = "primes")
-    private BigDecimal primes=BigDecimal.ZERO;
-    @XmlElement(name = "pourcentageAnciennete")
-    private BigDecimal pourcentageAnciennete=BigDecimal.ZERO;
-    @XmlElement(name = "cotisation")
-    private BigDecimal cotisation=BigDecimal.ZERO;
-    @XmlElement(name = "avantage")
-    private BigDecimal avantage=BigDecimal.ZERO;
-    @XmlElement(name = "heuresSupplementaires")
-    private BigDecimal heuresSupplementaires=BigDecimal.ZERO;
-    @XmlElement(name = "declarationIr")
-    @ManyToOne
-    private DeclarationIr declarationIr;
-    @XmlElement(name = "employe")
-    @ManyToOne
+
+    private BigDecimal salaireNet = BigDecimal.ZERO;
+    private BigDecimal salaireBrut = BigDecimal.ZERO;
+    private BigDecimal salaireNetImposable = BigDecimal.ZERO;
+    private BigDecimal salaireBrutImposable = BigDecimal.ZERO;
+    private BigDecimal salaireBase = BigDecimal.ZERO;
+    private BigDecimal indemniteJustifie = BigDecimal.ZERO;
+    private BigDecimal indemnite = BigDecimal.ZERO;
+    private BigDecimal primes = BigDecimal.ZERO;
+    private BigDecimal pourcentageAnciennete = BigDecimal.ZERO;
+    private BigDecimal cotisation = BigDecimal.ZERO;
+    private BigDecimal avantage = BigDecimal.ZERO;
+    private BigDecimal heuresSupplementaires = BigDecimal.ZERO;
     private Employe employe;
-    @XmlElement(name = "tauxIr")
-    @ManyToOne
     private TauxIr tauxIr;
-
-
-    public DeclarationIrEmploye() {
-        super();
-    }
 
     public Long getId() {
         return id;
@@ -168,13 +130,6 @@ public class DeclarationIrEmploye {
         this.heuresSupplementaires = heuresSupplementaires;
     }
 
-    public DeclarationIr getDeclarationIr() {
-        return declarationIr;
-    }
-
-    public void setDeclarationIr(DeclarationIr declarationIr) {
-        this.declarationIr = declarationIr;
-    }
 
     public Employe getEmploye() {
         return employe;
@@ -192,19 +147,23 @@ public class DeclarationIrEmploye {
         this.tauxIr = tauxIr;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DeclarationIrEmploye declarationIrEmploye = (DeclarationIrEmploye) o;
-        return id != null && id.equals(declarationIrEmploye.id);
+    public DeclarationIrEmployeXml convertToDeclartionEmlpXml(DeclarationIrEmploye declarationIrEmploye) {
+        DeclarationIrEmployeXml declarationIrEmployeXml = new DeclarationIrEmployeXml();
+        declarationIrEmployeXml.setId(declarationIrEmploye.getId());
+        declarationIrEmployeXml.setEmploye(declarationIrEmploye.getEmploye());
+        declarationIrEmployeXml.setSalaireBase(declarationIrEmploye.getSalaireBase());
+        declarationIrEmployeXml.setSalaireBrut(declarationIrEmploye.getSalaireBrut());
+        declarationIrEmployeXml.setSalaireBrutImposable(declarationIrEmploye.getSalaireBrutImposable());
+        declarationIrEmployeXml.setSalaireNet(declarationIrEmploye.getSalaireNet());
+        declarationIrEmployeXml.setSalaireNetImposable(declarationIrEmploye.getSalaireNetImposable());
+        declarationIrEmployeXml.setIndemnite(declarationIrEmploye.getIndemnite());
+        declarationIrEmployeXml.setIndemniteJustifie(declarationIrEmploye.getIndemniteJustifie());
+        declarationIrEmployeXml.setTauxIr(declarationIrEmploye.getTauxIr());
+        declarationIrEmployeXml.setAvantage(declarationIrEmploye.getAvantage());
+        declarationIrEmployeXml.setPrimes(declarationIrEmploye.getPrimes());
+        declarationIrEmployeXml.setPourcentageAnciennete(declarationIrEmploye.getPourcentageAnciennete());
+        declarationIrEmployeXml.setHeuresSupplementaires(declarationIrEmploye.getHeuresSupplementaires());
+        declarationIrEmployeXml.setCotisation(declarationIrEmploye.getCotisation());
+        return declarationIrEmployeXml;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-
 }
-
