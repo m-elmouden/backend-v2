@@ -10,32 +10,49 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.math.BigDecimal;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
 @Table(name = "declaration_ir")
+@XmlRootElement(name = "DeclarationIr")
+//@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(XmlAccessType.NONE)
 public class DeclarationIr implements Archivable {
 
     @Id
     @SequenceGenerator(name = "declaration_ir_seq", sequenceName = "declaration_ir_seq",
             allocationSize = 1, initialValue = 10000)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "declaration_ir_seq")
+    @XmlElement
     private Long id;
 
     @Column(length = 500)
+    @XmlElement(name = "reference")
     private String refrerence;
+    @XmlElement(name = "annee")
     private String annee;
+    @XmlElement(name = "mois")
     private String mois;
+    @XmlElement(name = "montantIrCalcule")
     private BigDecimal montantIrCalcule=BigDecimal.ZERO;
+    @XmlElement(name = "montantIrAPaye")
     private BigDecimal montantIrAPaye=BigDecimal.ZERO;
+    @XmlElement(name = "totalAPaye")
     private BigDecimal totalAPaye=BigDecimal.ZERO;
+    @XmlElement(name ="totalSalaireNet" )
     private BigDecimal totalSalaireNet=BigDecimal.ZERO;
+    @XmlElement(name = "totalSalaireBrut")
     private BigDecimal totalSalaireBrut=BigDecimal.ZERO;
     @Column(columnDefinition = "boolean default false")
     private Boolean archive = false;
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateArchivage;
+    @XmlElement(name = "dateCreation")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateCreation;
@@ -47,18 +64,21 @@ public class DeclarationIr implements Archivable {
     private String username;
 
 
+
+    @XmlElement(name ="societe" )
     @ManyToOne
     private Societe societe;
+
     @ManyToOne
     private EtatDeclarationIr etatDeclarationIr;
     @ManyToOne
     private PaiementDeclarationIr paiementDeclarationIr;
+
     @ManyToOne
     private Comptable comptableTraiteur ;
     @ManyToOne
     private Comptable comptableValidateur ;
-    @ManyToOne
-    private Demande demande ;
+    @XmlElement(name = "declarationIrEmployes")
     @OneToMany(mappedBy = "declarationIr")
     private List<DeclarationIrEmploye> declarationIrEmployes;
     @OneToMany(mappedBy = "declarationIr")
@@ -247,14 +267,6 @@ public class DeclarationIr implements Archivable {
         this.comptableValidateur = comptableValidateur;
     }
 
-
-    public Demande getDemande() {
-        return demande;
-    }
-
-    public void setDemande(Demande demande) {
-        this.demande = demande;
-    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

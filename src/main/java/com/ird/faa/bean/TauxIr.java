@@ -9,10 +9,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.math.BigDecimal;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
 @Table(name = "taux_ir")
+@XmlRootElement
+//@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(XmlAccessType.NONE)
 public class TauxIr {
 
     @Id
@@ -20,17 +27,23 @@ public class TauxIr {
             allocationSize = 1, initialValue = 10000)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "taux_ir_seq")
     private Long id;
+    @XmlElement
     private String intervalle;
-
+    @XmlElement
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateMin;
+    @XmlElement
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateMax;
+    @XmlElement
     private BigDecimal salaireImpoMin;
+    @XmlElement
     private BigDecimal salaireImpoMax;
+    @XmlElement
     private BigDecimal forfaitDeduit;
+    @XmlElement
     private BigDecimal pourcentage;
 
 
