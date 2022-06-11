@@ -26,7 +26,7 @@ public class ExcelHelperEmploye {
     @Autowired
     private SocieteAdminService societeAdminService;
     public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    static String[] HEADERs = {"id", "cin", "nom", "prenom", "nombreFamille", "typeEmploye", "societe"};
+    static String[] HEADERs = {"cin", "nom", "prenom", "nombreFamille", "typeEmploye", "societe"};
     static String SHEET="Employe";
     public static boolean hasExcelFormat(MultipartFile file) {
         if (!TYPE.equals(file.getContentType())) {
@@ -38,9 +38,10 @@ public class ExcelHelperEmploye {
     public  List<Employe> excelToEmployes(InputStream is) {
         try {
 
-            Workbook workbook = new XSSFWorkbook(is);
-
-            Sheet sheet = workbook.getSheet(SHEET);
+            Workbook workbook = WorkbookFactory.create(is);
+            Sheet sheet = workbook.getSheetAt(0);
+//            Workbook workbook = new XSSFWorkbook(is);
+//            Sheet sheet = workbook.getSheet(SHEET);
             Iterator<Row> rows = sheet.iterator();
             List<Employe> employes = new ArrayList<>();
             int rowNumber = 0;

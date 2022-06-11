@@ -45,6 +45,7 @@ public class DeclarationIrVo {
     private PaiementDeclarationIrVo paiementDeclarationIrVo;
     private ComptableVo comptableTraiteurVo ;
     private ComptableVo comptableValidateurVo ;
+    private DemandeVo demandeVo;
 
     public ComptableVo getComptableTraiteurVo() {
         return comptableTraiteurVo;
@@ -375,5 +376,15 @@ public class DeclarationIrVo {
     public void setPrelevementSocialEmployesVo(List<PrelevementSocialEmployeVo> prelevementSocialEmployesVo) {
         this.prelevementSocialEmployesVo = prelevementSocialEmployesVo;
     }
+
+
+    public DemandeVo getDemandeVo() {
+        return demandeVo;
+    }
+
+    public void setDemandeVo(DemandeVo demandeVo) {
+        this.demandeVo = demandeVo;
+    }
+
 
 }

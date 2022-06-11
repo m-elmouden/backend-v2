@@ -47,7 +47,6 @@ public class DeclarationIr implements Archivable {
     private String username;
 
 
-
     @ManyToOne
     private Societe societe;
     @ManyToOne
@@ -58,6 +57,8 @@ public class DeclarationIr implements Archivable {
     private Comptable comptableTraiteur ;
     @ManyToOne
     private Comptable comptableValidateur ;
+    @ManyToOne
+    private Demande demande ;
     @OneToMany(mappedBy = "declarationIr")
     private List<DeclarationIrEmploye> declarationIrEmployes;
     @OneToMany(mappedBy = "declarationIr")
@@ -246,6 +247,14 @@ public class DeclarationIr implements Archivable {
         this.comptableValidateur = comptableValidateur;
     }
 
+
+    public Demande getDemande() {
+        return demande;
+    }
+
+    public void setDemande(Demande demande) {
+        this.demande = demande;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

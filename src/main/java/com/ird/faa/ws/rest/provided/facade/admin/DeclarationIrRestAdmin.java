@@ -1,9 +1,13 @@
 package  com.ird.faa.ws.rest.provided.facade.admin;
 
+import com.ird.faa.bean.Demande;
 import com.ird.faa.service.admin.facade.DeclarationIrAdminService;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
+import com.ird.faa.ws.rest.provided.vo.DeclarationirStatVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,8 +60,17 @@ private DeclarationIrConverter declarationIrConverter;
     public List<DeclarationIrVo> findByCriteria(@RequestBody DeclarationIrVo declarationIrVo){
         return declarationIrConverter.toVo(declarationIrService.findByCriteria(declarationIrVo));
         }
+    @GetMapping("/demande/date/{dateMin}/date/{dateMax}/")
+    public List<BigDecimal> findStatByDateDeclarationAndDemande(@PathVariable Date dateMin,@PathVariable Date dateMax,@RequestBody Demande demande) {
+        return declarationIrService.findStatByDateDeclarationAndDemande(dateMin, dateMax, demande);
+    }
+    @GetMapping("/date/{dateMin}/date/{dateMax}")
+    public List<DeclarationirStatVo> findStatByDateDeclarationAndEtatDeclaration(@PathVariable String dateMin,@PathVariable String dateMax) {
+        List<DeclarationirStatVo> statByDateDeclarationAndEtatDeclaration = declarationIrService.findStatByDateDeclarationAndEtatDeclaration(dateMin, dateMax);
+        return statByDateDeclarationAndEtatDeclaration;
+    }
 
-            @ApiOperation("Finds a declarationIr by id")
+    @ApiOperation("Finds a declarationIr by id")
             @GetMapping("/id/{id}")
             public DeclarationIrVo findById(@PathVariable Long id){
             return declarationIrConverter.toVo(declarationIrService.findById(id));
@@ -99,8 +112,9 @@ private DeclarationIrConverter declarationIrConverter;
 
         @ApiOperation("find by etatDeclarationIr reference")
         @GetMapping("/etatDeclarationIr/reference/{reference}")
-        public List<DeclarationIr> findByEtatDeclarationIrReference(@PathVariable String reference){
-        return declarationIrService.findByEtatDeclarationIrReference(reference);
+        public List<DeclarationIrVo> findByEtatDeclarationIrReference(@PathVariable String reference){
+          List<DeclarationIrVo> listdeclarationIrVos = declarationIrConverter.toVo(declarationIrService.findByEtatDeclarationIrReference(reference));
+          return listdeclarationIrVos;
         }
 
         @ApiOperation("delete by etatDeclarationIr reference")

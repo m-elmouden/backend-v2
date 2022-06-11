@@ -1,7 +1,10 @@
 package com.ird.faa.service.admin.facade;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import com.ird.faa.bean.DeclarationIr;
+import com.ird.faa.bean.Demande;
 import com.ird.faa.ws.rest.provided.vo.DeclarationIrVo;
 import com.ird.faa.service.core.facade.AbstractService;
 
@@ -63,8 +66,8 @@ public interface DeclarationIrAdminService extends AbstractService<DeclarationIr
     int deleteByRefrerence(String refrerence);
 
 
-
-
+    List<BigDecimal> findStatByDateDeclarationAndDemande(Date dateMin, Date dateMax, Demande demande);
+    List<com.ird.faa.ws.rest.provided.vo.DeclarationirStatVo> findStatByDateDeclarationAndEtatDeclaration(String dateMin,String dateMax);
     DeclarationIr archiver(DeclarationIr declarationIr) ;
     DeclarationIr desarchiver(DeclarationIr declarationIr);
     void setTotalPaye(DeclarationIr declarationIr);

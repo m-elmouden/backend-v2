@@ -41,6 +41,24 @@ public class DemandeVo {
 
     private List<FactureVo> facturesVo ;
     private List<DemandePieceJointeVo> demandePieceJointesVo ;
+    private List<DeclarationIrVo> declarationIrVos ;
+
+    public String getDemandePieceJointes() {
+        return demandePieceJointes;
+    }
+
+    public void setDemandePieceJointes(String demandePieceJointes) {
+        this.demandePieceJointes = demandePieceJointes;
+    }
+
+    public List<DeclarationIrVo> getDeclarationIrVos() {
+        return declarationIrVos;
+    }
+
+    public void setDeclarationIrVos(List<DeclarationIrVo> declarationIrVos) {
+        this.declarationIrVos = declarationIrVos;
+    }
+
     private List<CommentaireVo> commentairesVo ;
 
     public DemandeVo(){

@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ExcelControllerEmploye {
     @Autowired
     ExcelServiceEmploye fileService;
-    @PostMapping("/upload")
+    @PostMapping("/upload/")
     public ResponseEntity<ResponseMessageEmploye> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
         if (ExcelHelperEmploye.hasExcelFormat(file)) {
@@ -28,7 +28,7 @@ public class ExcelControllerEmploye {
                 return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessageEmploye(message));
             } catch (Exception e) {
                 message = "Could not upload the file: " + file.getOriginalFilename() + "!";
-                return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessageEmploye(message));
+                return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessageEmploye(e.getMessage()));
             }
         }
         message = "Please upload an excel file!";
