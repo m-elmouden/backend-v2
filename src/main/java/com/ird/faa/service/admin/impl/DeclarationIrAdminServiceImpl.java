@@ -1,5 +1,6 @@
 package com.ird.faa.service.admin.impl;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Date;
@@ -7,12 +8,16 @@ import java.util.Date;
 import java.util.ArrayList;
 
 import com.ird.faa.bean.*;
-import com.ird.faa.ws.rest.provided.vo.DeclarationirStatVo;
+import com.ird.faa.ws.rest.provided.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.PropertyException;
 
 import com.ird.faa.dao.DeclarationIrDao;
 import com.ird.faa.service.admin.facade.DeclarationIrAdminService;
@@ -22,11 +27,12 @@ import com.ird.faa.service.admin.facade.EtatDeclarationIrAdminService;
 import com.ird.faa.service.admin.facade.DeclarationIrEmployeAdminService;
 import com.ird.faa.service.admin.facade.PrelevementSocialEmployeAdminService;
 
-import com.ird.faa.ws.rest.provided.vo.DeclarationIrVo;
 import com.ird.faa.service.util.*;
 
 import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class DeclarationIrAdminServiceImpl extends AbstractServiceImpl<DeclarationIr> implements DeclarationIrAdminService {
@@ -319,6 +325,53 @@ public class DeclarationIrAdminServiceImpl extends AbstractServiceImpl<Declarati
         declarationIr.setTotalSalaireNet(valeur3);
 
     }
+
+    @Override
+    public int declarationIrToXML(DeclarationIr declarationIr) {
+        DeclarationIrXml decXml = convertToDecIrXml(declarationIr);
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(DeclarationIrXml.class);
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            File fileDecIs = new File("C:\\Users\\admin\\Desktop\\DecIR_XML\\DecIR-" + declarationIr.getAnnee() +declarationIr.getMois()+ declarationIr.getRefrerence() + ".xml");
+            marshaller.marshal(decXml, fileDecIs);
+//            marshaller.marshal(decXml, System.out);
+
+        } catch (PropertyException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+        return 1;
+    }
+
+    public DeclarationIrXml convertToDecIrXml(DeclarationIr declarationIr) {
+        DeclarationIr declarationIr1 = declarationIrDao.findByRefrerence(declarationIr.getRefrerence());
+        DeclarationIrXml decIrXml = new DeclarationIrXml();
+        List<DeclarationIrEmploye> declarationIrEmployes = new ArrayList<DeclarationIrEmploye>();
+        List<DeclarationIrEmployeXml> declarationIrEmployeXmls = new ArrayList<DeclarationIrEmployeXml>();
+        SocieteXml societeXml = new SocieteXml();
+        DeclarationIrEmployeXml declarationIrEmployeXmlVo = new DeclarationIrEmployeXml();
+        decIrXml.setId(declarationIr.getId());
+        decIrXml.setRefrerence(declarationIr.getRefrerence());
+        decIrXml.setAnnee(declarationIr.getAnnee());
+        decIrXml.setMois(declarationIr.getMois());
+        decIrXml.setMontantIrCalcule(declarationIr.getMontantIrCalcule());
+        decIrXml.setMontantIrAPaye(declarationIr.getMontantIrAPaye());
+        decIrXml.setTotalAPaye(declarationIr.getTotalAPaye());
+        decIrXml.setTotalSalaireNet(declarationIr.getTotalSalaireNet());
+        decIrXml.setTotalSalaireBrut(declarationIr.getTotalSalaireBrut());
+        declarationIrEmployes = declarationIrEmployeService.findByDeclarationIrRefrerence(declarationIr1.getRefrerence());
+        for (DeclarationIrEmploye dr : declarationIrEmployes) {
+            declarationIrEmployeXmls.add(declarationIrEmployeXmlVo.convertToDeclartionEmlpXml(dr));
+        }
+        decIrXml.setDeclarationIrEmployes(declarationIrEmployeXmls);
+        societeXml = societeXml.convertToSteXml(declarationIr1.getSociete());
+        decIrXml.setSocieteXml(societeXml);
+        return decIrXml;
+    }
+
 
     public List<BigDecimal> findStatByDateDeclarationAndDemande(Date dateMin, Date dateMax, Demande demande) {
         String query = "SELECT SUM(d.totalAPaye) FROM DeclarationIr d WHERE 1=1";

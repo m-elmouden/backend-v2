@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ird.faa.security.bean.User;
 import com.ird.faa.upload.employe.model.Employe;
 
@@ -98,6 +99,7 @@ public class Societe extends User {
     @OneToMany(mappedBy = "societe")
     private List<Demande> demandes;
     @OneToMany(mappedBy = "societe")
+    @JsonManagedReference
     private List<DeclarationIr> declarationIrs;
 
     @OneToMany(mappedBy = "societe")

@@ -1,5 +1,6 @@
 package com.ird.faa.bean;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ird.faa.upload.employe.model.Employe;
 import com.ird.faa.ws.rest.provided.vo.DeclarationIrXml;
 
@@ -51,6 +52,7 @@ public class DeclarationIrEmploye {
     private BigDecimal heuresSupplementaires=BigDecimal.ZERO;
     @XmlElement(name = "declarationIr")
     @ManyToOne
+    @JsonBackReference
     private DeclarationIr declarationIr;
     @XmlElement(name = "employe")
     @ManyToOne

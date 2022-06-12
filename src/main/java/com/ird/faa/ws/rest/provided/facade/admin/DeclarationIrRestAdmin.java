@@ -1,10 +1,14 @@
 package com.ird.faa.ws.rest.provided.facade.admin;
 
 import com.ird.faa.bean.DeclarationIs;
+import com.ird.faa.bean.Demande;
 import com.ird.faa.service.admin.facade.DeclarationIrAdminService;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
+import com.ird.faa.ws.rest.provided.vo.DeclarationirStatVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -101,8 +105,17 @@ public class DeclarationIrRestAdmin {
 
     @ApiOperation("find by etatDeclarationIr reference")
     @GetMapping("/etatDeclarationIr/reference/{reference}")
-    public List<DeclarationIr> findByEtatDeclarationIrReference(@PathVariable String reference) {
-        return declarationIrService.findByEtatDeclarationIrReference(reference);
+    public List<DeclarationIrVo> findByEtatDeclarationIrReference(@PathVariable String reference) {
+        List <DeclarationIrVo> declarationIrVoList=declarationIrConverter.toVo(declarationIrService.findByEtatDeclarationIrReference(reference));
+        return declarationIrVoList;
+    }
+
+    public List<BigDecimal> findStatByDateDeclarationAndDemande(Date dateMin, Date dateMax, Demande demande) {
+        return declarationIrService.findStatByDateDeclarationAndDemande(dateMin, dateMax, demande);
+    }
+    @GetMapping("/date/{dateMin}/date/{dateMax}")
+    public List<DeclarationirStatVo> findStatByDateDeclarationAndEtatDeclaration(String dateMin, String dateMax) {
+        return declarationIrService.findStatByDateDeclarationAndEtatDeclaration(dateMin, dateMax);
     }
 
     @ApiOperation("delete by etatDeclarationIr reference")

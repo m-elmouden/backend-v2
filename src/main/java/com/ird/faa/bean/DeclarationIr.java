@@ -5,7 +5,10 @@ import java.util.List;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 import java.math.BigDecimal;
@@ -67,7 +70,9 @@ public class DeclarationIr implements Archivable {
 
     @XmlElement(name ="societe" )
     @ManyToOne
+    @JsonBackReference
     private Societe societe;
+
 
     @ManyToOne
     private EtatDeclarationIr etatDeclarationIr;
@@ -80,9 +85,13 @@ public class DeclarationIr implements Archivable {
     private Comptable comptableValidateur ;
     @XmlElement(name = "declarationIrEmployes")
     @OneToMany(mappedBy = "declarationIr")
+    @JsonManagedReference
     private List<DeclarationIrEmploye> declarationIrEmployes;
     @OneToMany(mappedBy = "declarationIr")
     private List<PrelevementSocialEmploye> prelevementSocialEmployes;
+    @ManyToOne
+    private Demande demande;
+
 
 
     public DeclarationIr() {
@@ -265,6 +274,13 @@ public class DeclarationIr implements Archivable {
 
     public void setComptableValidateur(Comptable comptableValidateur) {
         this.comptableValidateur = comptableValidateur;
+    }
+    public Demande getDemande() {
+        return demande;
+    }
+
+    public void setDemande(Demande demande) {
+        this.demande = demande;
     }
 
     @Override
