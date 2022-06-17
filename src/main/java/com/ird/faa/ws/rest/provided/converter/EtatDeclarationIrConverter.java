@@ -1,11 +1,11 @@
 package com.ird.faa.ws.rest.provided.converter;
 
-import org.springframework.stereotype.Component;
-import com.ird.faa.service.util.*;
-
-
 import com.ird.faa.bean.EtatDeclarationIr;
+import com.ird.faa.service.util.DateUtil;
+import com.ird.faa.service.util.NumberUtil;
+import com.ird.faa.service.util.StringUtil;
 import com.ird.faa.ws.rest.provided.vo.EtatDeclarationIrVo;
+import org.springframework.stereotype.Component;
 
 @Component
 public class EtatDeclarationIrConverter extends AbstractConverter<EtatDeclarationIr, EtatDeclarationIrVo> {

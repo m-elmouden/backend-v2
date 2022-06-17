@@ -1,12 +1,5 @@
 package com.ird.faa.upload.societe.helper;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import com.ird.faa.bean.*;
 import com.ird.faa.security.bean.Role;
 import com.ird.faa.security.service.impl.RoleServiceImpl;
@@ -19,9 +12,19 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 @Configuration
 @Service
 public class ExcelHelperSociete {
+    public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    static String[] HEADERs = {"Id", "ice", "adresse", "fax", "telephone", "raisonSociale", "dateCreation", "anneeExploitation", "capitalSocial", "description", "age", "credentialsNonExpired", "enabled", "", "SalaireNetImposable", "passwordChanged", "createdAt", "updatedAt", "username", "password", "equivalenceAvecPanelErc", "baseHorizon", "role", "comptable", "presidentSociete", "typeSociete", "demandes", "declarationIrs", "employes"};
+    static String SHEET = "Societe";
     @Autowired
     private RoleServiceImpl roleService;
     @Autowired
@@ -37,19 +40,11 @@ public class ExcelHelperSociete {
     @Autowired
     private EmployeAdminService employeAdminService;
 
-
-    public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    static String[] HEADERs = {"Id", "ice", "adresse", "fax", "telephone", "raisonSociale", "dateCreation", "anneeExploitation", "capitalSocial", "description", "age", "credentialsNonExpired", "enabled", "", "SalaireNetImposable", "passwordChanged", "createdAt", "updatedAt", "username", "password", "equivalenceAvecPanelErc", "baseHorizon", "role", "comptable", "presidentSociete", "typeSociete", "demandes", "declarationIrs", "employes"};
-    static String SHEET = "Societe";
-
     public static boolean hasExcelFormat(MultipartFile file) {
-        if (!TYPE.equals(file.getContentType())) {
-            return false;
-        }
-        return true;
+        return TYPE.equals(file.getContentType());
     }
 
-    public   List<Societe> excelToSociete(InputStream is) {
+    public List<Societe> excelToSociete(InputStream is) {
         try {
             Workbook workbook = new XSSFWorkbook(is);
             Sheet sheet = workbook.getSheet(SHEET);
@@ -162,12 +157,8 @@ public class ExcelHelperSociete {
                             String ref = formatter4.formatCellValue(currentCell);
                             Demande demande = demandeAdminService.findByReference(ref);
                             societe.setDemandes((List<Demande>) demande);
+
                         case 27:
-                            DataFormatter formatter5 = new DataFormatter();
-                            String ref2 = formatter5.formatCellValue(currentCell);
-                            DeclarationIr declarationIr = declarationIrAdminService.findByRefrerence(ref2);
-                            societe.setDeclarationIrs((List<DeclarationIr>) declarationIr);
-                        case 28:
                             DataFormatter formatter6 = new DataFormatter();
                             String cin = formatter6.formatCellValue(currentCell);
                             Employe employe = employeAdminService.findByCin(cin);

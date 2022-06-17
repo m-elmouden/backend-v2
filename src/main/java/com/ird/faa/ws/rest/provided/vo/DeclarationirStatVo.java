@@ -9,7 +9,6 @@ public class DeclarationirStatVo {
     private BigDecimal somme;
 
 
-
     public DeclarationirStatVo() {
     }
 

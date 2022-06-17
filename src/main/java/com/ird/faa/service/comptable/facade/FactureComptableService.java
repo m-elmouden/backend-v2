@@ -1,37 +1,40 @@
 package com.ird.faa.service.comptable.facade;
 
+import com.ird.faa.bean.Facture;
+import com.ird.faa.service.core.facade.AbstractService;
+import com.ird.faa.ws.rest.provided.vo.FactureVo;
+
 import java.math.BigDecimal;
 import java.util.List;
-import com.ird.faa.bean.Facture;
-import com.ird.faa.ws.rest.provided.vo.FactureVo;
-import com.ird.faa.service.core.facade.AbstractService;
 
-public interface FactureComptableService extends AbstractService<Facture,Long,FactureVo>{
+public interface FactureComptableService extends AbstractService<Facture, Long, FactureVo> {
 
 
     /**
-    * find Facture from database by reference (reference)
-    * @param reference - reference of Facture
-    * @return the founded Facture , If no Facture were
-    *         found in database return  null.
-    */
+     * find Facture from database by reference (reference)
+     *
+     * @param reference - reference of Facture
+     * @return the founded Facture , If no Facture were
+     * found in database return  null.
+     */
     Facture findByReference(String reference);
 
     /**
-    * find Facture from database by id (PK) or reference (reference)
-    * @param id - id of Facture
-    * @param reference - reference of Facture
-    * @return the founded Facture , If no Facture were
-    *         found in database return  null.
-    */
+     * find Facture from database by id (PK) or reference (reference)
+     *
+     * @param id        - id of Facture
+     * @param reference - reference of Facture
+     * @return the founded Facture , If no Facture were
+     * found in database return  null.
+     */
     Facture findByIdOrReference(Facture facture);
 
 
-/**
-    * delete Facture from database
-    * @param id - id of Facture to be deleted
-    *
-    */
+    /**
+     * delete Facture from database
+     *
+     * @param id - id of Facture to be deleted
+     */
     int deleteById(Long id);
 
 
@@ -58,6 +61,7 @@ public interface FactureComptableService extends AbstractService<Facture,Long,Fa
     List<Facture> findBySocieteId(Long id);
 
     int deleteBySocieteId(Long id);
+
     List<Facture> findByCompteComptableNumero(BigDecimal numero);
 
     int deleteByCompteComptableNumero(BigDecimal numero);
@@ -65,6 +69,7 @@ public interface FactureComptableService extends AbstractService<Facture,Long,Fa
     List<Facture> findByCompteComptableId(Long id);
 
     int deleteByCompteComptableId(Long id);
+
     List<Facture> findByDeclarationIsReference(String reference);
 
     int deleteByDeclarationIsReference(String reference);
@@ -72,6 +77,7 @@ public interface FactureComptableService extends AbstractService<Facture,Long,Fa
     List<Facture> findByDeclarationIsId(Long id);
 
     int deleteByDeclarationIsId(Long id);
+
     List<Facture> findByDeclarationTvaReference(String reference);
 
     int deleteByDeclarationTvaReference(String reference);
@@ -79,6 +85,7 @@ public interface FactureComptableService extends AbstractService<Facture,Long,Fa
     List<Facture> findByDeclarationTvaId(Long id);
 
     int deleteByDeclarationTvaId(Long id);
+
     List<Facture> findByDemandeReference(String reference);
 
     int deleteByDemandeReference(String reference);
@@ -97,17 +104,16 @@ public interface FactureComptableService extends AbstractService<Facture,Long,Fa
 
 
     /**
-    * delete Facture from database by reference (reference)
-    *
-    * @param reference - reference of Facture to be deleted
-    * @return 1 if Facture deleted successfully
-    */
+     * delete Facture from database by reference (reference)
+     *
+     * @param reference - reference of Facture to be deleted
+     * @return 1 if Facture deleted successfully
+     */
     int deleteByReference(String reference);
 
 
+    Facture archiver(Facture facture);
 
-
-    Facture archiver(Facture facture) ;
     Facture desarchiver(Facture facture);
 
 }

@@ -1,20 +1,24 @@
 package com.ird.faa.upload.declarationIr.controller;
 
-import java.util.List;
-
 import com.ird.faa.bean.DeclarationIr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/api/excel")
 public class ExcelControllerDeclarationIr {
     @Autowired
     com.ird.faa.upload.declarationIr.service.ExcelServiceDeclarationIr fileService;
+
     @PostMapping("/upload-declaration-irs")
     public ResponseEntity<com.ird.faa.upload.declarationIr.message.ResponseMessageDeclarationIr> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
@@ -31,6 +35,7 @@ public class ExcelControllerDeclarationIr {
         message = "Please upload an excel file!";
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new com.ird.faa.upload.declarationIr.message.ResponseMessageDeclarationIr(message));
     }
+
     @GetMapping("/list-declaration-irs")
     public ResponseEntity<List<DeclarationIr>> getAllDeclarationIrs() {
         try {

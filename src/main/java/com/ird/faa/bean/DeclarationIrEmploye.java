@@ -2,17 +2,14 @@ package com.ird.faa.bean;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ird.faa.upload.employe.model.Employe;
-import com.ird.faa.ws.rest.provided.vo.DeclarationIrXml;
 
-import java.util.Objects;
-
-
-import java.math.BigDecimal;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 
 @Entity
@@ -27,29 +24,29 @@ public class DeclarationIrEmploye {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "declaration_ir_employe_seq")
     private Long id;
     @XmlElement(name = "salaireNet")
-    private BigDecimal salaireNet=BigDecimal.ZERO;
+    private BigDecimal salaireNet = BigDecimal.ZERO;
     @XmlElement(name = "salaireBrut")
-    private BigDecimal salaireBrut=BigDecimal.ZERO;
+    private BigDecimal salaireBrut = BigDecimal.ZERO;
     @XmlElement(name = "salaireNetImposable")
-    private BigDecimal salaireNetImposable=BigDecimal.ZERO;
+    private BigDecimal salaireNetImposable = BigDecimal.ZERO;
     @XmlElement(name = "salaireBrutImposable")
-    private BigDecimal salaireBrutImposable=BigDecimal.ZERO;
+    private BigDecimal salaireBrutImposable = BigDecimal.ZERO;
     @XmlElement(name = "salaireBase")
-    private BigDecimal salaireBase=BigDecimal.ZERO;
+    private BigDecimal salaireBase = BigDecimal.ZERO;
     @XmlElement(name = "indemniteJustifie")
-    private BigDecimal indemniteJustifie=BigDecimal.ZERO;
+    private BigDecimal indemniteJustifie = BigDecimal.ZERO;
     @XmlElement(name = "indemnite")
-    private BigDecimal indemnite=BigDecimal.ZERO;
+    private BigDecimal indemnite = BigDecimal.ZERO;
     @XmlElement(name = "primes")
-    private BigDecimal primes=BigDecimal.ZERO;
+    private BigDecimal primes = BigDecimal.ZERO;
     @XmlElement(name = "pourcentageAnciennete")
-    private BigDecimal pourcentageAnciennete=BigDecimal.ZERO;
+    private BigDecimal pourcentageAnciennete = BigDecimal.ZERO;
     @XmlElement(name = "cotisation")
-    private BigDecimal cotisation=BigDecimal.ZERO;
+    private BigDecimal cotisation = BigDecimal.ZERO;
     @XmlElement(name = "avantage")
-    private BigDecimal avantage=BigDecimal.ZERO;
+    private BigDecimal avantage = BigDecimal.ZERO;
     @XmlElement(name = "heuresSupplementaires")
-    private BigDecimal heuresSupplementaires=BigDecimal.ZERO;
+    private BigDecimal heuresSupplementaires = BigDecimal.ZERO;
     @XmlElement(name = "declarationIr")
     @ManyToOne
     @JsonBackReference

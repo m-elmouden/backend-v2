@@ -1,38 +1,31 @@
 package com.ird.faa.service.admin.impl;
 
-import java.io.File;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Date;
-
-import java.util.ArrayList;
-
 import com.ird.faa.bean.*;
-import com.ird.faa.ws.rest.provided.vo.*;
+import com.ird.faa.dao.DeclarationIrDao;
+import com.ird.faa.service.admin.facade.*;
+import com.ird.faa.service.core.facade.ArchivableService;
+import com.ird.faa.service.core.impl.AbstractServiceImpl;
+import com.ird.faa.service.util.ListUtil;
+import com.ird.faa.service.util.SearchUtil;
+import com.ird.faa.service.util.StringUtil;
+import com.ird.faa.ws.rest.provided.vo.DeclarationIrEmployeXml;
+import com.ird.faa.ws.rest.provided.vo.DeclarationIrVo;
+import com.ird.faa.ws.rest.provided.vo.DeclarationIrXml;
+import com.ird.faa.ws.rest.provided.vo.SocieteXml;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.PropertyException;
-
-import com.ird.faa.dao.DeclarationIrDao;
-import com.ird.faa.service.admin.facade.DeclarationIrAdminService;
-import com.ird.faa.service.admin.facade.SocieteAdminService;
-import com.ird.faa.service.admin.facade.PaiementDeclarationIrAdminService;
-import com.ird.faa.service.admin.facade.EtatDeclarationIrAdminService;
-import com.ird.faa.service.admin.facade.DeclarationIrEmployeAdminService;
-import com.ird.faa.service.admin.facade.PrelevementSocialEmployeAdminService;
-
-import com.ird.faa.service.util.*;
-
-import com.ird.faa.service.core.facade.ArchivableService;
-import com.ird.faa.service.core.impl.AbstractServiceImpl;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import java.io.File;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class DeclarationIrAdminServiceImpl extends AbstractServiceImpl<DeclarationIr> implements DeclarationIrAdminService {
@@ -76,9 +69,9 @@ public class DeclarationIrAdminServiceImpl extends AbstractServiceImpl<Declarati
 
     @Override
     public List<DeclarationIr> findByEtatDeclarationIrReference(String reference) {
-        if(reference==null) return null;
-        List<DeclarationIr> declarationIrLists= declarationIrDao.findByEtatDeclarationIrReference(reference);
-        System.out.println("this is -->"+declarationIrLists.size());
+        if (reference == null) return null;
+        List<DeclarationIr> declarationIrLists = declarationIrDao.findByEtatDeclarationIrReference(reference);
+        System.out.println("this is -->" + declarationIrLists.size());
         return declarationIrLists;
     }
 
@@ -333,7 +326,7 @@ public class DeclarationIrAdminServiceImpl extends AbstractServiceImpl<Declarati
             JAXBContext jaxbContext = JAXBContext.newInstance(DeclarationIrXml.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            File fileDecIs = new File("C:\\Users\\admin\\Desktop\\DecIR_XML\\DecIR-" + declarationIr.getAnnee() +declarationIr.getMois()+ declarationIr.getRefrerence() + ".xml");
+            File fileDecIs = new File("C:\\Users\\admin\\Desktop\\DecIR_XML\\DecIR-" + declarationIr.getAnnee() + declarationIr.getMois() + declarationIr.getRefrerence() + ".xml");
             marshaller.marshal(decXml, fileDecIs);
 //            marshaller.marshal(decXml, System.out);
 
@@ -383,7 +376,7 @@ public class DeclarationIrAdminServiceImpl extends AbstractServiceImpl<Declarati
 
     }
 
-    public List<com.ird.faa.ws.rest.provided.vo.DeclarationirStatVo> findStatByDateDeclarationAndEtatDeclaration(String dateMin,String dateMax) {
+    public List<com.ird.faa.ws.rest.provided.vo.DeclarationirStatVo> findStatByDateDeclarationAndEtatDeclaration(String dateMin, String dateMax) {
         String query = "SELECT NEW com.ird.faa.ws.rest.provided.vo.DeclarationirStatVo(d.etatDeclarationIr,SUM(d.totalSalaireBrut)) FROM DeclarationIr d WHERE 1=1";
         query += SearchUtil.addConstraintMinMaxDate("d", "dateCreation", dateMin, dateMax);
         query += " GROUP BY d.etatDeclarationIr";

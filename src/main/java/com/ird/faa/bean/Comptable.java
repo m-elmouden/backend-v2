@@ -1,26 +1,18 @@
 package com.ird.faa.bean;
 
-import java.util.Objects;
-import java.util.List;
-
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-
+import com.ird.faa.security.bean.User;
 
 import javax.persistence.*;
-
-import com.ird.faa.security.bean.User;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 
 @Entity
 @Table(name = "comptable")
 public class Comptable extends User {
 
-
-    public Comptable(String username) {
-        super(username);
-    }
 
     @Column(length = 500)
     private String code;
@@ -56,14 +48,15 @@ public class Comptable extends User {
     private String baseHorizon;
     @Transient
     private String role;
-
     @ManyToOne
     private TypeComptable typeComptable;
-
     @OneToMany(mappedBy = "comptable")
     private List<Societe> societes;
     @OneToMany(mappedBy = "comptable")
     private List<Demande> demandes;
+    public Comptable(String username) {
+        super(username);
+    }
 
     public Comptable() {
         super();

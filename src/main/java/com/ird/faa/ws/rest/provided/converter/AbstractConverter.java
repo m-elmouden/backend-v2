@@ -1,11 +1,11 @@
-package  com.ird.faa.ws.rest.provided.converter;
+package com.ird.faa.ws.rest.provided.converter;
 
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
-public abstract class AbstractConverter<T,V> {
+public abstract class AbstractConverter<T, V> {
 
     public abstract T toItem(V vo);
 
@@ -13,7 +13,7 @@ public abstract class AbstractConverter<T,V> {
 
     public List<T> toItem(List<V> vos) {
         if (vos == null || vos.isEmpty()) {
-        return Collections.emptyList();
+            return Collections.emptyList();
         } else {
             List<T> items = new ArrayList();
             for (V vo : vos) {

@@ -1,21 +1,21 @@
 package com.ird.faa.service.admin.facade;
 
-import java.util.List;
 import com.ird.faa.bean.Societe;
-import com.ird.faa.ws.rest.provided.vo.SocieteVo;
 import com.ird.faa.service.core.facade.AbstractService;
+import com.ird.faa.ws.rest.provided.vo.SocieteVo;
 
-public interface SocieteAdminService extends AbstractService<Societe,Long,SocieteVo>{
+import java.util.List;
+
+public interface SocieteAdminService extends AbstractService<Societe, Long, SocieteVo> {
 
     Societe findByUsername(String username);
 
 
-
-/**
-    * delete Societe from database
-    * @param id - id of Societe to be deleted
-    *
-    */
+    /**
+     * delete Societe from database
+     *
+     * @param id - id of Societe to be deleted
+     */
     int deleteById(Long id);
 
 
@@ -30,6 +30,7 @@ public interface SocieteAdminService extends AbstractService<Societe,Long,Societ
     List<Societe> findByPresidentSocieteId(Long id);
 
     int deleteByPresidentSocieteId(Long id);
+
     List<Societe> findByTypeSocieteCode(String code);
 
     int deleteByTypeSocieteCode(String code);
@@ -37,11 +38,6 @@ public interface SocieteAdminService extends AbstractService<Societe,Long,Societ
     List<Societe> findByTypeSocieteId(Long id);
 
     int deleteByTypeSocieteId(Long id);
-
-
-
-
-
 
 
 }

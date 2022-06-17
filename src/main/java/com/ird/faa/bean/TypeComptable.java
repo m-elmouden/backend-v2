@@ -1,9 +1,7 @@
 package com.ird.faa.bean;
 
-import java.util.Objects;
-
-
 import javax.persistence.*;
+import java.util.Objects;
 
 
 @Entity

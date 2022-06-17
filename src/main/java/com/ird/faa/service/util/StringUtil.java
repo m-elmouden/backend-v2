@@ -1,4 +1,5 @@
 package com.ird.faa.service.util;
+
 public class StringUtil {
 
     public static boolean isEmpty(String string) {
@@ -10,6 +11,6 @@ public class StringUtil {
     }
 
     public static boolean isNotEmpty(Object value) {
-    return value!=null && !isEmpty(value.toString());
+        return value != null && !isEmpty(value.toString());
     }
 }

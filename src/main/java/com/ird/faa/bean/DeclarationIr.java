@@ -1,22 +1,17 @@
 package com.ird.faa.bean;
 
-import java.util.Objects;
-import java.util.List;
-
-import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-
-import java.math.BigDecimal;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 
 @Entity
@@ -41,15 +36,15 @@ public class DeclarationIr implements Archivable {
     @XmlElement(name = "mois")
     private String mois;
     @XmlElement(name = "montantIrCalcule")
-    private BigDecimal montantIrCalcule=BigDecimal.ZERO;
+    private BigDecimal montantIrCalcule = BigDecimal.ZERO;
     @XmlElement(name = "montantIrAPaye")
-    private BigDecimal montantIrAPaye=BigDecimal.ZERO;
+    private BigDecimal montantIrAPaye = BigDecimal.ZERO;
     @XmlElement(name = "totalAPaye")
-    private BigDecimal totalAPaye=BigDecimal.ZERO;
-    @XmlElement(name ="totalSalaireNet" )
-    private BigDecimal totalSalaireNet=BigDecimal.ZERO;
+    private BigDecimal totalAPaye = BigDecimal.ZERO;
+    @XmlElement(name = "totalSalaireNet")
+    private BigDecimal totalSalaireNet = BigDecimal.ZERO;
     @XmlElement(name = "totalSalaireBrut")
-    private BigDecimal totalSalaireBrut=BigDecimal.ZERO;
+    private BigDecimal totalSalaireBrut = BigDecimal.ZERO;
     @Column(columnDefinition = "boolean default false")
     private Boolean archive = false;
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -67,10 +62,8 @@ public class DeclarationIr implements Archivable {
     private String username;
 
 
-
-    @XmlElement(name ="societe" )
+    @XmlElement(name = "societe")
     @ManyToOne
-    @JsonBackReference
     private Societe societe;
 
 
@@ -80,9 +73,9 @@ public class DeclarationIr implements Archivable {
     private PaiementDeclarationIr paiementDeclarationIr;
 
     @ManyToOne
-    private Comptable comptableTraiteur ;
+    private Comptable comptableTraiteur;
     @ManyToOne
-    private Comptable comptableValidateur ;
+    private Comptable comptableValidateur;
     @XmlElement(name = "declarationIrEmployes")
     @OneToMany(mappedBy = "declarationIr")
     @JsonManagedReference
@@ -91,7 +84,6 @@ public class DeclarationIr implements Archivable {
     private List<PrelevementSocialEmploye> prelevementSocialEmployes;
     @ManyToOne
     private Demande demande;
-
 
 
     public DeclarationIr() {
@@ -275,6 +267,7 @@ public class DeclarationIr implements Archivable {
     public void setComptableValidateur(Comptable comptableValidateur) {
         this.comptableValidateur = comptableValidateur;
     }
+
     public Demande getDemande() {
         return demande;
     }

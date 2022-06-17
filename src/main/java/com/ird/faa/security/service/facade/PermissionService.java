@@ -4,5 +4,5 @@ import com.ird.faa.security.bean.Permission;
 
 
 public interface PermissionService {
-    public Permission save(Permission permission);
+    Permission save(Permission permission);
 }

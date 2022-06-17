@@ -1,7 +1,5 @@
 package com.ird.faa.upload.employe.controller;
 
-import java.util.List;
-
 import com.ird.faa.upload.employe.helper.ExcelHelperEmploye;
 import com.ird.faa.upload.employe.message.ResponseMessageEmploye;
 import com.ird.faa.upload.employe.model.Employe;
@@ -10,14 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/api/excel")
 public class ExcelControllerEmploye {
     @Autowired
     ExcelServiceEmploye fileService;
+
     @PostMapping("/upload/")
     public ResponseEntity<ResponseMessageEmploye> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
@@ -34,6 +38,7 @@ public class ExcelControllerEmploye {
         message = "Please upload an excel file!";
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessageEmploye(message));
     }
+
     @GetMapping("/tutorials")
     public ResponseEntity<List<Employe>> getAllTutorials() {
         try {

@@ -1,20 +1,19 @@
 package com.ird.faa.service.societe.facade;
 
-import java.util.List;
 import com.ird.faa.bean.Commentaire;
-import com.ird.faa.ws.rest.provided.vo.CommentaireVo;
 import com.ird.faa.service.core.facade.AbstractService;
+import com.ird.faa.ws.rest.provided.vo.CommentaireVo;
 
-public interface CommentaireSocieteService extends AbstractService<Commentaire,Long,CommentaireVo>{
+import java.util.List;
+
+public interface CommentaireSocieteService extends AbstractService<Commentaire, Long, CommentaireVo> {
 
 
-
-
-/**
-    * delete Commentaire from database
-    * @param id - id of Commentaire to be deleted
-    *
-    */
+    /**
+     * delete Commentaire from database
+     *
+     * @param id - id of Commentaire to be deleted
+     */
     int deleteById(Long id);
 
 
@@ -25,11 +24,6 @@ public interface CommentaireSocieteService extends AbstractService<Commentaire,L
     List<Commentaire> findByDemandeId(Long id);
 
     int deleteByDemandeId(Long id);
-
-
-
-
-
 
 
 }

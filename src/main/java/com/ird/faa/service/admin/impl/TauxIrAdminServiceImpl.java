@@ -1,25 +1,20 @@
 package com.ird.faa.service.admin.impl;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import java.util.ArrayList;
-
-import com.ird.faa.bean.DeclarationIrEmploye;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityManager;
-
 import com.ird.faa.bean.TauxIr;
 import com.ird.faa.dao.TauxIrDao;
 import com.ird.faa.service.admin.facade.TauxIrAdminService;
-
-import com.ird.faa.ws.rest.provided.vo.TauxIrVo;
-import com.ird.faa.service.util.*;
-
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
+import com.ird.faa.service.util.ListUtil;
+import com.ird.faa.service.util.SearchUtil;
+import com.ird.faa.ws.rest.provided.vo.TauxIrVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TauxIrAdminServiceImpl extends AbstractServiceImpl<TauxIr> implements TauxIrAdminService {

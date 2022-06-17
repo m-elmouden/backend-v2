@@ -1,12 +1,11 @@
 package com.ird.faa.ws.rest.provided.converter;
 
+import com.ird.faa.bean.DeclarationIrEmploye;
+import com.ird.faa.service.util.NumberUtil;
+import com.ird.faa.service.util.StringUtil;
+import com.ird.faa.ws.rest.provided.vo.DeclarationIrEmployeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.ird.faa.service.util.*;
-
-
-import com.ird.faa.bean.DeclarationIrEmploye;
-import com.ird.faa.ws.rest.provided.vo.DeclarationIrEmployeVo;
 
 @Component
 public class DeclarationIrEmployeConverter extends AbstractConverter<DeclarationIrEmploye, DeclarationIrEmployeVo> {

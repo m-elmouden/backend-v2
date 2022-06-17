@@ -2,11 +2,9 @@ package com.ird.faa.bean;
 
 import com.ird.faa.upload.employe.model.Employe;
 
-import java.util.Objects;
-
-
-import java.math.BigDecimal;
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 
 @Entity

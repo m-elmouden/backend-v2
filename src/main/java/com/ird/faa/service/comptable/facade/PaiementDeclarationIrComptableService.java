@@ -1,36 +1,39 @@
 package com.ird.faa.service.comptable.facade;
 
-import java.util.List;
 import com.ird.faa.bean.PaiementDeclarationIr;
-import com.ird.faa.ws.rest.provided.vo.PaiementDeclarationIrVo;
 import com.ird.faa.service.core.facade.AbstractService;
+import com.ird.faa.ws.rest.provided.vo.PaiementDeclarationIrVo;
 
-public interface PaiementDeclarationIrComptableService extends AbstractService<PaiementDeclarationIr,Long,PaiementDeclarationIrVo>{
+import java.util.List;
+
+public interface PaiementDeclarationIrComptableService extends AbstractService<PaiementDeclarationIr, Long, PaiementDeclarationIrVo> {
 
 
     /**
-    * find PaiementDeclarationIr from database by reference (reference)
-    * @param reference - reference of PaiementDeclarationIr
-    * @return the founded PaiementDeclarationIr , If no PaiementDeclarationIr were
-    *         found in database return  null.
-    */
+     * find PaiementDeclarationIr from database by reference (reference)
+     *
+     * @param reference - reference of PaiementDeclarationIr
+     * @return the founded PaiementDeclarationIr , If no PaiementDeclarationIr were
+     * found in database return  null.
+     */
     PaiementDeclarationIr findByReference(String reference);
 
     /**
-    * find PaiementDeclarationIr from database by id (PK) or reference (reference)
-    * @param id - id of PaiementDeclarationIr
-    * @param reference - reference of PaiementDeclarationIr
-    * @return the founded PaiementDeclarationIr , If no PaiementDeclarationIr were
-    *         found in database return  null.
-    */
+     * find PaiementDeclarationIr from database by id (PK) or reference (reference)
+     *
+     * @param id        - id of PaiementDeclarationIr
+     * @param reference - reference of PaiementDeclarationIr
+     * @return the founded PaiementDeclarationIr , If no PaiementDeclarationIr were
+     * found in database return  null.
+     */
     PaiementDeclarationIr findByIdOrReference(PaiementDeclarationIr paiementDeclarationIr);
 
 
-/**
-    * delete PaiementDeclarationIr from database
-    * @param id - id of PaiementDeclarationIr to be deleted
-    *
-    */
+    /**
+     * delete PaiementDeclarationIr from database
+     *
+     * @param id - id of PaiementDeclarationIr to be deleted
+     */
     int deleteById(Long id);
 
 
@@ -44,15 +47,12 @@ public interface PaiementDeclarationIrComptableService extends AbstractService<P
 
 
     /**
-    * delete PaiementDeclarationIr from database by reference (reference)
-    *
-    * @param reference - reference of PaiementDeclarationIr to be deleted
-    * @return 1 if PaiementDeclarationIr deleted successfully
-    */
+     * delete PaiementDeclarationIr from database by reference (reference)
+     *
+     * @param reference - reference of PaiementDeclarationIr to be deleted
+     * @return 1 if PaiementDeclarationIr deleted successfully
+     */
     int deleteByReference(String reference);
-
-
-
 
 
 }

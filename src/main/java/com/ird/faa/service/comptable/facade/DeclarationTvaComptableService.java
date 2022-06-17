@@ -1,43 +1,46 @@
 package com.ird.faa.service.comptable.facade;
 
-import java.util.List;
 import com.ird.faa.bean.DeclarationTva;
-import com.ird.faa.ws.rest.provided.vo.DeclarationTvaVo;
 import com.ird.faa.service.core.facade.AbstractService;
+import com.ird.faa.ws.rest.provided.vo.DeclarationTvaVo;
 
-public interface DeclarationTvaComptableService extends AbstractService<DeclarationTva,Long,DeclarationTvaVo>{
+import java.util.List;
+
+public interface DeclarationTvaComptableService extends AbstractService<DeclarationTva, Long, DeclarationTvaVo> {
 
 
     /**
-    * find DeclarationTva from database by reference (reference)
-    * @param reference - reference of DeclarationTva
-    * @return the founded DeclarationTva , If no DeclarationTva were
-    *         found in database return  null.
-    */
+     * find DeclarationTva from database by reference (reference)
+     *
+     * @param reference - reference of DeclarationTva
+     * @return the founded DeclarationTva , If no DeclarationTva were
+     * found in database return  null.
+     */
     DeclarationTva findByReference(String reference);
 
     /**
-    * find DeclarationTva from database by id (PK) or reference (reference)
-    * @param id - id of DeclarationTva
-    * @param reference - reference of DeclarationTva
-    * @return the founded DeclarationTva , If no DeclarationTva were
-    *         found in database return  null.
-    */
+     * find DeclarationTva from database by id (PK) or reference (reference)
+     *
+     * @param id        - id of DeclarationTva
+     * @param reference - reference of DeclarationTva
+     * @return the founded DeclarationTva , If no DeclarationTva were
+     * found in database return  null.
+     */
     DeclarationTva findByIdOrReference(DeclarationTva declarationTva);
 
 
-/**
-    * delete DeclarationTva from database
-    * @param id - id of DeclarationTva to be deleted
-    *
-    */
+    /**
+     * delete DeclarationTva from database
+     *
+     * @param id - id of DeclarationTva to be deleted
+     */
     int deleteById(Long id);
-
 
 
     List<DeclarationTva> findBySocieteId(Long id);
 
     int deleteBySocieteId(Long id);
+
     List<DeclarationTva> findByTypeDeclarationTvaReference(String reference);
 
     int deleteByTypeDeclarationTvaReference(String reference);
@@ -45,6 +48,7 @@ public interface DeclarationTvaComptableService extends AbstractService<Declarat
     List<DeclarationTva> findByTypeDeclarationTvaId(Long id);
 
     int deleteByTypeDeclarationTvaId(Long id);
+
     List<DeclarationTva> findByEtatDeclarationTvaReference(String reference);
 
     int deleteByEtatDeclarationTvaReference(String reference);
@@ -52,6 +56,7 @@ public interface DeclarationTvaComptableService extends AbstractService<Declarat
     List<DeclarationTva> findByEtatDeclarationTvaId(Long id);
 
     int deleteByEtatDeclarationTvaId(Long id);
+
     List<DeclarationTva> findByPaiementDeclarationTvaReference(String reference);
 
     int deleteByPaiementDeclarationTvaReference(String reference);
@@ -62,17 +67,16 @@ public interface DeclarationTvaComptableService extends AbstractService<Declarat
 
 
     /**
-    * delete DeclarationTva from database by reference (reference)
-    *
-    * @param reference - reference of DeclarationTva to be deleted
-    * @return 1 if DeclarationTva deleted successfully
-    */
+     * delete DeclarationTva from database by reference (reference)
+     *
+     * @param reference - reference of DeclarationTva to be deleted
+     * @return 1 if DeclarationTva deleted successfully
+     */
     int deleteByReference(String reference);
 
 
+    DeclarationTva archiver(DeclarationTva declarationTva);
 
-
-    DeclarationTva archiver(DeclarationTva declarationTva) ;
     DeclarationTva desarchiver(DeclarationTva declarationTva);
 
 }

@@ -1,11 +1,9 @@
 package com.ird.faa.ws.rest.provided.vo;
 
-import com.ird.faa.bean.DeclarationIr;
 import com.ird.faa.bean.DeclarationIrEmploye;
 import com.ird.faa.bean.TauxIr;
 import com.ird.faa.upload.employe.model.Employe;
 
-import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 
 public class DeclarationIrEmployeXml {

@@ -1,38 +1,40 @@
 package com.ird.faa.service.admin.facade;
 
-import java.util.List;
 import com.ird.faa.bean.TauxCnss;
-import com.ird.faa.ws.rest.provided.vo.TauxCnssVo;
 import com.ird.faa.service.core.facade.AbstractService;
+import com.ird.faa.ws.rest.provided.vo.TauxCnssVo;
 
-public interface TauxCnssAdminService extends AbstractService<TauxCnss,Long,TauxCnssVo>{
+import java.util.List;
+
+public interface TauxCnssAdminService extends AbstractService<TauxCnss, Long, TauxCnssVo> {
 
 
     /**
-    * find TauxCnss from database by ref (reference)
-    * @param ref - reference of TauxCnss
-    * @return the founded TauxCnss , If no TauxCnss were
-    *         found in database return  null.
-    */
+     * find TauxCnss from database by ref (reference)
+     *
+     * @param ref - reference of TauxCnss
+     * @return the founded TauxCnss , If no TauxCnss were
+     * found in database return  null.
+     */
     TauxCnss findByRef(String ref);
 
     /**
-    * find TauxCnss from database by id (PK) or ref (reference)
-    * @param id - id of TauxCnss
-    * @param ref - reference of TauxCnss
-    * @return the founded TauxCnss , If no TauxCnss were
-    *         found in database return  null.
-    */
+     * find TauxCnss from database by id (PK) or ref (reference)
+     *
+     * @param id  - id of TauxCnss
+     * @param ref - reference of TauxCnss
+     * @return the founded TauxCnss , If no TauxCnss were
+     * found in database return  null.
+     */
     TauxCnss findByIdOrRef(TauxCnss tauxCnss);
 
 
-/**
-    * delete TauxCnss from database
-    * @param id - id of TauxCnss to be deleted
-    *
-    */
+    /**
+     * delete TauxCnss from database
+     *
+     * @param id - id of TauxCnss to be deleted
+     */
     int deleteById(Long id);
-
 
 
     List<TauxCnss> findByTypeTauxCnssId(Long id);
@@ -41,17 +43,16 @@ public interface TauxCnssAdminService extends AbstractService<TauxCnss,Long,Taux
 
 
     /**
-    * delete TauxCnss from database by ref (reference)
-    *
-    * @param ref - reference of TauxCnss to be deleted
-    * @return 1 if TauxCnss deleted successfully
-    */
+     * delete TauxCnss from database by ref (reference)
+     *
+     * @param ref - reference of TauxCnss to be deleted
+     * @return 1 if TauxCnss deleted successfully
+     */
     int deleteByRef(String ref);
 
 
+    TauxCnss archiver(TauxCnss tauxCnss);
 
-
-    TauxCnss archiver(TauxCnss tauxCnss) ;
     TauxCnss desarchiver(TauxCnss tauxCnss);
 
 }

@@ -1,5 +1,15 @@
 package com.ird.faa.upload.employe.helper;
 
+import com.ird.faa.bean.Societe;
+import com.ird.faa.bean.TypeEmploye;
+import com.ird.faa.service.admin.facade.SocieteAdminService;
+import com.ird.faa.service.admin.facade.TypeEmployeAdminService;
+import com.ird.faa.upload.employe.model.Employe;
+import org.apache.poi.ss.usermodel.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -7,35 +17,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.ird.faa.upload.employe.model.Employe;
-import com.ird.faa.bean.Societe;
-import com.ird.faa.bean.TypeEmploye;
-import com.ird.faa.service.admin.facade.SocieteAdminService;
-import com.ird.faa.service.admin.facade.TypeEmployeAdminService;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.multipart.MultipartFile;
-
 @Configuration
 public class ExcelHelperEmploye {
+    public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    static String[] HEADERs = {"cin", "nom", "prenom", "nombreFamille", "typeEmploye", "societe"};
+    static String SHEET = "Employe";
     @Autowired
     private TypeEmployeAdminService typeEmployeAdminService;
     @Autowired
     private SocieteAdminService societeAdminService;
-    public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    static String[] HEADERs = {"cin", "nom", "prenom", "nombreFamille", "typeEmploye", "societe"};
-    static String SHEET="Employe";
+
     public static boolean hasExcelFormat(MultipartFile file) {
-        if (!TYPE.equals(file.getContentType())) {
-            return false;
-        }
-        return true;
+        return TYPE.equals(file.getContentType());
     }
 
-    public  List<Employe> excelToEmployes(InputStream is) {
+    public List<Employe> excelToEmployes(InputStream is) {
         try {
 
             Workbook workbook = WorkbookFactory.create(is);

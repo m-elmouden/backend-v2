@@ -1,15 +1,12 @@
 package com.ird.faa.bean;
 
-import java.util.Objects;
-import java.util.List;
-
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-
-import java.math.BigDecimal;
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 
 @Entity

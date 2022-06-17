@@ -1,22 +1,20 @@
 package com.ird.faa.service.comptable.facade;
 
-import java.util.List;
 import com.ird.faa.bean.Acompte;
-import com.ird.faa.ws.rest.provided.vo.AcompteVo;
 import com.ird.faa.service.core.facade.AbstractService;
+import com.ird.faa.ws.rest.provided.vo.AcompteVo;
 
-public interface AcompteComptableService extends AbstractService<Acompte,Long,AcompteVo>{
+import java.util.List;
+
+public interface AcompteComptableService extends AbstractService<Acompte, Long, AcompteVo> {
 
 
-
-
-/**
-    * delete Acompte from database
-    * @param id - id of Acompte to be deleted
-    *
-    */
+    /**
+     * delete Acompte from database
+     *
+     * @param id - id of Acompte to be deleted
+     */
     int deleteById(Long id);
-
 
 
     List<Acompte> findBySocieteId(Long id);
@@ -24,11 +22,8 @@ public interface AcompteComptableService extends AbstractService<Acompte,Long,Ac
     int deleteBySocieteId(Long id);
 
 
+    Acompte archiver(Acompte acompte);
 
-
-
-
-    Acompte archiver(Acompte acompte) ;
     Acompte desarchiver(Acompte acompte);
 
 }

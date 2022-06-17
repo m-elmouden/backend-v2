@@ -3,42 +3,38 @@ package com.ird.faa.ws.rest.provided.vo;
 
 public class TypeComptableVo {
 
-    private String id ;
-    private String libelle ;
-    private String reference ;
+    private String id;
+    private String libelle;
+    private String reference;
 
 
-
-
-
-    public TypeComptableVo(){
-    super();
+    public TypeComptableVo() {
+        super();
     }
 
-        public String getId(){
+    public String getId() {
         return this.id;
-        }
+    }
 
-        public void setId(String id){
+    public void setId(String id) {
         this.id = id;
-        }
-        public String getLibelle(){
+    }
+
+    public String getLibelle() {
         return this.libelle;
-        }
+    }
 
-        public void setLibelle(String libelle){
+    public void setLibelle(String libelle) {
         this.libelle = libelle;
-        }
-        public String getReference(){
+    }
+
+    public String getReference() {
         return this.reference;
-        }
+    }
 
-        public void setReference(String reference){
+    public void setReference(String reference) {
         this.reference = reference;
-        }
+    }
 
 
-
-
-
-            }
+}

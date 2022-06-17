@@ -1,15 +1,10 @@
 package com.ird.faa.ws.rest.provided.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.ird.faa.bean.DeclarationIr;
 import com.ird.faa.bean.Societe;
 
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
-import javax.xml.bind.annotation.XmlElement;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 public class SocieteXml {
     private String ice;
@@ -43,6 +38,10 @@ public class SocieteXml {
         return raisonSociale;
     }
 
+    public void setRaisonSociale(String raisonSociale) {
+        this.raisonSociale = raisonSociale;
+    }
+
     public String getFax() {
         return fax;
     }
@@ -57,10 +56,6 @@ public class SocieteXml {
 
     public void setTelephone(BigDecimal telephone) {
         this.telephone = telephone;
-    }
-
-    public void setRaisonSociale(String raisonSociale) {
-        this.raisonSociale = raisonSociale;
     }
 
     public Date getDateCreation() {

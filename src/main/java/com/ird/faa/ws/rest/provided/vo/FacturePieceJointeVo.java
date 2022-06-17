@@ -3,50 +3,50 @@ package com.ird.faa.ws.rest.provided.vo;
 
 public class FacturePieceJointeVo {
 
-    private String id ;
-    private String name ;
-    private String path ;
+    private String id;
+    private String name;
+    private String path;
 
 
+    private FactureVo factureVo;
 
-        private FactureVo factureVo ;
 
-
-    public FacturePieceJointeVo(){
-    super();
+    public FacturePieceJointeVo() {
+        super();
     }
 
-        public String getId(){
+    public String getId() {
         return this.id;
-        }
+    }
 
-        public void setId(String id){
+    public void setId(String id) {
         this.id = id;
-        }
-        public String getName(){
+    }
+
+    public String getName() {
         return this.name;
-        }
+    }
 
-        public void setName(String name){
+    public void setName(String name) {
         this.name = name;
-        }
-        public String getPath(){
+    }
+
+    public String getPath() {
         return this.path;
-        }
+    }
 
-        public void setPath(String path){
+    public void setPath(String path) {
         this.path = path;
-        }
+    }
 
 
-
-        public FactureVo getFactureVo(){
+    public FactureVo getFactureVo() {
         return this.factureVo;
-        }
+    }
 
-        public void setFactureVo(FactureVo factureVo){
+    public void setFactureVo(FactureVo factureVo) {
         this.factureVo = factureVo;
-        }
+    }
 
 
-            }
+}

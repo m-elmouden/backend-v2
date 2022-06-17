@@ -1,39 +1,41 @@
 package com.ird.faa.service.admin.facade;
 
+import com.ird.faa.bean.CompteComptable;
+import com.ird.faa.service.core.facade.AbstractService;
+import com.ird.faa.ws.rest.provided.vo.CompteComptableVo;
+
 import java.math.BigDecimal;
 import java.util.List;
-import com.ird.faa.bean.CompteComptable;
-import com.ird.faa.ws.rest.provided.vo.CompteComptableVo;
-import com.ird.faa.service.core.facade.AbstractService;
 
-public interface CompteComptableAdminService extends AbstractService<CompteComptable,Long,CompteComptableVo>{
+public interface CompteComptableAdminService extends AbstractService<CompteComptable, Long, CompteComptableVo> {
 
 
     /**
-    * find CompteComptable from database by numero (reference)
-    * @param numero - reference of CompteComptable
-    * @return the founded CompteComptable , If no CompteComptable were
-    *         found in database return  null.
-    */
+     * find CompteComptable from database by numero (reference)
+     *
+     * @param numero - reference of CompteComptable
+     * @return the founded CompteComptable , If no CompteComptable were
+     * found in database return  null.
+     */
     CompteComptable findByNumero(BigDecimal numero);
 
     /**
-    * find CompteComptable from database by id (PK) or numero (reference)
-    * @param id - id of CompteComptable
-    * @param numero - reference of CompteComptable
-    * @return the founded CompteComptable , If no CompteComptable were
-    *         found in database return  null.
-    */
+     * find CompteComptable from database by id (PK) or numero (reference)
+     *
+     * @param id     - id of CompteComptable
+     * @param numero - reference of CompteComptable
+     * @return the founded CompteComptable , If no CompteComptable were
+     * found in database return  null.
+     */
     CompteComptable findByIdOrNumero(CompteComptable compteComptable);
 
 
-/**
-    * delete CompteComptable from database
-    * @param id - id of CompteComptable to be deleted
-    *
-    */
+    /**
+     * delete CompteComptable from database
+     *
+     * @param id - id of CompteComptable to be deleted
+     */
     int deleteById(Long id);
-
 
 
     List<CompteComptable> findBySousClasseComptableId(Long id);
@@ -42,15 +44,12 @@ public interface CompteComptableAdminService extends AbstractService<CompteCompt
 
 
     /**
-    * delete CompteComptable from database by numero (reference)
-    *
-    * @param numero - reference of CompteComptable to be deleted
-    * @return 1 if CompteComptable deleted successfully
-    */
+     * delete CompteComptable from database by numero (reference)
+     *
+     * @param numero - reference of CompteComptable to be deleted
+     * @return 1 if CompteComptable deleted successfully
+     */
     int deleteByNumero(BigDecimal numero);
-
-
-
 
 
 }

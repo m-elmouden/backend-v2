@@ -1,16 +1,14 @@
 package com.ird.faa.dao;
 
+import com.ird.faa.bean.Commentaire;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-import com.ird.faa.bean.Commentaire;
-
-import org.springframework.data.jpa.repository.Query;
-
 @Repository
-public interface CommentaireDao extends JpaRepository<Commentaire,Long> {
-
+public interface CommentaireDao extends JpaRepository<Commentaire, Long> {
 
 
     @Query("SELECT item FROM Commentaire item ORDER BY item.dateCommentaire ASC")
@@ -18,6 +16,7 @@ public interface CommentaireDao extends JpaRepository<Commentaire,Long> {
 
 
     List<Commentaire> findByDemandeReference(String reference);
+
     int deleteByDemandeReference(String reference);
 
     List<Commentaire> findByDemandeId(Long id);

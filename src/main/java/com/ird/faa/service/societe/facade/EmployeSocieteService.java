@@ -1,36 +1,39 @@
 package com.ird.faa.service.societe.facade;
 
-import java.util.List;
+import com.ird.faa.service.core.facade.AbstractService;
 import com.ird.faa.upload.employe.model.Employe;
 import com.ird.faa.ws.rest.provided.vo.EmployeVo;
-import com.ird.faa.service.core.facade.AbstractService;
 
-public interface EmployeSocieteService extends AbstractService<Employe,Long,EmployeVo>{
+import java.util.List;
+
+public interface EmployeSocieteService extends AbstractService<Employe, Long, EmployeVo> {
 
 
     /**
-    * find Employe from database by cin (reference)
-    * @param cin - reference of Employe
-    * @return the founded Employe , If no Employe were
-    *         found in database return  null.
-    */
+     * find Employe from database by cin (reference)
+     *
+     * @param cin - reference of Employe
+     * @return the founded Employe , If no Employe were
+     * found in database return  null.
+     */
     Employe findByCin(String cin);
 
     /**
-    * find Employe from database by id (PK) or cin (reference)
-    * @param id - id of Employe
-    * @param cin - reference of Employe
-    * @return the founded Employe , If no Employe were
-    *         found in database return  null.
-    */
+     * find Employe from database by id (PK) or cin (reference)
+     *
+     * @param id  - id of Employe
+     * @param cin - reference of Employe
+     * @return the founded Employe , If no Employe were
+     * found in database return  null.
+     */
     Employe findByIdOrCin(Employe employe);
 
 
-/**
-    * delete Employe from database
-    * @param id - id of Employe to be deleted
-    *
-    */
+    /**
+     * delete Employe from database
+     *
+     * @param id - id of Employe to be deleted
+     */
     int deleteById(Long id);
 
 
@@ -45,6 +48,7 @@ public interface EmployeSocieteService extends AbstractService<Employe,Long,Empl
     List<Employe> findBySocieteId(Long id);
 
     int deleteBySocieteId(Long id);
+
     List<Employe> findByDeclarationCnssRef(String ref);
 
     int deleteByDeclarationCnssRef(String ref);
@@ -55,15 +59,12 @@ public interface EmployeSocieteService extends AbstractService<Employe,Long,Empl
 
 
     /**
-    * delete Employe from database by cin (reference)
-    *
-    * @param cin - reference of Employe to be deleted
-    * @return 1 if Employe deleted successfully
-    */
+     * delete Employe from database by cin (reference)
+     *
+     * @param cin - reference of Employe to be deleted
+     * @return 1 if Employe deleted successfully
+     */
     int deleteByCin(String cin);
-
-
-
 
 
 }

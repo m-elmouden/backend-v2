@@ -2,102 +2,106 @@ package com.ird.faa.ws.rest.provided.vo;
 
 public class PrelevementSocialEmployeVo {
 
-    private String id ;
-    private String salaireBrutImposable ;
-    private String montantCalculer ;
+    private String id;
+    private String salaireBrutImposable;
+    private String montantCalculer;
 
 
-            private String salaireBrutImposableMax ;
-            private String salaireBrutImposableMin ;
-            private String montantCalculerMax ;
-            private String montantCalculerMin ;
+    private String salaireBrutImposableMax;
+    private String salaireBrutImposableMin;
+    private String montantCalculerMax;
+    private String montantCalculerMin;
 
-        private PrelevementSocialVo prelevementSocialVo ;
-        private EmployeVo employeVo ;
-        private DeclarationIrVo declarationIrVo ;
+    private PrelevementSocialVo prelevementSocialVo;
+    private EmployeVo employeVo;
+    private DeclarationIrVo declarationIrVo;
 
 
-    public PrelevementSocialEmployeVo(){
-    super();
+    public PrelevementSocialEmployeVo() {
+        super();
     }
 
-        public String getId(){
+    public String getId() {
         return this.id;
-        }
+    }
 
-        public void setId(String id){
+    public void setId(String id) {
         this.id = id;
-        }
-        public String getSalaireBrutImposable(){
+    }
+
+    public String getSalaireBrutImposable() {
         return this.salaireBrutImposable;
-        }
+    }
 
-        public void setSalaireBrutImposable(String salaireBrutImposable){
+    public void setSalaireBrutImposable(String salaireBrutImposable) {
         this.salaireBrutImposable = salaireBrutImposable;
-        }
-        public String getMontantCalculer(){
+    }
+
+    public String getMontantCalculer() {
         return this.montantCalculer;
-        }
+    }
 
-        public void setMontantCalculer(String montantCalculer){
+    public void setMontantCalculer(String montantCalculer) {
         this.montantCalculer = montantCalculer;
-        }
+    }
 
 
-            public String getSalaireBrutImposableMax(){
-            return this.salaireBrutImposableMax;
-            }
+    public String getSalaireBrutImposableMax() {
+        return this.salaireBrutImposableMax;
+    }
 
-            public String getSalaireBrutImposableMin(){
-            return this.salaireBrutImposableMin;
-            }
+    public void setSalaireBrutImposableMax(String salaireBrutImposableMax) {
+        this.salaireBrutImposableMax = salaireBrutImposableMax;
+    }
 
-            public void setSalaireBrutImposableMax(String salaireBrutImposableMax){
-            this.salaireBrutImposableMax = salaireBrutImposableMax;
-            }
+    public String getSalaireBrutImposableMin() {
+        return this.salaireBrutImposableMin;
+    }
 
-            public void setSalaireBrutImposableMin(String salaireBrutImposableMin){
-            this.salaireBrutImposableMin = salaireBrutImposableMin;
-            }
+    public void setSalaireBrutImposableMin(String salaireBrutImposableMin) {
+        this.salaireBrutImposableMin = salaireBrutImposableMin;
+    }
 
-            public String getMontantCalculerMax(){
-            return this.montantCalculerMax;
-            }
+    public String getMontantCalculerMax() {
+        return this.montantCalculerMax;
+    }
 
-            public String getMontantCalculerMin(){
-            return this.montantCalculerMin;
-            }
+    public void setMontantCalculerMax(String montantCalculerMax) {
+        this.montantCalculerMax = montantCalculerMax;
+    }
 
-            public void setMontantCalculerMax(String montantCalculerMax){
-            this.montantCalculerMax = montantCalculerMax;
-            }
+    public String getMontantCalculerMin() {
+        return this.montantCalculerMin;
+    }
 
-            public void setMontantCalculerMin(String montantCalculerMin){
-            this.montantCalculerMin = montantCalculerMin;
-            }
+    public void setMontantCalculerMin(String montantCalculerMin) {
+        this.montantCalculerMin = montantCalculerMin;
+    }
 
 
-        public PrelevementSocialVo getPrelevementSocialVo(){
+    public PrelevementSocialVo getPrelevementSocialVo() {
         return this.prelevementSocialVo;
-        }
+    }
 
-        public void setPrelevementSocialVo(PrelevementSocialVo prelevementSocialVo){
+    public void setPrelevementSocialVo(PrelevementSocialVo prelevementSocialVo) {
         this.prelevementSocialVo = prelevementSocialVo;
-        }
-        public EmployeVo getEmployeVo(){
+    }
+
+    public EmployeVo getEmployeVo() {
         return this.employeVo;
-        }
+    }
 
-        public void setEmployeVo(EmployeVo employeVo){
+    public void setEmployeVo(EmployeVo employeVo) {
         this.employeVo = employeVo;
-        }
-        public DeclarationIrVo getDeclarationIrVo(){
+    }
+
+    public DeclarationIrVo getDeclarationIrVo() {
         return this.declarationIrVo;
-        }
+    }
 
-        public void setDeclarationIrVo(DeclarationIrVo declarationIrVo){
+    public void setDeclarationIrVo(DeclarationIrVo declarationIrVo) {
         this.declarationIrVo = declarationIrVo;
-        }
+    }
 
 
-            }
+}

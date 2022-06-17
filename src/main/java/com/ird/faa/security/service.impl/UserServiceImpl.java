@@ -1,37 +1,31 @@
 package com.ird.faa.security.service.impl;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-
+import com.ird.faa.security.bean.Role;
+import com.ird.faa.security.bean.User;
+import com.ird.faa.security.dao.UserDao;
+import com.ird.faa.security.service.facade.RoleService;
+import com.ird.faa.security.service.facade.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import  com.ird.faa.security.bean.Role;
-import com.ird.faa.security.bean.User;
-import com.ird.faa.security.dao.UserDao;
-
-import com.ird.faa.security.service.facade.RoleService;
-import com.ird.faa.security.service.facade.UserService;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
+    PasswordEncoder bCryptPasswordEncoder;
+    @Autowired
     private UserDao userDao;
-
     @Autowired
     private RoleService roleService;
-
-    @Autowired
-    PasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public List<User> findAll() {
@@ -41,14 +35,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByUsername(String username) {
         if (username == null)
-        return null;
+            return null;
         return userDao.findByUsername(username);
     }
 
     @Override
     public User findByUsernameWithRoles(String username) {
         if (username == null)
-        return null;
+            return null;
         return userDao.findByUsername(username);
     }
 
@@ -61,7 +55,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(Long id) {
         if (id == null)
-        return null;
+            return null;
         return userDao.getOne(id);
     }
 
@@ -117,7 +111,7 @@ public class UserServiceImpl implements UserService {
             foundedUser.setAuthorities(new ArrayList<>());
             Collection<Role> roles = new ArrayList<Role>();
             for (Role role : user.getRoles()) {
-            	roles.add(roleService.save(role));
+                roles.add(roleService.save(role));
             }
             foundedUser.setRoles(roles);
             return userDao.save(foundedUser);

@@ -1,18 +1,15 @@
 package com.ird.faa.dao;
 
+import com.ird.faa.bean.Facture;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.ird.faa.bean.Facture;
-
-import org.springframework.data.jpa.repository.Query;
-
 @Repository
-public interface FactureDao extends JpaRepository<Facture,Long> {
-
+public interface FactureDao extends JpaRepository<Facture, Long> {
 
 
     @Query("SELECT item FROM Facture item ORDER BY item.dateOperation ASC")
@@ -23,6 +20,7 @@ public interface FactureDao extends JpaRepository<Facture,Long> {
     int deleteByReference(String reference);
 
     List<Facture> findByTvaReference(String reference);
+
     int deleteByTvaReference(String reference);
 
     List<Facture> findByTvaId(Long id);
@@ -44,25 +42,33 @@ public interface FactureDao extends JpaRepository<Facture,Long> {
     List<Facture> findBySocieteId(Long id);
 
     int deleteBySocieteId(Long id);
+
     List<Facture> findByCompteComptableNumero(BigDecimal numero);
+
     int deleteByCompteComptableNumero(BigDecimal numero);
 
     List<Facture> findByCompteComptableId(Long id);
 
     int deleteByCompteComptableId(Long id);
+
     List<Facture> findByDeclarationIsReference(String reference);
+
     int deleteByDeclarationIsReference(String reference);
 
     List<Facture> findByDeclarationIsId(Long id);
 
     int deleteByDeclarationIsId(Long id);
+
     List<Facture> findByDeclarationTvaReference(String reference);
+
     int deleteByDeclarationTvaReference(String reference);
 
     List<Facture> findByDeclarationTvaId(Long id);
 
     int deleteByDeclarationTvaId(Long id);
+
     List<Facture> findByDemandeReference(String reference);
+
     int deleteByDemandeReference(String reference);
 
     List<Facture> findByDemandeId(Long id);

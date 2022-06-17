@@ -1,23 +1,15 @@
 package com.ird.faa.ws.rest.provided.facade.admin;
 
-import com.ird.faa.service.admin.facade.DeclarationIrEmployeAdminService;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import com.ird.faa.bean.DeclarationIrEmploye;
+import com.ird.faa.service.admin.facade.DeclarationIrEmployeAdminService;
 import com.ird.faa.ws.rest.provided.converter.DeclarationIrEmployeConverter;
 import com.ird.faa.ws.rest.provided.vo.DeclarationIrEmployeVo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Api("Manages declarationIrEmploye services")
 @RestController

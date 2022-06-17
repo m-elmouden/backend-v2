@@ -1,19 +1,12 @@
 package com.ird.faa.upload.declarationIrEmploye.helper;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import com.ird.faa.bean.DeclarationIr;
 import com.ird.faa.bean.DeclarationIrEmploye;
-import com.ird.faa.upload.employe.model.Employe;
 import com.ird.faa.bean.TauxIr;
 import com.ird.faa.service.admin.facade.DeclarationIrAdminService;
 import com.ird.faa.service.admin.facade.EmployeAdminService;
 import com.ird.faa.service.admin.facade.TauxIrAdminService;
+import com.ird.faa.upload.employe.model.Employe;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,27 +14,31 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 @Configuration
 @Service
 public class ExcelHelperDeclarationIrEmploye {
+    public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    static String[] HEADERs = {"id", "salaireNet", "salaireBrut", "salaireNetImposable", "salaireBase", "indemniteJustifie", "indemnite", "primes", "pourcentageAnciennete", "cotisation", "avantage", "heuresSupplementaires", "declarationIr", "employe", "tauxIr"};
+    static String SHEET = "declarationIrEmployes";
     @Autowired
     private DeclarationIrAdminService declarationIrAdminService;
     @Autowired
     private EmployeAdminService employeAdminService;
     @Autowired
     private TauxIrAdminService tauxIrAdminService;
-    public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    static String[] HEADERs = {"id", "salaireNet", "salaireBrut", "salaireNetImposable", "salaireBase", "indemniteJustifie", "indemnite", "primes", "pourcentageAnciennete", "cotisation", "avantage", "heuresSupplementaires", "declarationIr", "employe","tauxIr"};
-    static String SHEET = "declarationIrEmployes";
 
     public static boolean hasExcelFormat(MultipartFile file) {
-        if (!TYPE.equals(file.getContentType())) {
-            return false;
-        }
-        return true;
+        return TYPE.equals(file.getContentType());
     }
 
-     public  List<DeclarationIrEmploye> excelToDeclarationIrEmployes(InputStream is) {
+    public List<DeclarationIrEmploye> excelToDeclarationIrEmployes(InputStream is) {
         try {
             Workbook workbook = new XSSFWorkbook(is);
             Sheet sheet = workbook.getSheet(SHEET);

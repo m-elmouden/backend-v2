@@ -1,26 +1,27 @@
 package com.ird.faa.upload.declarationIr.helper;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
 import com.ird.faa.bean.*;
 import com.ird.faa.service.admin.facade.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 @Configuration
 @Service
 public class ExcelHelperDeclarationIr {
+    public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    static String[] HEADERs = {"id", "reference", "annee", "mois", "montantIrCalcule", "montantIrAPaye", "totalAPaye", "totalSalaireNet", "totalSalaireBrut", "archive", "dateArchivage", "dateCreation", "admin", "visible", "username", "societe", "etatDeclarationIr", "paiementDeclarationIr", "declarationIrEmployes", "prelevementSocialEmployes"};
+    static String SHEET = "DeclarationIr";
     @Autowired
     private SocieteAdminService societeAdminService;
     @Autowired
@@ -32,18 +33,11 @@ public class ExcelHelperDeclarationIr {
     @Autowired
     private PrelevementSocialEmployeAdminService prelevementSocialEmployeAdminService;
 
-    public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    static String[] HEADERs = {"id", "reference", "annee", "mois", "montantIrCalcule", "montantIrAPaye", "totalAPaye", "totalSalaireNet", "totalSalaireBrut", "archive", "dateArchivage", "dateCreation", "admin", "visible", "username", "societe", "etatDeclarationIr", "paiementDeclarationIr", "declarationIrEmployes", "prelevementSocialEmployes"};
-    static String SHEET = "DeclarationIr";
-
     public static boolean hasExcelFormat(MultipartFile file) {
-        if (!TYPE.equals(file.getContentType())) {
-            return false;
-        }
-        return true;
+        return TYPE.equals(file.getContentType());
     }
 
-    public  List<DeclarationIr> excelToDeclarationIrs(InputStream is) {
+    public List<DeclarationIr> excelToDeclarationIrs(InputStream is) {
         try {
             Workbook workbook = new XSSFWorkbook(is);
             Sheet sheet = workbook.getSheet(SHEET);

@@ -1,13 +1,5 @@
 package com.ird.faa.ws.rest.provided.vo;
 
-import java.util.Date;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import java.math.BigDecimal;
-
 public class TauxIrVo {
 
     private String id;
@@ -108,12 +100,12 @@ public class TauxIrVo {
         return this.dateMinMax;
     }
 
-    public String getDateMinMin() {
-        return this.dateMinMin;
-    }
-
     public void setDateMinMax(String dateMinMax) {
         this.dateMinMax = dateMinMax;
+    }
+
+    public String getDateMinMin() {
+        return this.dateMinMin;
     }
 
     public void setDateMinMin(String dateMinMin) {
@@ -124,12 +116,12 @@ public class TauxIrVo {
         return this.dateMaxMax;
     }
 
-    public String getDateMaxMin() {
-        return this.dateMaxMin;
-    }
-
     public void setDateMaxMax(String dateMaxMax) {
         this.dateMaxMax = dateMaxMax;
+    }
+
+    public String getDateMaxMin() {
+        return this.dateMaxMin;
     }
 
     public void setDateMaxMin(String dateMaxMin) {
@@ -140,12 +132,12 @@ public class TauxIrVo {
         return this.salaireImpoMinMax;
     }
 
-    public String getSalaireImpoMinMin() {
-        return this.salaireImpoMinMin;
-    }
-
     public void setSalaireImpoMinMax(String salaireImpoMinMax) {
         this.salaireImpoMinMax = salaireImpoMinMax;
+    }
+
+    public String getSalaireImpoMinMin() {
+        return this.salaireImpoMinMin;
     }
 
     public void setSalaireImpoMinMin(String salaireImpoMinMin) {
@@ -156,12 +148,12 @@ public class TauxIrVo {
         return this.salaireImpoMaxMax;
     }
 
-    public String getSalaireImpoMaxMin() {
-        return this.salaireImpoMaxMin;
-    }
-
     public void setSalaireImpoMaxMax(String salaireImpoMaxMax) {
         this.salaireImpoMaxMax = salaireImpoMaxMax;
+    }
+
+    public String getSalaireImpoMaxMin() {
+        return this.salaireImpoMaxMin;
     }
 
     public void setSalaireImpoMaxMin(String salaireImpoMaxMin) {
@@ -172,12 +164,12 @@ public class TauxIrVo {
         return this.forfaitDeduitMax;
     }
 
-    public String getForfaitDeduitMin() {
-        return this.forfaitDeduitMin;
-    }
-
     public void setForfaitDeduitMax(String forfaitDeduitMax) {
         this.forfaitDeduitMax = forfaitDeduitMax;
+    }
+
+    public String getForfaitDeduitMin() {
+        return this.forfaitDeduitMin;
     }
 
     public void setForfaitDeduitMin(String forfaitDeduitMin) {
@@ -188,12 +180,12 @@ public class TauxIrVo {
         return this.pourcentageMax;
     }
 
-    public String getPourcentageMin() {
-        return this.pourcentageMin;
-    }
-
     public void setPourcentageMax(String pourcentageMax) {
         this.pourcentageMax = pourcentageMax;
+    }
+
+    public String getPourcentageMin() {
+        return this.pourcentageMin;
     }
 
     public void setPourcentageMin(String pourcentageMin) {

@@ -1,10 +1,10 @@
 package com.ird.faa.security.service.facade;
 
-import java.util.List;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import com.ird.faa.security.bean.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+import java.util.List;
 
 public interface UserService extends UserDetailsService {
 
@@ -24,8 +24,8 @@ public interface UserService extends UserDetailsService {
 
     User findByUsernameWithRoles(String username);
 
-    int  deleteByUsername(String username);
+    int deleteByUsername(String username);
 
-    public UserDetails loadUserByUsername(String username)  ;
+    UserDetails loadUserByUsername(String username);
 
 }

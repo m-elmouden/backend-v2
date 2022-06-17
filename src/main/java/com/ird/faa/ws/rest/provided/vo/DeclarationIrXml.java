@@ -1,7 +1,5 @@
 package com.ird.faa.ws.rest.provided.vo;
 
-import com.ird.faa.bean.DeclarationIrEmploye;
-
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.Date;

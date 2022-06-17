@@ -4,12 +4,12 @@ import java.util.Date;
 
 public interface Archivable {
 
-public Boolean getArchive() ;
+    Boolean getArchive();
 
-public void setArchive(Boolean archive);
+    void setArchive(Boolean archive);
 
-public Date getDateArchivage() ;
+    Date getDateArchivage();
 
-public void setDateArchivage(Date dateArchivage) ;
+    void setDateArchivage(Date dateArchivage);
 
 }

@@ -1,11 +1,10 @@
 package com.ird.faa.security.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import  com.ird.faa.security.bean.Permission;
+import com.ird.faa.security.bean.Permission;
 import com.ird.faa.security.dao.PermissionDao;
 import com.ird.faa.security.service.facade.PermissionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class PermissionServiceImpl implements PermissionService {

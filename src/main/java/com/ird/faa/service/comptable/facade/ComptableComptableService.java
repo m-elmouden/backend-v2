@@ -1,37 +1,40 @@
 package com.ird.faa.service.comptable.facade;
 
-import java.util.List;
 import com.ird.faa.bean.Comptable;
-import com.ird.faa.ws.rest.provided.vo.ComptableVo;
 import com.ird.faa.service.core.facade.AbstractService;
+import com.ird.faa.ws.rest.provided.vo.ComptableVo;
 
-public interface ComptableComptableService extends AbstractService<Comptable,Long,ComptableVo>{
+import java.util.List;
+
+public interface ComptableComptableService extends AbstractService<Comptable, Long, ComptableVo> {
 
     Comptable findByUsername(String username);
 
     /**
-    * find Comptable from database by code (reference)
-    * @param code - reference of Comptable
-    * @return the founded Comptable , If no Comptable were
-    *         found in database return  null.
-    */
+     * find Comptable from database by code (reference)
+     *
+     * @param code - reference of Comptable
+     * @return the founded Comptable , If no Comptable were
+     * found in database return  null.
+     */
     Comptable findByCode(String code);
 
     /**
-    * find Comptable from database by id (PK) or code (reference)
-    * @param id - id of Comptable
-    * @param code - reference of Comptable
-    * @return the founded Comptable , If no Comptable were
-    *         found in database return  null.
-    */
+     * find Comptable from database by id (PK) or code (reference)
+     *
+     * @param id   - id of Comptable
+     * @param code - reference of Comptable
+     * @return the founded Comptable , If no Comptable were
+     * found in database return  null.
+     */
     Comptable findByIdOrCode(Comptable comptable);
 
 
-/**
-    * delete Comptable from database
-    * @param id - id of Comptable to be deleted
-    *
-    */
+    /**
+     * delete Comptable from database
+     *
+     * @param id - id of Comptable to be deleted
+     */
     int deleteById(Long id);
 
 
@@ -45,15 +48,12 @@ public interface ComptableComptableService extends AbstractService<Comptable,Lon
 
 
     /**
-    * delete Comptable from database by code (reference)
-    *
-    * @param code - reference of Comptable to be deleted
-    * @return 1 if Comptable deleted successfully
-    */
+     * delete Comptable from database by code (reference)
+     *
+     * @param code - reference of Comptable to be deleted
+     * @return 1 if Comptable deleted successfully
+     */
     int deleteByCode(String code);
-
-
-
 
 
 }

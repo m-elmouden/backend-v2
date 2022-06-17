@@ -2,230 +2,241 @@ package com.ird.faa.ws.rest.provided.vo;
 
 public class TauxCnssVo {
 
-    private String id ;
-    private String ref ;
-    private String dateApplicationMin ;
-    private String dateApplicationMax ;
-    private String plafond ;
-    private String pourcentage ;
-    private Boolean archive ;
-    private String dateArchivage ;
-    private String dateCreation ;
-    private Boolean admin ;
-    private Boolean visible ;
-    private String username ;
+    private String id;
+    private String ref;
+    private String dateApplicationMin;
+    private String dateApplicationMax;
+    private String plafond;
+    private String pourcentage;
+    private Boolean archive;
+    private String dateArchivage;
+    private String dateCreation;
+    private Boolean admin;
+    private Boolean visible;
+    private String username;
 
 
-            private String dateApplicationMinMax ;
-            private String dateApplicationMinMin ;
-            private String dateApplicationMaxMax ;
-            private String dateApplicationMaxMin ;
-            private String plafondMax ;
-            private String plafondMin ;
-            private String pourcentageMax ;
-            private String pourcentageMin ;
-            private String dateArchivageMax ;
-            private String dateArchivageMin ;
-            private String dateCreationMax ;
-            private String dateCreationMin ;
+    private String dateApplicationMinMax;
+    private String dateApplicationMinMin;
+    private String dateApplicationMaxMax;
+    private String dateApplicationMaxMin;
+    private String plafondMax;
+    private String plafondMin;
+    private String pourcentageMax;
+    private String pourcentageMin;
+    private String dateArchivageMax;
+    private String dateArchivageMin;
+    private String dateCreationMax;
+    private String dateCreationMin;
 
-        private TypeTauxCnssVo typeTauxCnssVo ;
+    private TypeTauxCnssVo typeTauxCnssVo;
 
 
-    public TauxCnssVo(){
-    super();
+    public TauxCnssVo() {
+        super();
     }
 
-        public String getId(){
+    public String getId() {
         return this.id;
-        }
+    }
 
-        public void setId(String id){
+    public void setId(String id) {
         this.id = id;
-        }
-        public String getRef(){
+    }
+
+    public String getRef() {
         return this.ref;
-        }
+    }
 
-        public void setRef(String ref){
+    public void setRef(String ref) {
         this.ref = ref;
-        }
-        public String getDateApplicationMin(){
+    }
+
+    public String getDateApplicationMin() {
         return this.dateApplicationMin;
-        }
+    }
 
-        public void setDateApplicationMin(String dateApplicationMin){
+    public void setDateApplicationMin(String dateApplicationMin) {
         this.dateApplicationMin = dateApplicationMin;
-        }
-        public String getDateApplicationMax(){
+    }
+
+    public String getDateApplicationMax() {
         return this.dateApplicationMax;
-        }
+    }
 
-        public void setDateApplicationMax(String dateApplicationMax){
+    public void setDateApplicationMax(String dateApplicationMax) {
         this.dateApplicationMax = dateApplicationMax;
-        }
-        public String getPlafond(){
+    }
+
+    public String getPlafond() {
         return this.plafond;
-        }
+    }
 
-        public void setPlafond(String plafond){
+    public void setPlafond(String plafond) {
         this.plafond = plafond;
-        }
-        public String getPourcentage(){
+    }
+
+    public String getPourcentage() {
         return this.pourcentage;
-        }
+    }
 
-        public void setPourcentage(String pourcentage){
+    public void setPourcentage(String pourcentage) {
         this.pourcentage = pourcentage;
-        }
-        public Boolean getArchive(){
+    }
+
+    public Boolean getArchive() {
         return this.archive;
-        }
+    }
 
-        public void setArchive(Boolean archive){
+    public void setArchive(Boolean archive) {
         this.archive = archive;
-        }
-        public String getDateArchivage(){
+    }
+
+    public String getDateArchivage() {
         return this.dateArchivage;
-        }
+    }
 
-        public void setDateArchivage(String dateArchivage){
+    public void setDateArchivage(String dateArchivage) {
         this.dateArchivage = dateArchivage;
-        }
-        public String getDateCreation(){
+    }
+
+    public String getDateCreation() {
         return this.dateCreation;
-        }
+    }
 
-        public void setDateCreation(String dateCreation){
+    public void setDateCreation(String dateCreation) {
         this.dateCreation = dateCreation;
-        }
-        public Boolean getAdmin(){
+    }
+
+    public Boolean getAdmin() {
         return this.admin;
-        }
+    }
 
-        public void setAdmin(Boolean admin){
+    public void setAdmin(Boolean admin) {
         this.admin = admin;
-        }
-        public Boolean getVisible(){
+    }
+
+    public Boolean getVisible() {
         return this.visible;
-        }
+    }
 
-        public void setVisible(Boolean visible){
+    public void setVisible(Boolean visible) {
         this.visible = visible;
-        }
-        public String getUsername(){
+    }
+
+    public String getUsername() {
         return this.username;
-        }
+    }
 
-        public void setUsername(String username){
+    public void setUsername(String username) {
         this.username = username;
-        }
+    }
 
 
-            public String getDateApplicationMinMax(){
-            return this.dateApplicationMinMax;
-            }
+    public String getDateApplicationMinMax() {
+        return this.dateApplicationMinMax;
+    }
 
-            public String getDateApplicationMinMin(){
-            return this.dateApplicationMinMin;
-            }
+    public void setDateApplicationMinMax(String dateApplicationMinMax) {
+        this.dateApplicationMinMax = dateApplicationMinMax;
+    }
 
-            public void setDateApplicationMinMax(String dateApplicationMinMax){
-            this.dateApplicationMinMax = dateApplicationMinMax;
-            }
+    public String getDateApplicationMinMin() {
+        return this.dateApplicationMinMin;
+    }
 
-            public void setDateApplicationMinMin(String dateApplicationMinMin){
-            this.dateApplicationMinMin = dateApplicationMinMin;
-            }
+    public void setDateApplicationMinMin(String dateApplicationMinMin) {
+        this.dateApplicationMinMin = dateApplicationMinMin;
+    }
 
-            public String getDateApplicationMaxMax(){
-            return this.dateApplicationMaxMax;
-            }
+    public String getDateApplicationMaxMax() {
+        return this.dateApplicationMaxMax;
+    }
 
-            public String getDateApplicationMaxMin(){
-            return this.dateApplicationMaxMin;
-            }
+    public void setDateApplicationMaxMax(String dateApplicationMaxMax) {
+        this.dateApplicationMaxMax = dateApplicationMaxMax;
+    }
 
-            public void setDateApplicationMaxMax(String dateApplicationMaxMax){
-            this.dateApplicationMaxMax = dateApplicationMaxMax;
-            }
+    public String getDateApplicationMaxMin() {
+        return this.dateApplicationMaxMin;
+    }
 
-            public void setDateApplicationMaxMin(String dateApplicationMaxMin){
-            this.dateApplicationMaxMin = dateApplicationMaxMin;
-            }
+    public void setDateApplicationMaxMin(String dateApplicationMaxMin) {
+        this.dateApplicationMaxMin = dateApplicationMaxMin;
+    }
 
-            public String getPlafondMax(){
-            return this.plafondMax;
-            }
+    public String getPlafondMax() {
+        return this.plafondMax;
+    }
 
-            public String getPlafondMin(){
-            return this.plafondMin;
-            }
+    public void setPlafondMax(String plafondMax) {
+        this.plafondMax = plafondMax;
+    }
 
-            public void setPlafondMax(String plafondMax){
-            this.plafondMax = plafondMax;
-            }
+    public String getPlafondMin() {
+        return this.plafondMin;
+    }
 
-            public void setPlafondMin(String plafondMin){
-            this.plafondMin = plafondMin;
-            }
+    public void setPlafondMin(String plafondMin) {
+        this.plafondMin = plafondMin;
+    }
 
-            public String getPourcentageMax(){
-            return this.pourcentageMax;
-            }
+    public String getPourcentageMax() {
+        return this.pourcentageMax;
+    }
 
-            public String getPourcentageMin(){
-            return this.pourcentageMin;
-            }
+    public void setPourcentageMax(String pourcentageMax) {
+        this.pourcentageMax = pourcentageMax;
+    }
 
-            public void setPourcentageMax(String pourcentageMax){
-            this.pourcentageMax = pourcentageMax;
-            }
+    public String getPourcentageMin() {
+        return this.pourcentageMin;
+    }
 
-            public void setPourcentageMin(String pourcentageMin){
-            this.pourcentageMin = pourcentageMin;
-            }
+    public void setPourcentageMin(String pourcentageMin) {
+        this.pourcentageMin = pourcentageMin;
+    }
 
-            public String getDateArchivageMax(){
-            return this.dateArchivageMax;
-            }
+    public String getDateArchivageMax() {
+        return this.dateArchivageMax;
+    }
 
-            public String getDateArchivageMin(){
-            return this.dateArchivageMin;
-            }
+    public void setDateArchivageMax(String dateArchivageMax) {
+        this.dateArchivageMax = dateArchivageMax;
+    }
 
-            public void setDateArchivageMax(String dateArchivageMax){
-            this.dateArchivageMax = dateArchivageMax;
-            }
+    public String getDateArchivageMin() {
+        return this.dateArchivageMin;
+    }
 
-            public void setDateArchivageMin(String dateArchivageMin){
-            this.dateArchivageMin = dateArchivageMin;
-            }
+    public void setDateArchivageMin(String dateArchivageMin) {
+        this.dateArchivageMin = dateArchivageMin;
+    }
 
-            public String getDateCreationMax(){
-            return this.dateCreationMax;
-            }
+    public String getDateCreationMax() {
+        return this.dateCreationMax;
+    }
 
-            public String getDateCreationMin(){
-            return this.dateCreationMin;
-            }
+    public void setDateCreationMax(String dateCreationMax) {
+        this.dateCreationMax = dateCreationMax;
+    }
 
-            public void setDateCreationMax(String dateCreationMax){
-            this.dateCreationMax = dateCreationMax;
-            }
+    public String getDateCreationMin() {
+        return this.dateCreationMin;
+    }
 
-            public void setDateCreationMin(String dateCreationMin){
-            this.dateCreationMin = dateCreationMin;
-            }
+    public void setDateCreationMin(String dateCreationMin) {
+        this.dateCreationMin = dateCreationMin;
+    }
 
 
-        public TypeTauxCnssVo getTypeTauxCnssVo(){
+    public TypeTauxCnssVo getTypeTauxCnssVo() {
         return this.typeTauxCnssVo;
-        }
+    }
 
-        public void setTypeTauxCnssVo(TypeTauxCnssVo typeTauxCnssVo){
+    public void setTypeTauxCnssVo(TypeTauxCnssVo typeTauxCnssVo) {
         this.typeTauxCnssVo = typeTauxCnssVo;
-        }
+    }
 
 
-            }
+}

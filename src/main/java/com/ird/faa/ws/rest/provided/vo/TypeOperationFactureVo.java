@@ -3,42 +3,38 @@ package com.ird.faa.ws.rest.provided.vo;
 
 public class TypeOperationFactureVo {
 
-    private String id ;
-    private String libelle ;
-    private String typeOperationSociete ;
+    private String id;
+    private String libelle;
+    private String typeOperationSociete;
 
 
-
-
-
-    public TypeOperationFactureVo(){
-    super();
+    public TypeOperationFactureVo() {
+        super();
     }
 
-        public String getId(){
+    public String getId() {
         return this.id;
-        }
+    }
 
-        public void setId(String id){
+    public void setId(String id) {
         this.id = id;
-        }
-        public String getLibelle(){
+    }
+
+    public String getLibelle() {
         return this.libelle;
-        }
+    }
 
-        public void setLibelle(String libelle){
+    public void setLibelle(String libelle) {
         this.libelle = libelle;
-        }
-        public String getTypeOperationSociete(){
+    }
+
+    public String getTypeOperationSociete() {
         return this.typeOperationSociete;
-        }
+    }
 
-        public void setTypeOperationSociete(String typeOperationSociete){
+    public void setTypeOperationSociete(String typeOperationSociete) {
         this.typeOperationSociete = typeOperationSociete;
-        }
+    }
 
 
-
-
-
-            }
+}

@@ -1,28 +1,27 @@
 package com.ird.faa.service.admin.facade;
 
+import com.ird.faa.bean.PrelevementSocialEmploye;
+import com.ird.faa.service.core.facade.AbstractService;
+import com.ird.faa.ws.rest.provided.vo.PrelevementSocialEmployeVo;
+
 import java.math.BigDecimal;
 import java.util.List;
-import com.ird.faa.bean.PrelevementSocialEmploye;
-import com.ird.faa.ws.rest.provided.vo.PrelevementSocialEmployeVo;
-import com.ird.faa.service.core.facade.AbstractService;
 
-public interface PrelevementSocialEmployeAdminService extends AbstractService<PrelevementSocialEmploye,Long,PrelevementSocialEmployeVo>{
+public interface PrelevementSocialEmployeAdminService extends AbstractService<PrelevementSocialEmploye, Long, PrelevementSocialEmployeVo> {
 
 
-
-
-/**
-    * delete PrelevementSocialEmploye from database
-    * @param id - id of PrelevementSocialEmploye to be deleted
-    *
-    */
+    /**
+     * delete PrelevementSocialEmploye from database
+     *
+     * @param id - id of PrelevementSocialEmploye to be deleted
+     */
     int deleteById(Long id);
-
 
 
     List<PrelevementSocialEmploye> findByPrelevementSocialId(Long id);
 
     int deleteByPrelevementSocialId(Long id);
+
     List<PrelevementSocialEmploye> findByEmployeCin(String cin);
 
     int deleteByEmployeCin(String cin);
@@ -32,6 +31,7 @@ public interface PrelevementSocialEmployeAdminService extends AbstractService<Pr
     List<PrelevementSocialEmploye> findByEmployeCin(BigDecimal cin);
 
     int deleteByEmployeId(Long id);
+
     List<PrelevementSocialEmploye> findByDeclarationIrRefrerence(String refrerence);
 
     int deleteByDeclarationIrRefrerence(String refrerence);
@@ -41,10 +41,6 @@ public interface PrelevementSocialEmployeAdminService extends AbstractService<Pr
     int deleteByDeclarationIrId(Long id);
 
     BigDecimal calculDeduction(PrelevementSocialEmploye prelevementSocialEmploye);
-
-
-
-
 
 
 }

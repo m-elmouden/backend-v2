@@ -2,7 +2,6 @@ package com.ird.faa.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -18,11 +17,11 @@ public class SwaggerConfig {
     @Bean
     public Docket Api() {
         return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
-        .paths(PathSelectors.any()).build().apiInfo(getApiInfo());
+                .paths(PathSelectors.any()).build().apiInfo(getApiInfo());
     }
 
     public ApiInfo getApiInfo() {
         return new ApiInfoBuilder().title("faa").version("2.0").description("generated ")
-        .license("he").build();
+                .license("he").build();
     }
 }

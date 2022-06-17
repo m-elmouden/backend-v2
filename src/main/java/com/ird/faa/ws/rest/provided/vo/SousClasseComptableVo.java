@@ -1,80 +1,82 @@
 package com.ird.faa.ws.rest.provided.vo;
 
-    import java.util.List;
+import java.util.List;
 
 public class SousClasseComptableVo {
 
-    private String id ;
-    private String numero ;
-    private String libelle ;
+    private String id;
+    private String numero;
+    private String libelle;
 
 
-            private String numeroMax ;
-            private String numeroMin ;
+    private String numeroMax;
+    private String numeroMin;
 
-        private ClasseComptableVo classeComptableVo ;
+    private ClasseComptableVo classeComptableVo;
 
-    private List<CompteComptableVo> compteComptablesVo ;
+    private List<CompteComptableVo> compteComptablesVo;
 
-    public SousClasseComptableVo(){
-    super();
+    public SousClasseComptableVo() {
+        super();
     }
 
-        public String getId(){
+    public String getId() {
         return this.id;
-        }
+    }
 
-        public void setId(String id){
+    public void setId(String id) {
         this.id = id;
-        }
-        public String getNumero(){
+    }
+
+    public String getNumero() {
         return this.numero;
-        }
+    }
 
-        public void setNumero(String numero){
+    public void setNumero(String numero) {
         this.numero = numero;
-        }
-        public String getLibelle(){
+    }
+
+    public String getLibelle() {
         return this.libelle;
-        }
+    }
 
-        public void setLibelle(String libelle){
+    public void setLibelle(String libelle) {
         this.libelle = libelle;
-        }
+    }
 
 
-            public String getNumeroMax(){
-            return this.numeroMax;
-            }
+    public String getNumeroMax() {
+        return this.numeroMax;
+    }
 
-            public String getNumeroMin(){
-            return this.numeroMin;
-            }
+    public void setNumeroMax(String numeroMax) {
+        this.numeroMax = numeroMax;
+    }
 
-            public void setNumeroMax(String numeroMax){
-            this.numeroMax = numeroMax;
-            }
+    public String getNumeroMin() {
+        return this.numeroMin;
+    }
 
-            public void setNumeroMin(String numeroMin){
-            this.numeroMin = numeroMin;
-            }
+    public void setNumeroMin(String numeroMin) {
+        this.numeroMin = numeroMin;
+    }
 
 
-        public ClasseComptableVo getClasseComptableVo(){
+    public ClasseComptableVo getClasseComptableVo() {
         return this.classeComptableVo;
-        }
+    }
 
-        public void setClasseComptableVo(ClasseComptableVo classeComptableVo){
+    public void setClasseComptableVo(ClasseComptableVo classeComptableVo) {
         this.classeComptableVo = classeComptableVo;
-        }
+    }
 
 
-        public List<CompteComptableVo> getCompteComptablesVo(){
+    public List<CompteComptableVo> getCompteComptablesVo() {
         return this.compteComptablesVo;
-        }
+    }
 
-        public void setCompteComptablesVo(List<CompteComptableVo> compteComptablesVo){
-            this.compteComptablesVo = compteComptablesVo;
-            }
+    public void setCompteComptablesVo(List<CompteComptableVo> compteComptablesVo) {
+        this.compteComptablesVo = compteComptablesVo;
+    }
 
-            }
+}

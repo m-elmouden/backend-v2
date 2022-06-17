@@ -42,6 +42,10 @@ public class DeclarationIrEmployeVo {
     private EmployeVo employeVo;
     private TauxIrVo tauxIrVo;
 
+    public DeclarationIrEmployeVo() {
+        super();
+    }
+
     public String getIndemniteJustifie() {
         return indemniteJustifie;
     }
@@ -64,10 +68,6 @@ public class DeclarationIrEmployeVo {
 
     public void setIndemniteJustifieMax(String indemniteJustifieMax) {
         this.indemniteJustifieMax = indemniteJustifieMax;
-    }
-
-    public DeclarationIrEmployeVo() {
-        super();
     }
 
     public String getId() {
@@ -155,12 +155,12 @@ public class DeclarationIrEmployeVo {
         return this.salaireNetMax;
     }
 
-    public String getSalaireNetMin() {
-        return this.salaireNetMin;
-    }
-
     public void setSalaireNetMax(String salaireNetMax) {
         this.salaireNetMax = salaireNetMax;
+    }
+
+    public String getSalaireNetMin() {
+        return this.salaireNetMin;
     }
 
     public void setSalaireNetMin(String salaireNetMin) {
@@ -171,12 +171,12 @@ public class DeclarationIrEmployeVo {
         return this.salaireBrutMax;
     }
 
-    public String getSalaireBrutMin() {
-        return this.salaireBrutMin;
-    }
-
     public void setSalaireBrutMax(String salaireBrutMax) {
         this.salaireBrutMax = salaireBrutMax;
+    }
+
+    public String getSalaireBrutMin() {
+        return this.salaireBrutMin;
     }
 
     public void setSalaireBrutMin(String salaireBrutMin) {
@@ -187,12 +187,12 @@ public class DeclarationIrEmployeVo {
         return this.salaireNetImposableMax;
     }
 
-    public String getSalaireNetImposableMin() {
-        return this.salaireNetImposableMin;
-    }
-
     public void setSalaireNetImposableMax(String salaireNetImposableMax) {
         this.salaireNetImposableMax = salaireNetImposableMax;
+    }
+
+    public String getSalaireNetImposableMin() {
+        return this.salaireNetImposableMin;
     }
 
     public void setSalaireNetImposableMin(String salaireNetImposableMin) {
@@ -203,12 +203,12 @@ public class DeclarationIrEmployeVo {
         return this.salaireBrutImposableMax;
     }
 
-    public String getSalaireBrutImposableMin() {
-        return this.salaireBrutImposableMin;
-    }
-
     public void setSalaireBrutImposableMax(String salaireBrutImposableMax) {
         this.salaireBrutImposableMax = salaireBrutImposableMax;
+    }
+
+    public String getSalaireBrutImposableMin() {
+        return this.salaireBrutImposableMin;
     }
 
     public void setSalaireBrutImposableMin(String salaireBrutImposableMin) {
@@ -219,12 +219,12 @@ public class DeclarationIrEmployeVo {
         return this.salaireBaseMax;
     }
 
-    public String getSalaireBaseMin() {
-        return this.salaireBaseMin;
-    }
-
     public void setSalaireBaseMax(String salaireBaseMax) {
         this.salaireBaseMax = salaireBaseMax;
+    }
+
+    public String getSalaireBaseMin() {
+        return this.salaireBaseMin;
     }
 
     public void setSalaireBaseMin(String salaireBaseMin) {
@@ -235,12 +235,12 @@ public class DeclarationIrEmployeVo {
         return this.indemniteMax;
     }
 
-    public String getIndemniteMin() {
-        return this.indemniteMin;
-    }
-
     public void setIndemniteMax(String indemniteMax) {
         this.indemniteMax = indemniteMax;
+    }
+
+    public String getIndemniteMin() {
+        return this.indemniteMin;
     }
 
     public void setIndemniteMin(String indemniteMin) {
@@ -251,12 +251,12 @@ public class DeclarationIrEmployeVo {
         return this.primesMax;
     }
 
-    public String getPrimesMin() {
-        return this.primesMin;
-    }
-
     public void setPrimesMax(String primesMax) {
         this.primesMax = primesMax;
+    }
+
+    public String getPrimesMin() {
+        return this.primesMin;
     }
 
     public void setPrimesMin(String primesMin) {
@@ -267,12 +267,12 @@ public class DeclarationIrEmployeVo {
         return this.pourcentageAncienneteMax;
     }
 
-    public String getPourcentageAncienneteMin() {
-        return this.pourcentageAncienneteMin;
-    }
-
     public void setPourcentageAncienneteMax(String pourcentageAncienneteMax) {
         this.pourcentageAncienneteMax = pourcentageAncienneteMax;
+    }
+
+    public String getPourcentageAncienneteMin() {
+        return this.pourcentageAncienneteMin;
     }
 
     public void setPourcentageAncienneteMin(String pourcentageAncienneteMin) {
@@ -283,12 +283,12 @@ public class DeclarationIrEmployeVo {
         return this.cotisationMax;
     }
 
-    public String getCotisationMin() {
-        return this.cotisationMin;
-    }
-
     public void setCotisationMax(String cotisationMax) {
         this.cotisationMax = cotisationMax;
+    }
+
+    public String getCotisationMin() {
+        return this.cotisationMin;
     }
 
     public void setCotisationMin(String cotisationMin) {

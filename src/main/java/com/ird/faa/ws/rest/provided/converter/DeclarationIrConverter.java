@@ -1,12 +1,13 @@
 package com.ird.faa.ws.rest.provided.converter;
 
+import com.ird.faa.bean.DeclarationIr;
+import com.ird.faa.service.util.DateUtil;
+import com.ird.faa.service.util.ListUtil;
+import com.ird.faa.service.util.NumberUtil;
+import com.ird.faa.service.util.StringUtil;
+import com.ird.faa.ws.rest.provided.vo.DeclarationIrVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.ird.faa.service.util.*;
-
-
-import com.ird.faa.bean.DeclarationIr;
-import com.ird.faa.ws.rest.provided.vo.DeclarationIrVo;
 
 @Component
 public class DeclarationIrConverter extends AbstractConverter<DeclarationIr, DeclarationIrVo> {
@@ -76,19 +77,19 @@ public class DeclarationIrConverter extends AbstractConverter<DeclarationIr, Dec
                 item.setUsername(vo.getUsername());
             if (vo.getSocieteVo() != null && this.societe)
                 item.setSociete(societeConverter.toItem(vo.getSocieteVo()));
-            if (vo.getEtatDeclarationIrVo() != null && this.etatDeclarationIr)
+            if (this.etatDeclarationIr && vo.getEtatDeclarationIrVo() != null)
                 item.setEtatDeclarationIr(etatDeclarationIrConverter.toItem(vo.getEtatDeclarationIrVo()));
-            if (vo.getPaiementDeclarationIrVo() != null && this.paiementDeclarationIr)
+            if (this.paiementDeclarationIr && vo.getPaiementDeclarationIrVo() != null)
                 item.setPaiementDeclarationIr(paiementDeclarationIrConverter.toItem(vo.getPaiementDeclarationIrVo()));
-            if (vo.getComptableTraiteurVo() != null && this.comptableTraiteur)
+            if (this.comptableTraiteur && vo.getComptableTraiteurVo() != null)
                 item.setComptableTraiteur(comptableConverter.toItem(vo.getComptableTraiteurVo()));
-            if (vo.getComptableValidateurVo() != null && this.comptableValidateur)
+            if (this.comptableValidateur && vo.getComptableValidateurVo() != null)
                 item.setComptableValidateur(comptableConverter.toItem(vo.getComptableValidateurVo()));
-            if (vo.getDemandeVo() != null && this.demande)
+            if (this.demande && vo.getDemandeVo() != null)
                 item.setDemande(demandeConverter.toItem(vo.getDemandeVo()));
-            if (ListUtil.isNotEmpty(vo.getDeclarationIrEmployesVo()) && this.declarationIrEmployes)
+            if (this.declarationIrEmployes && ListUtil.isNotEmpty(vo.getDeclarationIrEmployesVo()))
                 item.setDeclarationIrEmployes(declarationIrEmployeConverter.toItem(vo.getDeclarationIrEmployesVo()));
-            if (ListUtil.isNotEmpty(vo.getPrelevementSocialEmployesVo()) && this.prelevementSocialEmployes)
+            if (this.prelevementSocialEmployes && ListUtil.isNotEmpty(vo.getPrelevementSocialEmployesVo()))
                 item.setPrelevementSocialEmployes(prelevementSocialEmployeConverter.toItem(vo.getPrelevementSocialEmployesVo()));
 
             return item;
@@ -141,40 +142,24 @@ public class DeclarationIrConverter extends AbstractConverter<DeclarationIr, Dec
             if (StringUtil.isNotEmpty(item.getUsername()))
                 vo.setUsername(item.getUsername());
 
-            if (item.getComptableTraiteur() != null && this.comptableTraiteur) {
+            if (this.comptableTraiteur && item.getComptableTraiteur() != null) {
                 vo.setComptableTraiteurVo(comptableConverter.toVo(item.getComptableTraiteur()));
             }
-            if (item.getComptableValidateur() != null && this.comptableValidateur) {
+            if (this.comptableValidateur && item.getComptableValidateur() != null) {
                 vo.setComptableValidateurVo(comptableConverter.toVo(item.getComptableValidateur()));
             }
 
 
-            if (item.getSociete() != null && this.societe) {
+            if (this.societe && item.getSociete() != null) {
                 vo.setSocieteVo(societeConverter.toVo(item.getSociete()));
             }
-            if (item.getDemande() != null && this.demande) {
+            if (this.demande && item.getDemande() != null) {
                 vo.setDemandeVo(demandeConverter.toVo(item.getDemande()));
             }
-            if (item.getEtatDeclarationIr() != null && this.etatDeclarationIr) {
+            if (this.etatDeclarationIr && item.getEtatDeclarationIr() != null) {
                 vo.setEtatDeclarationIrVo(etatDeclarationIrConverter.toVo(item.getEtatDeclarationIr()));
             }
-            if (item.getPaiementDeclarationIr() != null && this.paiementDeclarationIr) {
-                paiementDeclarationIrConverter.setDeclarationIr(false);
-                vo.setPaiementDeclarationIrVo(paiementDeclarationIrConverter.toVo(item.getPaiementDeclarationIr()));
-                paiementDeclarationIrConverter.setDeclarationIr(true);
-            }
-            if (ListUtil.isNotEmpty(item.getDeclarationIrEmployes()) && this.declarationIrEmployes) {
-                declarationIrEmployeConverter.init(true);
-                declarationIrEmployeConverter.setDeclarationIr(false);
-                vo.setDeclarationIrEmployesVo(declarationIrEmployeConverter.toVo(item.getDeclarationIrEmployes()));
-                declarationIrEmployeConverter.setDeclarationIr(true);
-            }
-            if (ListUtil.isNotEmpty(item.getPrelevementSocialEmployes()) && this.prelevementSocialEmployes) {
-                prelevementSocialEmployeConverter.init(true);
-                prelevementSocialEmployeConverter.setDeclarationIr(false);
-                vo.setPrelevementSocialEmployesVo(prelevementSocialEmployeConverter.toVo(item.getPrelevementSocialEmployes()));
-                prelevementSocialEmployeConverter.setDeclarationIr(true);
-            }
+
 
             return vo;
         }

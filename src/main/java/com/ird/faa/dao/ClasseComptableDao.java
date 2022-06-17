@@ -1,19 +1,12 @@
 package com.ird.faa.dao;
 
+import com.ird.faa.bean.ClasseComptable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.List;
-
-import com.ird.faa.bean.ClasseComptable;
 
 
 @Repository
-public interface ClasseComptableDao extends JpaRepository<ClasseComptable,Long> {
-
-
-
-
-
+public interface ClasseComptableDao extends JpaRepository<ClasseComptable, Long> {
 
 
 }

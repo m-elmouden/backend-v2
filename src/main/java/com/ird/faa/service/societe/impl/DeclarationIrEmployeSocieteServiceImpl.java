@@ -1,32 +1,25 @@
 package com.ird.faa.service.societe.impl;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.List;
-
-import java.util.ArrayList;
-
-import com.ird.faa.bean.PrelevementSocialEmploye;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityManager;
-
-import com.ird.faa.bean.DeclarationIrEmploye;
 import com.ird.faa.bean.DeclarationIr;
-import com.ird.faa.upload.employe.model.Employe;
+import com.ird.faa.bean.DeclarationIrEmploye;
 import com.ird.faa.bean.TauxIr;
 import com.ird.faa.dao.DeclarationIrEmployeDao;
+import com.ird.faa.service.core.impl.AbstractServiceImpl;
 import com.ird.faa.service.societe.facade.DeclarationIrEmployeSocieteService;
-import com.ird.faa.service.societe.facade.TauxIrSocieteService;
 import com.ird.faa.service.societe.facade.DeclarationIrSocieteService;
 import com.ird.faa.service.societe.facade.EmployeSocieteService;
-
+import com.ird.faa.service.societe.facade.TauxIrSocieteService;
+import com.ird.faa.service.util.ListUtil;
+import com.ird.faa.service.util.SearchUtil;
+import com.ird.faa.upload.employe.model.Employe;
 import com.ird.faa.ws.rest.provided.vo.DeclarationIrEmployeVo;
-import com.ird.faa.service.util.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.ird.faa.service.core.impl.AbstractServiceImpl;
+import javax.persistence.EntityManager;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DeclarationIrEmployeSocieteServiceImpl extends AbstractServiceImpl<DeclarationIrEmploye> implements DeclarationIrEmployeSocieteService {
@@ -43,7 +36,6 @@ public class DeclarationIrEmployeSocieteServiceImpl extends AbstractServiceImpl<
 
     @Autowired
     private PrelevementSocialEmployeSocieteServiceImpl prelevementSocialEmployeSocieteService;
-
 
 
     @Autowired
@@ -143,7 +135,6 @@ public class DeclarationIrEmployeSocieteServiceImpl extends AbstractServiceImpl<
             return declarationIrEmployeDao.save(declarationIrEmploye);
         }
     }
-
 
 
     @Override

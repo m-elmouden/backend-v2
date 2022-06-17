@@ -17,17 +17,17 @@ public class Employe {
     @SequenceGenerator(name = "employe_seq", sequenceName = "employe_seq",
             allocationSize = 1, initialValue = 10000)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employe_seq")
-    @Column(name="id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(length = 500,name="cin")
+    @Column(length = 500, name = "cin")
     private String cin;
-    @Column(length = 500,name="nom")
+    @Column(length = 500, name = "nom")
     private String nom;
-    @Column(length = 500,name="prenom")
+    @Column(length = 500, name = "prenom")
     private String prenom;
     private BigDecimal totalSalaireNet;
-    @Column(name="nombreFamille")
+    @Column(name = "nombreFamille")
     private BigDecimal nombreFamille;
 
     @JoinColumn(name = "typeEmploye")
@@ -131,9 +131,10 @@ public class Employe {
     public int hashCode() {
         return Objects.hash(id);
     }
+
     @Override
-    public String toString(){
-        return "Employe [id=" + id +",nom=" + nom +",prenom=" + prenom +",nombreFamille=" + nombreFamille +",typeEmploye=" + typeEmploye +",societe=" + societe +"]";
+    public String toString() {
+        return "Employe [id=" + id + ",nom=" + nom + ",prenom=" + prenom + ",nombreFamille=" + nombreFamille + ",typeEmploye=" + typeEmploye + ",societe=" + societe + "]";
     }
 
 }

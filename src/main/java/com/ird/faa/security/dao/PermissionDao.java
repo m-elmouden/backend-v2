@@ -1,8 +1,8 @@
 package com.ird.faa.security.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.ird.faa.security.bean.Permission;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PermissionDao extends JpaRepository<Permission, Long> {
-    public Permission findByName(String name);
+    Permission findByName(String name);
 }

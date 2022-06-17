@@ -43,9 +43,15 @@ public class DeclarationIrVo {
     private SocieteVo societeVo;
     private EtatDeclarationIrVo etatDeclarationIrVo;
     private PaiementDeclarationIrVo paiementDeclarationIrVo;
-    private ComptableVo comptableTraiteurVo ;
-    private ComptableVo comptableValidateurVo ;
+    private ComptableVo comptableTraiteurVo;
+    private ComptableVo comptableValidateurVo;
     private DemandeVo demandeVo;
+    private List<DeclarationIrEmployeVo> declarationIrEmployesVo;
+    private List<PrelevementSocialEmployeVo> prelevementSocialEmployesVo;
+
+    public DeclarationIrVo() {
+        super();
+    }
 
     public ComptableVo getComptableTraiteurVo() {
         return comptableTraiteurVo;
@@ -61,13 +67,6 @@ public class DeclarationIrVo {
 
     public void setComptableValidateurVo(ComptableVo comptableValidateurVo) {
         this.comptableValidateurVo = comptableValidateurVo;
-    }
-
-    private List<DeclarationIrEmployeVo> declarationIrEmployesVo;
-    private List<PrelevementSocialEmployeVo> prelevementSocialEmployesVo;
-
-    public DeclarationIrVo() {
-        super();
     }
 
     public String getId() {
@@ -195,12 +194,12 @@ public class DeclarationIrVo {
         return this.anneeMax;
     }
 
-    public String getAnneeMin() {
-        return this.anneeMin;
-    }
-
     public void setAnneeMax(String anneeMax) {
         this.anneeMax = anneeMax;
+    }
+
+    public String getAnneeMin() {
+        return this.anneeMin;
     }
 
     public void setAnneeMin(String anneeMin) {
@@ -211,12 +210,12 @@ public class DeclarationIrVo {
         return this.moisMax;
     }
 
-    public String getMoisMin() {
-        return this.moisMin;
-    }
-
     public void setMoisMax(String moisMax) {
         this.moisMax = moisMax;
+    }
+
+    public String getMoisMin() {
+        return this.moisMin;
     }
 
     public void setMoisMin(String moisMin) {
@@ -227,12 +226,12 @@ public class DeclarationIrVo {
         return this.montantIrCalculeMax;
     }
 
-    public String getMontantIrCalculeMin() {
-        return this.montantIrCalculeMin;
-    }
-
     public void setMontantIrCalculeMax(String montantIrCalculeMax) {
         this.montantIrCalculeMax = montantIrCalculeMax;
+    }
+
+    public String getMontantIrCalculeMin() {
+        return this.montantIrCalculeMin;
     }
 
     public void setMontantIrCalculeMin(String montantIrCalculeMin) {
@@ -243,12 +242,12 @@ public class DeclarationIrVo {
         return this.montantIrAPayeMax;
     }
 
-    public String getMontantIrAPayeMin() {
-        return this.montantIrAPayeMin;
-    }
-
     public void setMontantIrAPayeMax(String montantIrAPayeMax) {
         this.montantIrAPayeMax = montantIrAPayeMax;
+    }
+
+    public String getMontantIrAPayeMin() {
+        return this.montantIrAPayeMin;
     }
 
     public void setMontantIrAPayeMin(String montantIrAPayeMin) {
@@ -259,12 +258,12 @@ public class DeclarationIrVo {
         return this.totalAPayeMax;
     }
 
-    public String getTotalAPayeMin() {
-        return this.totalAPayeMin;
-    }
-
     public void setTotalAPayeMax(String totalAPayeMax) {
         this.totalAPayeMax = totalAPayeMax;
+    }
+
+    public String getTotalAPayeMin() {
+        return this.totalAPayeMin;
     }
 
     public void setTotalAPayeMin(String totalAPayeMin) {
@@ -275,12 +274,12 @@ public class DeclarationIrVo {
         return this.totalSalaireNetMax;
     }
 
-    public String getTotalSalaireNetMin() {
-        return this.totalSalaireNetMin;
-    }
-
     public void setTotalSalaireNetMax(String totalSalaireNetMax) {
         this.totalSalaireNetMax = totalSalaireNetMax;
+    }
+
+    public String getTotalSalaireNetMin() {
+        return this.totalSalaireNetMin;
     }
 
     public void setTotalSalaireNetMin(String totalSalaireNetMin) {
@@ -291,12 +290,12 @@ public class DeclarationIrVo {
         return this.totalSalaireBrutMax;
     }
 
-    public String getTotalSalaireBrutMin() {
-        return this.totalSalaireBrutMin;
-    }
-
     public void setTotalSalaireBrutMax(String totalSalaireBrutMax) {
         this.totalSalaireBrutMax = totalSalaireBrutMax;
+    }
+
+    public String getTotalSalaireBrutMin() {
+        return this.totalSalaireBrutMin;
     }
 
     public void setTotalSalaireBrutMin(String totalSalaireBrutMin) {
@@ -307,12 +306,12 @@ public class DeclarationIrVo {
         return this.dateArchivageMax;
     }
 
-    public String getDateArchivageMin() {
-        return this.dateArchivageMin;
-    }
-
     public void setDateArchivageMax(String dateArchivageMax) {
         this.dateArchivageMax = dateArchivageMax;
+    }
+
+    public String getDateArchivageMin() {
+        return this.dateArchivageMin;
     }
 
     public void setDateArchivageMin(String dateArchivageMin) {
@@ -323,12 +322,12 @@ public class DeclarationIrVo {
         return this.dateCreationMax;
     }
 
-    public String getDateCreationMin() {
-        return this.dateCreationMin;
-    }
-
     public void setDateCreationMax(String dateCreationMax) {
         this.dateCreationMax = dateCreationMax;
+    }
+
+    public String getDateCreationMin() {
+        return this.dateCreationMin;
     }
 
     public void setDateCreationMin(String dateCreationMin) {

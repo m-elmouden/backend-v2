@@ -1,31 +1,27 @@
 package com.ird.faa.service.admin.impl;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.List;
-
-import java.util.ArrayList;
-
+import com.ird.faa.bean.DeclarationIr;
+import com.ird.faa.bean.PrelevementSocial;
+import com.ird.faa.bean.PrelevementSocialEmploye;
+import com.ird.faa.dao.PrelevementSocialEmployeDao;
+import com.ird.faa.service.admin.facade.DeclarationIrAdminService;
+import com.ird.faa.service.admin.facade.EmployeAdminService;
+import com.ird.faa.service.admin.facade.PrelevementSocialAdminService;
+import com.ird.faa.service.admin.facade.PrelevementSocialEmployeAdminService;
+import com.ird.faa.service.core.impl.AbstractServiceImpl;
+import com.ird.faa.service.util.ListUtil;
+import com.ird.faa.service.util.SearchUtil;
+import com.ird.faa.upload.employe.model.Employe;
+import com.ird.faa.ws.rest.provided.vo.PrelevementSocialEmployeVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-
-import com.ird.faa.bean.PrelevementSocialEmploye;
-import com.ird.faa.bean.PrelevementSocial;
-import com.ird.faa.upload.employe.model.Employe;
-import com.ird.faa.bean.DeclarationIr;
-import com.ird.faa.dao.PrelevementSocialEmployeDao;
-import com.ird.faa.service.admin.facade.PrelevementSocialEmployeAdminService;
-import com.ird.faa.service.admin.facade.PrelevementSocialAdminService;
-import com.ird.faa.service.admin.facade.EmployeAdminService;
-import com.ird.faa.service.admin.facade.DeclarationIrAdminService;
-
-import com.ird.faa.ws.rest.provided.vo.PrelevementSocialEmployeVo;
-import com.ird.faa.service.util.*;
-
-import com.ird.faa.service.core.impl.AbstractServiceImpl;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PrelevementSocialEmployeAdminServiceImpl extends AbstractServiceImpl<PrelevementSocialEmploye> implements PrelevementSocialEmployeAdminService {
@@ -113,24 +109,21 @@ public class PrelevementSocialEmployeAdminServiceImpl extends AbstractServiceImp
     }
 
 
-
     @Override
     public BigDecimal calculDeduction(PrelevementSocialEmploye prelevementSocialEmploye) {
-        BigDecimal valeur=BigDecimal.ZERO;
+        BigDecimal valeur = BigDecimal.ZERO;
         prelevementSocialEmploye.setPrelevementSocial(prelevementSocialService.findByReference(prelevementSocialEmploye.getPrelevementSocial().getReference()));
 
-            if (prelevementSocialEmploye.getPrelevementSocial().getLibelle().equalsIgnoreCase("cnss")) {
+        if (prelevementSocialEmploye.getPrelevementSocial().getLibelle().equalsIgnoreCase("cnss")) {
             if (prelevementSocialEmploye.getSalaireBrutImposable().compareTo(BigDecimal.valueOf(6000)) > 0) {
-                 valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4, RoundingMode.DOWN).multiply(BigDecimal.valueOf(6000));
+                valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4, RoundingMode.DOWN).multiply(BigDecimal.valueOf(6000));
 
+            } else {
+                valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4, RoundingMode.DOWN).multiply(prelevementSocialEmploye.getSalaireBrutImposable());
             }
-            else {
-                valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4,  RoundingMode.DOWN).multiply(prelevementSocialEmploye.getSalaireBrutImposable());
-            }
-            }
-            else {
-                 valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4, RoundingMode.DOWN).multiply(prelevementSocialEmploye.getSalaireBrutImposable());
-            }
+        } else {
+            valeur = prelevementSocialEmploye.getPrelevementSocial().getPourcentage().divide(BigDecimal.valueOf(100), 4, RoundingMode.DOWN).multiply(prelevementSocialEmploye.getSalaireBrutImposable());
+        }
         return valeur;
     }
 

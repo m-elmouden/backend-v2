@@ -1,22 +1,17 @@
 package com.ird.faa.bean;
 
-import java.util.Objects;
-import java.util.List;
-
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ird.faa.security.bean.User;
+import com.ird.faa.upload.employe.model.Employe;
 
-
-import java.math.BigDecimal;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.ird.faa.security.bean.User;
-import com.ird.faa.upload.employe.model.Employe;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 
 @Entity
@@ -24,10 +19,6 @@ import com.ird.faa.upload.employe.model.Employe;
 @XmlAccessorType(XmlAccessType.NONE)
 public class Societe extends User {
 
-
-    public Societe(String username) {
-        super(username);
-    }
 
     @Column(length = 500)
     @XmlElement(name = "ice")
@@ -86,38 +77,24 @@ public class Societe extends User {
     @Transient
 
     private String role;
-
-
     @ManyToOne
     private Comptable comptable;
     @ManyToOne
     private PresidentSociete presidentSociete;
-
     @ManyToOne
     private TypeSociete typeSociete;
-
     @OneToMany(mappedBy = "societe")
     private List<Demande> demandes;
     @OneToMany(mappedBy = "societe")
-    @JsonManagedReference
-    private List<DeclarationIr> declarationIrs;
-
-    @OneToMany(mappedBy = "societe")
-    private List<DeclarationIs> declarationIss;
-
-    @OneToMany(mappedBy = "societe")
-    private List<DeclarationTva> declarationTvas;
-    @OneToMany(mappedBy = "societe")
-    private List<DeclarationCnss> declarationCnsss;
-
-    @OneToMany(mappedBy = "societe")
     private List<Acompte> acomptes;
-
     @OneToMany(mappedBy = "societe")
     private List<Employe> employes;
-
     @OneToMany(mappedBy = "societe")
     private List<Facture> factures;
+
+    public Societe(String username) {
+        super(username);
+    }
 
     public Societe() {
         super();
@@ -236,37 +213,6 @@ public class Societe extends User {
         this.demandes = demandes;
     }
 
-    public List<DeclarationIr> getDeclarationIrs() {
-        return this.declarationIrs;
-    }
-
-    public void setDeclarationIrs(List<DeclarationIr> declarationIrs) {
-        this.declarationIrs = declarationIrs;
-    }
-
-    public List<DeclarationIs> getDeclarationIss() {
-        return this.declarationIss;
-    }
-
-    public void setDeclarationIss(List<DeclarationIs> declarationIss) {
-        this.declarationIss = declarationIss;
-    }
-
-    public List<DeclarationTva> getDeclarationTvas() {
-        return this.declarationTvas;
-    }
-
-    public void setDeclarationTvas(List<DeclarationTva> declarationTvas) {
-        this.declarationTvas = declarationTvas;
-    }
-
-    public List<DeclarationCnss> getDeclarationCnsss() {
-        return this.declarationCnsss;
-    }
-
-    public void setDeclarationCnsss(List<DeclarationCnss> declarationCnsss) {
-        this.declarationCnsss = declarationCnsss;
-    }
 
     public List<Acompte> getAcomptes() {
         return this.acomptes;

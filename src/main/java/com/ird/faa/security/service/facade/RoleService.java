@@ -1,9 +1,8 @@
-
 package com.ird.faa.security.service.facade;
 
-import java.util.List;
-
 import com.ird.faa.security.bean.Role;
+
+import java.util.List;
 
 
 public interface RoleService {
@@ -19,7 +18,7 @@ public interface RoleService {
 
     List<Role> create(List<Role> roles);
 
-    public Role update(Role role);
+    Role update(Role role);
 
     int delete(Role role);
 

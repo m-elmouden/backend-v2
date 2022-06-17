@@ -1,88 +1,80 @@
-package  com.ird.faa.ws.rest.provided.facade.comptable;
+package com.ird.faa.ws.rest.provided.facade.comptable;
 
-import com.ird.faa.service.comptable.facade.TypeEmployeComptableService;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import com.ird.faa.bean.TypeEmploye;
+import com.ird.faa.service.comptable.facade.TypeEmployeComptableService;
 import com.ird.faa.ws.rest.provided.converter.TypeEmployeConverter;
 import com.ird.faa.ws.rest.provided.vo.TypeEmployeVo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Api("Manages typeEmploye services")
 @RestController
 @RequestMapping("api/comptable/typeEmploye")
 public class TypeEmployeRestComptable {
 
-@Autowired
-private TypeEmployeComptableService typeEmployeService;
+    @Autowired
+    private TypeEmployeComptableService typeEmployeService;
 
-@Autowired
-private TypeEmployeConverter typeEmployeConverter;
+    @Autowired
+    private TypeEmployeConverter typeEmployeConverter;
 
 
-            @ApiOperation("Updates the specified  typeEmploye")
-            @PutMapping("/")
-            public  TypeEmployeVo update(@RequestBody  TypeEmployeVo  typeEmployeVo){
-            TypeEmploye typeEmploye = typeEmployeConverter.toItem(typeEmployeVo);
-            typeEmploye = typeEmployeService.update(typeEmploye);
-            return typeEmployeConverter.toVo(typeEmploye);
-            }
+    @ApiOperation("Updates the specified  typeEmploye")
+    @PutMapping("/")
+    public TypeEmployeVo update(@RequestBody TypeEmployeVo typeEmployeVo) {
+        TypeEmploye typeEmploye = typeEmployeConverter.toItem(typeEmployeVo);
+        typeEmploye = typeEmployeService.update(typeEmploye);
+        return typeEmployeConverter.toVo(typeEmploye);
+    }
 
     @ApiOperation("Finds a list of all typeEmployes")
     @GetMapping("/")
-    public List<TypeEmployeVo> findAll(){
+    public List<TypeEmployeVo> findAll() {
         return typeEmployeConverter.toVo(typeEmployeService.findAll());
     }
 
     @ApiOperation("Finds a typeEmploye with associated lists by id")
     @GetMapping("/detail/id/{id}")
-    public TypeEmployeVo findByIdWithAssociatedList(@PathVariable Long id){
-    return typeEmployeConverter.toVo(typeEmployeService.findByIdWithAssociatedList(id));
+    public TypeEmployeVo findByIdWithAssociatedList(@PathVariable Long id) {
+        return typeEmployeConverter.toVo(typeEmployeService.findByIdWithAssociatedList(id));
     }
 
     @ApiOperation("Search typeEmploye by a specific criteria")
     @PostMapping("/search")
-    public List<TypeEmployeVo> findByCriteria(@RequestBody TypeEmployeVo typeEmployeVo){
+    public List<TypeEmployeVo> findByCriteria(@RequestBody TypeEmployeVo typeEmployeVo) {
         return typeEmployeConverter.toVo(typeEmployeService.findByCriteria(typeEmployeVo));
-        }
+    }
 
-            @ApiOperation("Finds a typeEmploye by id")
-            @GetMapping("/id/{id}")
-            public TypeEmployeVo findById(@PathVariable Long id){
-            return typeEmployeConverter.toVo(typeEmployeService.findById(id));
-            }
+    @ApiOperation("Finds a typeEmploye by id")
+    @GetMapping("/id/{id}")
+    public TypeEmployeVo findById(@PathVariable Long id) {
+        return typeEmployeConverter.toVo(typeEmployeService.findById(id));
+    }
 
-            @ApiOperation("Saves the specified  typeEmploye")
-            @PostMapping("/")
-            public TypeEmployeVo save(@RequestBody TypeEmployeVo typeEmployeVo){
-            TypeEmploye typeEmploye = typeEmployeConverter.toItem(typeEmployeVo);
-            typeEmploye = typeEmployeService.save(typeEmploye);
-            return typeEmployeConverter.toVo(typeEmploye);
-            }
+    @ApiOperation("Saves the specified  typeEmploye")
+    @PostMapping("/")
+    public TypeEmployeVo save(@RequestBody TypeEmployeVo typeEmployeVo) {
+        TypeEmploye typeEmploye = typeEmployeConverter.toItem(typeEmployeVo);
+        typeEmploye = typeEmployeService.save(typeEmploye);
+        return typeEmployeConverter.toVo(typeEmploye);
+    }
 
-            @ApiOperation("Delete the specified typeEmploye")
-            @DeleteMapping("/")
-            public int delete(@RequestBody TypeEmployeVo typeEmployeVo){
-            TypeEmploye typeEmploye = typeEmployeConverter.toItem(typeEmployeVo);
-            return typeEmployeService.delete(typeEmploye);
-            }
+    @ApiOperation("Delete the specified typeEmploye")
+    @DeleteMapping("/")
+    public int delete(@RequestBody TypeEmployeVo typeEmployeVo) {
+        TypeEmploye typeEmploye = typeEmployeConverter.toItem(typeEmployeVo);
+        return typeEmployeService.delete(typeEmploye);
+    }
 
-            @ApiOperation("Deletes a typeEmploye by id")
-            @DeleteMapping("/id/{id}")
-            public int deleteById(@PathVariable Long id){
-            return typeEmployeService.deleteById(id);
-            }
+    @ApiOperation("Deletes a typeEmploye by id")
+    @DeleteMapping("/id/{id}")
+    public int deleteById(@PathVariable Long id) {
+        return typeEmployeService.deleteById(id);
+    }
 
 
-            }
+}

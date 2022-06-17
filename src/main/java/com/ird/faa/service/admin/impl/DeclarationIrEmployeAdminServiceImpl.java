@@ -1,26 +1,25 @@
 package com.ird.faa.service.admin.impl;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.List;
-
-import java.util.ArrayList;
-
-import com.ird.faa.bean.*;
+import com.ird.faa.bean.DeclarationIr;
+import com.ird.faa.bean.DeclarationIrEmploye;
+import com.ird.faa.bean.PrelevementSocialEmploye;
+import com.ird.faa.bean.TauxIr;
+import com.ird.faa.dao.DeclarationIrEmployeDao;
 import com.ird.faa.service.admin.facade.*;
+import com.ird.faa.service.core.impl.AbstractServiceImpl;
+import com.ird.faa.service.util.ListUtil;
+import com.ird.faa.service.util.SearchUtil;
 import com.ird.faa.upload.employe.model.Employe;
+import com.ird.faa.ws.rest.provided.vo.DeclarationIrEmployeVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-
-import com.ird.faa.dao.DeclarationIrEmployeDao;
-
-import com.ird.faa.ws.rest.provided.vo.DeclarationIrEmployeVo;
-import com.ird.faa.service.util.*;
-
-import com.ird.faa.service.core.impl.AbstractServiceImpl;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<DeclarationIrEmploye> implements DeclarationIrEmployeAdminService {
@@ -148,7 +147,7 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
         BigDecimal forfaitProfessionel = BigDecimal.ZERO;
         BigDecimal valeurSalaire = BigDecimal.ZERO;
 
-       valeurDeduction=deduction(declarationIrEmploye.getEmploye().getCin());
+        valeurDeduction = deduction(declarationIrEmploye.getEmploye().getCin());
 
         forfaitProfessionel = (calculSalaireBrutImposable(declarationIrEmploye).subtract(declarationIrEmploye.getAvantage())).multiply(BigDecimal.valueOf(0.2));
         if (forfaitProfessionel.compareTo(BigDecimal.valueOf(2500)) > 0) {
@@ -181,9 +180,9 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
             nombreConsidere = BigDecimal.valueOf(6);
         else
             nombreConsidere = declarationIrEmploye.getEmploye().getNombreFamille();
-        cotisationFinale=cotisation.subtract(nombreConsidere.multiply(BigDecimal.valueOf(30)));
-        if(cotisationFinale.compareTo(BigDecimal.ZERO)<0)
-            cotisationFinale=BigDecimal.ZERO;
+        cotisationFinale = cotisation.subtract(nombreConsidere.multiply(BigDecimal.valueOf(30)));
+        if (cotisationFinale.compareTo(BigDecimal.ZERO) < 0)
+            cotisationFinale = BigDecimal.ZERO;
         declarationIrEmploye.setCotisation(cotisationFinale);
         valeurSalaireNet = declarationIrEmploye.getSalaireBrut().subtract(cotisationFinale).subtract(deduction(declarationIrEmploye.getEmploye().getCin()));
         return valeurSalaireNet;
@@ -193,8 +192,6 @@ public class DeclarationIrEmployeAdminServiceImpl extends AbstractServiceImpl<De
     private TauxIr findTauxIrConvenable(DeclarationIrEmploye declarationIrEmploye) {
         return tauxIrService.findTauxIrConvenable(declarationIrEmploye.getSalaireNetImposable());
     }
-
-
 
 
     @Override
